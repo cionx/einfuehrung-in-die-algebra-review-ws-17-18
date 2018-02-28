@@ -1,0 +1,99 @@
+\usepackage{fontspec}
+\usepackage{xparse}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage[ngerman]{babel}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{bbm}
+\usepackage{csquotes}
+
+% prevents breaking inline math around binary or relationship symbols
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+% colours for hyperref links
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% no indentation for enumerate and itemize environments
+\setlist[enumerate, 1]{leftmargin=*}
+\setlist[enumerate, 2]{leftmargin=*}
+\setlist[itemize, 1]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
+\setlist[itemize, 3]{leftmargin=*, label={\textperiodcentered}}
+
+% various relation symbols
+\NewDocumentCommand{\suchthat}{s}{
+  \IfBooleanTF{#1}
+    {\,\middle|\,}
+    {\,|\,}       
+}
+\newcommand{\divides}{\mathrel{|}}
+\newcommand{\notdivides}{\mathrel{\nmid}}
+\newcommand{\subgroup}{\leq}
+\newcommand{\normalsubgroup}{\trianglelefteq}
+\newcommand{\ideal}{\trianglelefteq}
+
+% different collections of scalars
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Finite}{\mathbb{F}}
+
+% spaces
+% maps
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\End}[1]{\operatorname{End}(#1)}
+\newcommand{\Hom}[2]{\operatorname{Hom}(#1, #2)}
+% matrices
+\newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
+\newcommand{\GL}[2]{\operatorname{GL}_{#1}(#2)}
+\newcommand{\orthogonal}[1]{\operatorname{O}(#1)}
+\newcommand{\sorthogonal}[1]{\operatorname{SO}(#1)}
+% group stuff
+\newcommand{\normalizer}[2]{N_{#1}(#2)}
+\newcommand{\groupcenter}[1]{\operatorname{Z}(#1)}
+\newcommand{\stab}[2]{\operatorname{Stab}_{#1}(#2)}
+\newcommand{\symmetric}[1]{S(#1)}
+% other stuff
+\DeclarePairedDelimiter{\generated}{\langle}{\rangle}
+\DeclareMathOperator{\im}{im}
+\newcommand{\preim}[2]{#1^{-1}(#2)}
+\newcommand{\Quot}[1]{\operatorname{Quot}(#1)}
+\newcommand{\units}[1]{#1^{\times}}
+
+% functions
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{#1}
+\DeclarePairedDelimiterX{\card}[1]{\lvert}{\rvert}{#1}
+\newcommand{\ord}[1]{\operatorname{ord}(#1)}
+\newcommand{\kgV}{\operatorname{kgV}}
+\newcommand{\ggT}{\operatorname{ggT}}
+\newcommand{\ringchar}[1]{\operatorname{char} #1}
+\newcommand{\eval}{\operatorname{ev}}
+\newcommand{\id}{\operatorname{id}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% constants and special elements
+\newcommand{\Id}{\mathbbm{1}}
+
+% decorations
+\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\class}[1]{\overline{#1}}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\induced}[1]{\overline{#1}}
+\NewDocumentCommand{\restrict}{smmO{}}{
+  \IfBooleanTF{#1}
+    {\left. {#2} \right|_{#3}^{#4}}
+    {{#2}|_{#3}^{#4}}
+}
+\newcommand{\transpose}[1]{#1^T}
