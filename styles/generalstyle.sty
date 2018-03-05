@@ -41,9 +41,9 @@
 }
 \newcommand{\divides}{\mathrel{|}}
 \newcommand{\notdivides}{\mathrel{\nmid}}
-\newcommand{\subgroup}{\leq}
-\newcommand{\normalgroup}{\trianglelefteq}
-\newcommand{\ideal}{\trianglelefteq}
+\newcommand{\subgroup}{\mathrel{\leq}}
+\newcommand{\normalgroup}{\mathrel{\trianglelefteq}}
+\newcommand{\ideal}{\mathrel{\trianglelefteq}}
 \newcommand{\defined}{\coloneqq}
 
 % different collections of scalars
@@ -71,6 +71,7 @@
 \newcommand{\symmetric}[1]{S(#1)}
 % other stuff
 \DeclarePairedDelimiter{\generated}{\langle}{\rangle}
+\DeclarePairedDelimiter{\genideal}{(}{)}
 \DeclareMathOperator{\im}{im}
 \newcommand{\preim}[2]{#1^{-1}(#2)}
 \newcommand{\Quot}[1]{\operatorname{Quot}(#1)}
@@ -103,3 +104,4 @@
     {{#2}|_{#3}^{#4}}
 }
 \newcommand{\transpose}[1]{#1^T}
+\newcommand{\unitgroup}[1]{#1^{\times}}

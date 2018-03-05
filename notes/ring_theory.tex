@@ -1,0 +1,530 @@
+\chapter{Ringtheorie}
+
+
+
+\section{Grundlegendes}
+
+Es seien $R, S$ zwei Ringe.
+
+\begin{definition}
+  Eine Abbildung $f \colon R \to S$ ist ein Ringhomomorphismus, wenn
+  \[
+      f(r_1 + r_2)
+    = f(r_1) + f(r_2),
+    \quad
+      f(r_1 r_2)
+    = f(r_1) f(r_2),
+    \quad
+      f(1) = 1
+  \]
+  für alle $r_1, r_2 \in R$ gilt.
+\end{definition}
+
+\begin{definition}
+  Der \emph{Kern} eines Ringhomomorphismus $f \colon R \to S$ ist
+  \[
+              \ker(f)
+    \defined  \{x \in R \suchthat f(x) = 0\}
+  \]
+\end{definition}
+
+\begin{definition}
+  Eine Teilmenge $S \subseteq R$ ist ein \emph{Unterring}, wenn
+  \[
+    s_1 + s_2 \in S,
+    \quad
+    s_1 s_2 \in S,
+    \quad
+    1 \in S
+  \]
+  für alle $s_1, s_2 \in S$ gilt.
+\end{definition}
+
+
+
+
+
+\section{Ideale und Quotientenringe}
+
+Es sei $R$ ein Ring.
+
+\begin{definition}
+  Eine Teilmenge $I \subseteq R$ ist ein Ideal, wenn $I$ eine additive Untergruppe ist, und $RI, IR \subseteq I$ gelten, d.h.\ für alle $r \in R$, $x \in I$ gilt $rx \in I$ und $xr \in I$.
+  Dies wird mit $I \ideal R$ notiert.
+\end{definition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Die Ideale in $\Integer$ sind genau $n\Integer$ mit $n \in \Integer$.
+    \item
+      Für jeden Ring $R$ sind $\{0\}$ und $R$ Ideale in $R$.
+    \item
+      Ist $K$ ein Körper, so sind $\{0\}$ und $K$ die einzigen beiden Ideale in $K$.
+    \item
+      Für jeden Ringhomomorphismus $f \colon R \to S$ ist $\ker(f)$ ein Ideal in $R$.
+  \end{enumerate}
+\end{example}
+
+Es gilt auch die Umkehrung des obigen Beispiels:
+Es sei $I \ideal R$ ein Ideal.
+Dann ist auf der Quotientengruppe $R/I$ durch
+\[
+    \class{x} \cdot \class{y}
+  = \class{xy}
+  \quad
+  \text{für alle $x, y \in R$}
+\]
+eine Ringstruktur definiert.
+Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion $p \colon R \to R/I$, $r \mapsto \class{r}$ zu einem Ringhomomorphismus macht, und es gilt $\ker p = I$.
+
+\begin{theorem}[Homomorphiesatz]
+  Ist $f \colon R \to S$ ein Ringhomomorphismus mit $I \subseteq \ker f$, so induziert $f$ einen eindeutigen Ringhomomorphismus $\induced{f} \colon R/I \to S$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
+  \[
+    \begin{tikzcd}
+        R
+        \arrow{rr}[above]{f}
+        \arrow{dr}[below left]{p}
+      & {}
+      & S
+      \\
+        {}
+      & R/I
+        \arrow{ru}[below right]{\induced{f}}
+      & {}
+    \end{tikzcd}
+  \]
+  In anderen Worten:
+  Es ergibt sich eine Bijektion
+  \begin{align*}
+                        \{ \text{Ringhomo.\ $\induced{f} \colon R/I \to S$} \}
+    &\xrightarrow{\sim} \{ \text{Ringomo.\ $f \colon R \to S$ mit $I \subseteq \ker(f)$} \} \,,  \\
+                        \induced{f}
+    &\mapsto            \induced{f} \circ p \,.
+  \end{align*}
+\end{theorem}
+
+\begin{corollary}[1.\ Isomorphiesatz]
+  Jeder Ringhomomorphismus $f \colon R \to S$ induziert einen Ringisomorphismus
+  \[
+            \induced{f}
+    \colon  R/{\ker(f)}
+    \to     \im(f) \,,
+    \quad   \class{r}
+    \mapsto f(r) \,.
+  \]
+\end{corollary}
+
+\begin{corollary}[2.\ Isomorphiesatz]
+  Sind $I, J \ideal R$ Ideale mit $J \subseteq I$, so ist $I/J$ ein Ideal in $R/J$ gibt es einen wohldefinierten Ringisomorphismus
+  \[
+                        (R/J)/(I/J)
+    \xrightarrow{\sim}  R/I \,,
+    \quad               \class{\class{r}}
+    \mapsto             \class{r} \,.
+  \]
+
+\end{corollary}
+
+\begin{corollary}[3.\ Isomorphiesatz]
+  Es sei $S \subseteq R$ ein Unterring und $I \ideal R$ ein Ideal.
+  Dann ist $S + I$ ein Unterring von $R$, $I$ ein Ideal in $S + I$, $S \cap I$ ein Ideal in $S$, und es gibt einen wohldefinierten Ringisomorphismus
+  \[
+                        R/(R \cap I)
+    \xrightarrow{\sim}  (R + I)/I \,,
+    \quad               \class{r}
+    \mapsto             \class{r} \,.
+  \]
+\end{corollary}
+
+\begin{lemma}
+  \label{lemma: correspondence between ideals}
+  Es sei $I \ideal R$ ein Ideal und $p \colon R \to R/I$ die kanonische Projektion.
+  Dann gibt es eine 1:1-Korrespondenz
+  \begin{align*}
+    \{ \text{Ideale $J \ideal R$ mit $I \subseteq J$} \}
+    &\xleftrightarrow{1:1}
+    \{ \text{Ideale $J' \ideal R/I$} \} \,,
+    \\
+    J
+    &\longmapsto
+    p(J)
+    =
+    J/I \,,
+    \\
+    p^{-1}(J')
+    &\longmapsfrom
+    J' \,.
+  \end{align*}
+  Für jedes Ideal $J \ideal R$ mit $I \subseteq J$ gilt dabei für das zugehörige Ideal $J' = p(J) = J/I$ nach dem 2.\ Isomorphiesatz, dass
+  \[
+          R/J
+    \cong (R/I)/(J/I)
+    \cong (R/I)/J' \,.
+  \]
+  Auf beiden Seiten der obigen 1:1-Korrespondenz erhält man also \textup(bis auf Isomorphie\textup) die gleichen Quotientenringe.
+\end{lemma}
+
+Es sei $X \subseteq R$ eine Teilmenge.
+Für jedes Ideal $I \subseteq R$ sind dann die folgenden Bedingungen äquivalent:
+
+\begin{enumerate}
+  \item
+    Es ist $I$ das kleinste Ideal, das $X$ enthält, d.h.\ es gilt $X \subseteq I$, und für jedes Ideal $J \ideal R$ mit $X \subseteq J$ gilt $I \subseteq J$.
+  \item
+    Es gilt $I = \bigcap_{J \ideal R, X \subseteq J} J$.
+  \item
+    Es gilt
+    $
+        I
+      = \{
+          r_1 x_1 r'_1 + \dotsb + r_n x_n r'_n
+        \suchthat
+          n \in \Natural,
+          r_i, r'_i \in R,
+          x_i \in X
+        \}
+    $
+\end{enumerate}
+
+\begin{definition}
+  Das Ideal $I \ideal R$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist das von $X$ \emph{erzeugte} Ideal, und wird mit $\genideal{X}$ notiert.
+  Es ist $X$ ist ein Erzeugendensystem von $I$.
+\end{definition}
+
+\begin{definition}
+  Gibt es für $I \ideal R$ ein $x \in R$ mit $I = \genideal{x}$, so ist $I$ ein \emph{Hauptideal}.
+\end{definition}
+
+
+
+
+
+\section{Einheiten und Nullteiler}
+
+Es sei $R$ ein Ring.
+
+\begin{definition}
+  Ein Element $u \in R$ ist eine \emph{Einheit}, wenn es ein $r \in R$ mit $ur = 1$ und $ru = 1$ gibt.
+  Es ist
+  $
+              \unitgroup{R}
+    \defined  \{
+                u \in R
+              \suchthat 
+                \text{$u$ ist eine Einheit}
+              \}
+  $
+  die \emph{Einheitengruppe} von $R$.
+\end{definition}
+
+Es bildet $\unitgroup{R}$ bezüglich der Multiplikation von $R$ eine Gruppe, was den Begriff der Einheiten\emph{gruppe} rechtfertigt.
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Ist $K$ ein Körper, so gilt $\unitgroup{\matrices{n}{K}} = \GL{n}{K}$.
+    \item
+      Ein kommutativer Ring $R$ ist genau dann ein Körper, wenn $\unitgroup{R} = R \smallsetminus \{0\}$ gilt.
+    \item
+      Es gilt $\unitgroup{\Integer} = \{1, -1\}$.
+    \item
+      Für $n \geq 1$ ist ein Element $\class{k} \in \Integer/n$ ist genau dann eine Einheit, wenn $n$ und $k$ teilerfremd sind.
+  \end{enumerate}
+\end{example}
+
+\begin{definition}
+  Ein Element $r \in R$ ist ein \emph{Linksnullteiler} bzw.\ \emph{Rechtsnullteiler}, wenn es ein $x \in R$ mit $x \neq 0$ und $rx = 0$, bzw.\ $xr = 0$ gibt.
+  Ist $r$ ein Links- und Rechtsnullteiler, so ist $r$ ein \emph{\textup(beidseitiger\textup) Nullteiler}.
+\end{definition}
+
+\begin{definition}
+  Ein \emph{Integritätsbereich} ist ein kommutativer Ring $R$ mit $R \neq \{0\}$, so dass $0$ der einzige Nullteiler in $R$ ist.
+\end{definition}
+
+
+
+
+
+
+\section{Prim- und maximale Ideale}
+
+Es sei $R$ ein kommutativer Ring.
+
+\begin{definition}
+  \begin{enumerate}
+    \item
+      Ein Ideal $P \ideal R$ ist ein \emph{Primideal}, wenn $P \neq R$ gilt, und für alle $x,y \in R$ mit $xy \in R$ bereits $x \in R$ oder $y \in R$ gilt.
+    \item
+      Ein Ideal $M \ideal R$ ist ein \emph{maximales Ideal}, wenn $M \neq R$ gilt, und für jedes Ideal $I \ideal R$ mit $M \subsetneq I$ bereits $I = R$ gilt;
+      es gibt also bzgl.\ $\subseteq$ kein größeres echtes Ideal.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  \begin{enumerate}
+    \item
+      $P \ideal R$ ist genau dann prim, wenn $R/P$ ein Integritätsbereich ist.
+    \item
+      $M \ideal R$ ist genau dann maximal, wenn $R/M$ ein Körper ist.
+  \end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+  Ist $I \ideal R$ ein Ideal und $p \colon R \to R/I$ die kanonische Projektion, so schränkt sich die 1:1-Korrespondenz
+  \begin{align*}
+    \{ \text{Ideale $J \ideal R$ mit $I \subseteq J$} \}
+    &\xleftrightarrow{1:1}
+    \{ \text{Ideale $J' \ideal R/I$} \} \,,
+    \\
+    J
+    &\longmapsto
+    p(J)
+    =
+    J/I \,,
+    \\
+    p^{-1}(J')
+    &\longmapsfrom
+    J' \,.
+  \end{align*}
+  aus Lemma~\ref{lemma: correspondence between ideals} zu 1:1-Korrespondenzen
+  \begin{align*}
+    \{ \text{Primideale $P \ideal R$ mit $I \subseteq P$} \}
+    &\xleftrightarrow{1:1}
+    \{ \text{Primideale $P' \ideal R/I$} \} \,,
+  \intertext{und}
+    \{ \text{maximale Ideale $M \ideal R$ mit $I \subseteq M$} \}
+    &\xleftrightarrow{1:1}
+    \{ \text{maximale Ideale $M' \ideal R/I$} \}
+  \end{align*}
+  ein.
+\end{corollary}
+
+
+\begin{lemma}[Existenz maximaler Ideale]
+  Jedes echte Ideal $I \ideal R$ gibt es ein maximales Ideal $M \ideal R$ mit $I \subseteq M$.
+\end{lemma}
+
+\begin{corollary}
+  Ist $R \neq 0$, so gibt es ein maximales Ideal $M \ideal R$.
+\end{corollary}
+
+
+
+
+
+\section{Polynomringe}
+
+Es sei $R$ ein Ring.
+
+
+
+
+
+\section{Lokalisierung}
+
+Es sei $R$ ein kommutativer Ring.
+
+\begin{definition}
+  Eine Teilmenge $S \subseteq R$ ist \emph{multiplikativ \textup(abgeschlossen\textup)}, wenn für alle $s, t \in S$ auch $st \in S$ gilt, und $1 \in S$ gilt.
+\end{definition}
+
+Ist $S \subseteq R$ eine multiplikative Teilmenge, so wird auf $R \times S$ durch
+\begin{equation}
+\label{equation: formula for localization}
+        (r,s) \sim (r', s')
+  \iff  \exists t \in S:
+        rs't = r'st
+\end{equation}
+eine Äquivalenzrelation definiert.
+Für alle $r \in R$, $s \in S$ ist
+\[
+            \frac{r}{s}
+  \defined  [(r,s)]_{\sim} \,,
+\]
+und es ist
+\[
+            S^{-1} R
+  \defined  (R \times S)/{\sim}
+  =         \left\{
+              \frac{r}{s}
+            \suchthat*
+              r \in R,
+              s \in S
+            \right\}.
+\]
+Auf $S^{-1} R$ wird durch
+\[
+              \frac{r}{s}
+            + \frac{r'}{s'}
+  \defined  \frac{rs' + r's}{ss'}
+  \quad\text{und}\quad
+                  \frac{r}{s}
+            \cdot \frac{r'}{s'}
+  \defined  \frac{rr'}{ss'}
+\]
+die Struktur eines kommutativen Rings definiert.
+Das Nullelement ist durch $0/1$ gegeben, und das Einselement durch $1/1$.
+
+\begin{definition}
+  Der Ring $S^{-1} R$ wie oben ist die \emph{Lokalisierung} von $R$ an $S$.
+\end{definition}
+
+
+Für alle $r/s \in S^{-1} R$ und $t \in S$ gilt dabei
+\[
+    \frac{rt}{st}
+  = \frac{r}{s} \,.
+\]
+Für jedes $s \in S$ ist deshalb $s/1$ eine Einheit mit
+\[
+    \left( \frac{s}{1} \right)^{-1}
+  = \frac{1}{s} \,.
+\]
+Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorphismus $i \colon R \to S^{-1} R$, $r \mapsto r/1$ wieder:
+
+\begin{theorem}[Universelle Eigenschaft der Lokalisierung]
+  Ist $f \colon R \to T$ ein Ringhomomorphismus, so dass $f(s)$ für jedes $s \in S$ eine Einheit ist, so induziert $f$ einen eindeutigen Ringhomomorphismus $\induced{f} \colon S^{-1} R \to T$ mit $f = \induced{f} \circ i$, d.h.\ so dass das folgende Diagramm kommutiert:
+  \[
+    \begin{tikzcd}
+        R
+        \arrow{rr}[above]{f}
+        \arrow{dr}[below left]{i}
+      & {}
+      & T
+      \\
+        {}
+      & S^{-1} R
+        \arrow{ur}[below right]{\induced{f}}
+      & {}
+    \end{tikzcd}
+  \]
+  In anderen Worten:
+  Es gibt eine Bijektion
+  \begin{align*}
+                        \{ \text{Ringhomo.\ $\induced{f} \colon S^{-1} R \to T$} \}
+    &\xrightarrow{\sim} \{ \text{Ringhomo.\ $f \colon R \to T$ mit $f(S) \subseteq \unitgroup{T}$} \} \,,  \\
+                        \induced{f}
+    &\mapsto            \induced{f} \circ i \,.
+  \end{align*}
+\end{theorem}
+
+\begin{warning}
+  Der kanonische Ringhomomorphismus $i \colon R \to S^{-1} R$ ist im Allgemeinen nicht injektiv.
+  Es ist $i$ genau dann injektiv, wenn $S$ keinen Nullteiler enthält.
+\end{warning}
+
+Es sei $R$ ein Integritätsbereich.
+Gilt $0 \in S$, so ist $S^{-1} R = 0$ der Nullring.
+Gilt allerdings $0 \notin S$, so enthält $S$ keinen Nullteiler, weshalb der kanonische Ringhomomorphismus $i \colon R \to S^{-1} R$ dann injektiv ist.
+Außerdem lässt sich die rechte Seite von \eqref{equation: formula for localization} dann zu $rs' = r's$ vereinfachen.
+
+Da $S$ ein Integritätsbereich ist, lääst sich außerdem $S = R \smallsetminus \{0\}$ wählen.
+Die Lokalisierung $S^{-1} R$ ist dann bereits ein Körper, denn für jedes $r/s \in S^{-1} R$ mit $r/s \neq 0$ gilt $r \neq 0$, weshalb $s/r \in S^{-1} R$ ein wohldefinierter Bruch ist, für den
+\[
+        \frac{r}{s}
+  \cdot \frac{s}{r}
+  =     \frac{rs}{rs}
+  =     \frac{1}{1}
+  =     1_{S^{-1} R}
+\]
+gilt.
+
+\begin{definition}
+  Ist $R$ ein Integritätsbereich, so ist $\Quot{R} \defined S^{-1} R$ für $S = R \smallsetminus \{0\}$ der \emph{Quotientenkörper} von $R$.
+\end{definition}
+
+Der kanonische Ringhomomorphismus $i \colon R \to \Quot{R}$ injektiv, weshalb sich $R$ als ein Unterring des Körpers $\Quot{R}$ auffassen lässt.
+
+\begin{corollary}
+  Integritätsbereiche sind genau die Unterring von Körpern, d.h.\ ein Ring $R$ ist genau dann ein Integritätsbereich, wenn es einen Körper $K$ gibt, so dass $R \subseteq K$ ein Unterring ist.
+\end{corollary}
+
+Es ist $\Quot{R}$ der \enquote{kleinste} Körper, der $R$ enthält:
+Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so faktorisiert $j$ eindeutig über $i$, d.h.\ es gibt einen eindeutigen Körperhomomorphismus $\induced{j} \colon \Quot{R} \to K$, der das folgende Diagramm zum Kommutieren bringt:
+\[
+  \begin{tikzcd}
+      R
+      \arrow{rr}[above]{j}
+      \arrow{dr}[below left]{i}
+    & {}
+    & K
+    \\
+      {}
+    & \Quot{R}
+      \arrow{ur}[below right]{\induced{j}}
+    & {}
+  \end{tikzcd}
+\]
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Es gilt $\Quot{\Integer} = \Rational$.
+    \item
+      Ist $K$ ein Körper, so ist der kanonische Ringhomomorphismus $i \colon K \to \Quot{K}$ ein Isomorphismus.
+%   TODO: Function fields.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+
+
+
+
+\section{Hauptideal- und euklidische Ringe}
+
+\begin{definition}
+  Ein \emph{Hauptidealring} ist ein Integritätsbereich $R$, so dass jedes Ideal $I \ideal R$ ein Hauptideal ist.
+\end{definition}
+
+
+
+
+
+\section{Faktorielle Ringe}
+
+
+
+
+
+\section{Chinesischer Restsatz}
+
+Es sei $R$ ein Ring.
+Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen $I_i \colon R \to R/I_i$ einen Ringhomomorphismus
+\[
+            p
+  \defined  R
+  \to       (R/I_1) \times \dotsb \times (R/I_n) \,,
+  \quad     r
+  \mapsto   (\class{r}, \dotsc, \class{r})
+\]
+mit $\ker(p) = \bigcap_{i=1}^n \ker(p_i) = \bigcap_{i \in I} I_i$.
+Gilt dabei $I_i + I_j = R$ für alle $i \neq j$, so ist $p$ auch surjektiv:
+
+\begin{theorem}[Chinesischer Restsatz]
+  Sind $I_1, \dotsc, I_n \ideal R$ Ideale mit $I_i + I_j = R$ für alle $i \neq j$, so gibt es einen wohldefinierten Isomorphismus
+  \[
+                        R / \bigcap_{i=1}^n I_i
+    \xrightarrow{\sim}  \prod_{i=1}^n (R/I_i) \,,
+    \quad               \class{r}
+    \mapsto             (\cass{r}, \dotsc, \class{r}) \,.
+  \]
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
