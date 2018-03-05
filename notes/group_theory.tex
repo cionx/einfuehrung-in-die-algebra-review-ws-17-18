@@ -1,0 +1,616 @@
+\chapter{Gruppentheorie}
+
+
+
+\section{Nebenklassen \& Satz von Lagrange}
+
+Es sei $G$ eine Gruppe und $H \subgroup G$ eine Untergruppe.
+
+\begin{definition}
+  Für alle $a \in G$ ist $aH \defined \{ ah \suchthat h \in H \}$ die \emph{Linksnebenklasse von $a$ bezüglich $H$}, und $Ha \defined \{ ha \suchthat h \in H \}$ die \emph{Rechtsnebenklasse von $a$ bezüglich $H$}.
+\end{definition}
+
+Für alle $a \in G$ gilt dabei
+\[
+        aH = H
+  \iff  a \in H
+  \iff  Ha = H \,.
+\]
+Auf $G$ werden nun durch
+\[
+        a \sim_L b
+  \iff  aH = bH
+  \quad\text{und}\quad
+        a \sim_R b
+  \iff  Ha = Hb
+\]
+zwei Äquivalenzrelationen definiert.
+Dabei gilt für alle $a, b \in G$, dass
+\[
+        a \sim_L b
+  \iff  aH = bH
+  \iff  b^{-1} a H = H
+  \iff  b^{-1} a \in H
+  \iff  a^{-1} b \in H \,,
+\]
+sowie analog
+\[
+        a \sim_R b
+  \iff  Ha = Hb
+  \iff  H = H b a^{-1}
+  \iff  b a^{-1} \in H
+  \iff  a b^{-1} \in H \,.
+\]
+Dabei ist $a^{-1} b$ das eindeutige Gruppenelement mit $a \cdot a^{-1} b = b$.
+Es folgt somit, dass
+\begin{align*}
+      [a]_{\sim_L}
+   =  \{ b \in G \suchthat a \sim_L b \}
+  &=  \{ b \in G \suchthat a^{-1} b \in H \}  \\
+  &=  \{ b \in G \suchthat \exists h \in H : ah = b \}
+   =  \{ ah \suchthat h \in H \}
+   =  aH \,,
+\end{align*}
+sowie analog, dass $[a]_{\sim_R} = Ha$.
+Die Äquivalenzklassen von $\sim_L$ und $\sim_R$ sind also genau die Linksnebenklassen Rechtsnebenklassen bezüglich $H$, also verschobene Versionen von $H$ selbst.
+
+Dabei ist für jedes $a \in H$ die Abbildung
+\[
+          H
+  \to     aH \,,
+  \quad   h
+  \mapsto ah
+\]
+bijektiv, weshalb $\card{aH} = \card{H}$ gilt, sowie analog auch $\card{Ha} = \card{H}$.
+
+Es ist nun $G$ die disjunkte Vereinigug Äquivalenzklassen von $\sim_L$, d.h.\ $G$ zerfällt in disjunkte verschobene Versionen von $H$.
+Ist $G$ endlich, so folgt somit, dass $\card{G}$ ein Vielfaches von $\card{H}$ ist.
+
+\begin{definition}
+  Die \emph{Ordnung} einer Gruppe $G$ ist $\ord{G} \defined \card{G}$.
+\end{definition}
+
+\begin{corollary}[Satz von Lagrange]
+  Ist $G$ endlich, so gilt $\ord{H} \divides \ord{G}$.
+\end{corollary}
+
+\begin{definition}
+  Es ist $G/H \defined G/{\sim_L} = \{aH \suchthat a \in H\}$ die Menge der Linksnebenklassen und $H \backslash G \defined G/{\sim_R} = \{Ha \suchthat a \in G\}$ die Menge der Rechtsnebenklassen.
+\end{definition}
+
+
+Für die Inversions-Abbildung $(-)^{-1} \colon G \to G$, $g \mapsto g^{-1}$ gilt
+\[
+    (aH)^{-1}
+  = H^{-1} a^{-1}
+  = H a^{-1} \,,
+\]
+weshalb $(-)^{-1}$ eine Bijektion $G/H \to H \backslash G$ induziert.
+Es gibt deshalb gleich viele Links-\ und Rechtsnebenklassen, d.h.\ es gilt $\card{G/H} = \card{H \backslash G}$.
+
+\begin{definition}
+  Der \emph{Index} von $H$ in $G$ ist $\groupindex{G}{H} \defined \card{G/H} = \card{H \backslash G}$.
+\end{definition}
+
+\begin{corollary}
+  Ist $G$ endlich, so gilt $\ord{G} = \ord{H} \groupindex{G}{H}$, sowie äquivalent $\groupindex{G}{H} = \ord{G}/{\ord{H}}$.
+  Insbesondere ist auch $\groupindex{G}{H}$ ein Teiler von $\ord{G}$.
+\end{corollary}
+
+
+
+
+
+\section{Normalteiler \& Quotientengruppen}
+
+
+
+\subsection{Definition von Normalteilern}
+
+Für eine Untergruppe $N \subgroup G$ sind die folgenden Bedingungen äquivalent:
+
+\begin{enumerate}
+  \item
+    Für alle $a \in G$ gilt $aN = Na$.
+  \item
+    Für alle $a \in G$ gilt $aNa^{-1} = N$.
+  \item
+    Für alle $a \in G$ gilt $aNa^{-1} \subseteq N$.
+\end{enumerate}
+
+\begin{definition}
+  Eine Untergruppe $N \subgroup G$, die eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist \emph{normal}, bzw.\ ein \emph{Normalteiler}.
+  Dies wird mit $N \normalgroup G$ notiert.
+\end{definition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Ist $G$ abelsch, so ist jede Untergruppe $N \subgroup G$ normal.
+    \item
+      Für $N \normalgroup G$ und $H \subgroup G$ mit $N \subgroup H$ gilt auch $N \normalgroup H$
+    \item
+      Für jeden Gruppenhomomorphismus $\phi \colon G \to H$ ist $\ker(\phi)$ ein Normalteiler.
+  \end{enumerate}
+\end{example}
+
+
+
+\subsection{Konstruktion von Quotientengruppen}
+
+Es gilt auch die Umkehrung des obigen Beispiels:
+Ist $N \normalgroup G$ ein Normalteiler, so lässt sich auf $G/N$ durch
+\[
+            gN
+  \cdot     hN
+  \defined  (gh)N
+\]
+eine Gruppenstruktur definieren.
+
+\begin{definition}
+  Für $N \normalgroup G$ ist $G/N$ wie oben die \emph{Quotientengruppe} von $G$ nach $N$.
+\end{definition}
+
+\begin{remark}
+  Es handelt sich bei dem obigen Vorgehen um eine von mehrenen möglichen Vorgehensweisen, Quotientengruppen zu konstruieren.
+  Inbesondere lassen sich Quotientengruppen auch ohne Verwendung von Nebenklassen konstruieren.
+  Entscheident ist für Quotientengruppen nur, dass die \emph{kanonische Projektion}
+  \[
+              p
+    \colon    G
+    \to       G/N
+    \quad     g
+    \mapsto   \class{g}
+    \defined  gN
+  \]
+  ein Gruppenhomomorphismus ist, der die folgende universelle Eigenschaft besitzt:
+\end{remark}
+
+
+
+\subsection{Universelle Eigenschaft der Quotientengruppe}
+
+\begin{theorem}[Homomorphiesatz]
+  Ist $f \colon G \to H$ ein Gruppenhomomorphismus mit $N \subseteq \ker(f)$, so induziert $f$ einen eindeutigen Gruppenhomomorphismus $\induced{f} \colon G/N \to H$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
+  \[
+    \begin{tikzcd}
+        G
+        \arrow{rr}[above]{f}
+        \arrow{dr}[below left]{p}
+      & {}
+      & H
+      \\
+        {}
+      & G/N
+        \arrow{ru}[below right]{\induced{f}}
+      & {}
+    \end{tikzcd}
+  \]
+  In anderen Worten:
+  Es ergibt sich eine Bijektion
+  \begin{align*}
+                        \{ \text{Gruppenhomo. $\induced{f} \colon G/N \to H$} \}
+    &\xrightarrow{\sim} \{ \text{Gruppenhomo. $f \colon G \to H$ mit $N \subseteq \ker(f)$} \} \,,  \\
+                        \induced{f}
+    &\mapsto            \induced{f} \circ p \,.
+  \end{align*}
+\end{theorem}
+
+\begin{corollary}[1.\ Isomorphiesatz]
+  Jeder Gruppenhomomorphismus $f \colon G \to H$ induziert einen Isomorphismus
+  \[
+                        G/{\ker(f)}
+    \xrightarrow{\sim}  \im(f)
+    \quad               \class{g}
+    \mapsto             f(g)
+  \]
+\end{corollary}
+
+\begin{corollary}[2.\ Isomorphiesatz]
+  Es seien $N, K \normalgroup G$ zwei Normalteiler mit $N \subgroup K$.
+  Dann ist $K/N$ normal in $G/N$, und es gibt einen wohldefinierten Isomorphismus
+  \[
+                        (G/N)/(K/N)
+    \xrightarrow{\sim}  G/K \,,
+    \quad               \class{ \class{g} }
+    \mapsto             \class{g} \,.
+  \]
+\end{corollary}
+
+\begin{corollary}[3.\ Isomorphiesatz]
+  Es sei $H \subgroup G$ eine Untergruppe und $N \normalgroup G$ eine normale Untergruppe.
+  Dann ist $HN = \{hn \suchthat h \in H, n \in N\}$ eine Untergruppe von $G$, $H \cap N$ eine normale Untergruppe von $H$, und es gibt einen wohldefinierten Isomorphismus
+  \[
+                        H/(H \cap N)
+    \xrightarrow{\sim}  HN/N \,,
+    \quad               \class{h}
+    \mapsto             \class{h} \,.
+  \]
+\end{corollary}
+
+
+
+\subsection{Korrespondenz von (normalen) Untergruppen}
+
+\begin{proposition}
+  Es sei $N \normalgroup G$ eine normale Untergruppe und $p \colon G \to G/N$, $g \mapsto \class{g}$ die kanonische Projektion.
+  \begin{enumerate}
+    \item
+      Es gibt eine 1:1-Korrespondenz von Untergruppen
+      \begin{align*}
+        \{ \text{Untergruppen $H \subgroup G$ mit $N \subgroup H$} \}
+        &\xleftrightarrow{1:1}
+        \{ \text{Untergruppen $H' \subgroup G/N$} \} \,,
+        \\
+        H
+        &\longmapsto
+        p(H)
+        =
+        H/N \,,
+        \\
+        p^{-1}(H')
+        &\longmapsfrom
+        H' \,.
+      \end{align*}
+    \item
+      Es gibt eine eingeschränkte 1:1-Korrespondenz zwischen normalen Untergruppen
+      \begin{align*}
+        \{ \text{Normalteiler $K \normalgroup G$ mit $N \subgroup K$} \}
+        &\xleftrightarrow{1:1}
+        \{ \text{Normalteiler $K' \normalgroup G/N$} \} \,,
+        \\
+        K
+        &\longmapsto
+        p(K)
+        =
+        K/N \,,
+        \\
+        p^{-1}(K')
+        &\longmapsfrom
+        K' \,.
+      \end{align*}
+    \item
+      Für jeden Normalteiler $K \normalgroup G$ mit $N \subgroup K$ gilt dabei für den zugehörigen Normalteiler $K' = p(K) = K/N$ nach dem 2.\ Isomorphiesatz, dass
+      \[
+              G/K
+        \cong (G/N)/(N/K)
+        \cong (G/N)/K' \,.
+      \]
+      Auf beiden Seiten der obigen 1:1-Korrespondenz erhält man somit \textup(bis auf Isomorphie\textup) die gleichen Quotientengruppen.
+  \end{enumerate}
+\end{proposition}
+
+
+
+
+
+\section{Erzeugte Untergruppen}
+
+
+
+\subsection{Definition erzeugter Untergruppen}
+
+Es sei $G$ eine Gruppe und $S \subseteq G$ eine Teilmenge.
+Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent:
+
+\begin{enumerate}
+  \item
+    Es ist $H$ die kleinste Untergruppe von $G$, die $S$ enthält, d.h.\ es gilt $S \subseteq H$, und für jede Untergruppe $K \subgroup G$ mit $S \subseteq K$ gilt $H \subgroup K$.
+  \item
+    Es gilt $H = \bigcap_{K \subgroup G, S \subseteq K} K$.
+  \item
+    Es gilt
+    $
+        H
+      = \{
+          s_1^{\varepsilon_1} \dotsm s_n^{\varepsilon_n}
+        \suchthat
+          n \in \Natural,
+          s_i \in S,
+          \varepsilon_i = \pm 1
+        \}
+    $.
+\end{enumerate}
+
+\begin{definition}
+  Die Untergruppe $H$, die eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist die \emph{von $S$ erzeugte} Untergruppe, und wird mit $\generated{S}$ notiert.
+  Es ist $S$ ein \emph{Erzeugendensystem} von $H$.
+\end{definition}
+
+\begin{definition}
+  Eine Gruppe $G$ ist \emph{endlich erzeugt}, wenn es eine endliche Teilmenge $S \subseteq G$ mit $G = \generated{S}$ gibt, und \emph{zyklisch}, wenn es ein $g \in G$ mit $G = \generated{g}$ gibt.
+\end{definition}
+
+
+
+\subsection{Klassifikation zyklischer Gruppen}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Die Gruppe $\Integer$ ist zyklisch mit Erzeuger $1$.
+    \item
+      Wird $G$ von $g \in G$ zyklisch erzeugt, so wird für jeden Normalteiler $N \normalgroup G$ die Quotientengruppe $G/N$ von $\class{1}$ zyklisch erzeugt.
+    \item
+      Insbesondere ist für alle $n \in \Integer$ ist die Quotientengruppe $\Integer/n \defined \Integer/n\Integer = \Integer/\generated{n}$ zyklisch mit Erzeuger $\class{1} \in \Integer/n$.
+  \end{enumerate}
+\end{example}
+
+Es gilt auch die Umkehrung der obigen Beispiele, d.h.\ jede zyklische Gruppe ist zu genau einer der Gruppen $\Integer/n$ mit $n \geq 0$ isomorph.
+
+\begin{lemma}
+  Jede Untergruppe $H \subseteq G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \in \Natural$.
+  Für $H = \{0\}$ gilt $n = 0$, und sonst gilt $n = \min \{k > 0 \suchthat k \in H\}$.
+\end{lemma}
+
+Ist $G$ zyklisch mit Erzeuger $g \in G$, so ist die Abbildung
+\[
+          f
+  \colon  \Integer
+  \to     G \,,
+  \quad   n
+  \mapsto g^n
+\]
+ein surjektiver Gruppenhomomorphismus, und induziert somit einen Isomorphismus
+\[
+          \induced{f}
+  \colon  \Integer/{\ker(f)}
+  \to     G \,,
+  \quad   \class{n}
+  \mapsto g^n \,.
+\]
+Es gibt es eindeutiges $n \geq 0$ mit $\ker(f) = n\Integer$.
+Gilt $n = 0$, so ist gilt $\Integer \cong G$, und $G$ ist unendlich.
+Ansonsent gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
+
+\begin{corollary}[Klassifikation zyklischer Gruppen]
+  Jede zyklische Gruppe $G$ ist zu genau einer der Gruppen $\Integer$, $\Integer/n$ mit $n \geq 1$ isomorph.
+  Dabei gilt
+  \[
+          G
+    \cong \begin{cases}
+              \Integer
+            & \text{falls $G$ unendlich ist} \,,
+          \\
+              \Integer/n
+            & \text{falls $n = \ord{G}$ endlich ist} \,.
+          \end{cases}
+  \]
+\end{corollary}
+
+\begin{corollary}
+  Untergruppen zyklischer Gruppen sind ebenfalls zyklisch.
+\end{corollary}
+
+\begin{definition}
+  Für $g \in G$ ist $\ord{g} = \ord{\generated{g}}$ die \emph{Ordnung von $g$}.
+\end{definition}
+
+\begin{lemma}
+  Es sei $g \in G$.
+  \begin{enumerate}
+    \item
+      Ist $G$ eine endliche Gruppe, so gilt $\ord{g} \divides \ord{G}$.
+    \item
+      Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n > 0 \suchthat g^n = 1 \}$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{example}[Gruppen von Ordnung $p$]
+  Es sei $p$ prim und $G$ eine Gruppe von Ordnung $p$.
+  Dann gibt es ein nicht-triviales Element $g \in G$.
+  Dann ist $\ord{g} \neq 1$ ein Teiler von $\ord{G} = p$, und somit $\ord{g} = \ord{G}$, also $\generated{g} = G$.
+  Somit ist $G$ zyklisch, also $G \cong \Integer/p$.
+\end{example}
+
+%TODO: Exercise: subgroups of S3
+
+
+
+
+
+\section{Gruppenwirkungen}
+
+
+
+\subsection{Grundlegende Definitionen}
+
+\begin{definition}
+  Es sei $G$ eine Gruppe und $X$ eine Menge.
+  Eine \emph{\textup(Gruppen\textup)wirkung} von $G$ auf $X$ ist eine Abbildung $G \times X \to X$, $(g,x) \mapsto g.x$ mit $1.x = x$ und $g.(h.x) = (gh).x$ für alle $g, h \in G$, $x \in X$.
+  
+  Eine \emph{$G$-Menge} ist eine Menge $X$ zusammen mit einer Wirkung von $G$ auf $X$.
+\end{definition}
+
+Es sei $G$ eine Gruppe und $X$ eine Menge.
+Wirkt $G$ auf $X$, so ist für jedes $g \in G$ die Abbildung $\lambda_g \colon X \to X$, $x \mapsto g.x$ eine Bijektion, und die Abbildung $G \to \symmetric{X}$, $g \mapsto \lambda_g$ ist ein Gruppenhomomorphismus.
+Ist andererseits $\varphi \colon G \to \symmetric{X}$ ein Gruppenhomomorphismus, so definiert $g.x \defined \varphi(g)(x)$ eine Wirkung von $G$ auf $X$.
+Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$ auf $X$ einem Gruppenhomomorphismus $G \to \symmetric{X}$ entspricht.
+
+\begin{definition}
+  Es sei $X$ eine $G$-Menge und $x \in X$.
+  \begin{enumerate}
+    \item
+      Die \emph{$G$-Bahn} von $x$ ist $G.x \defined \{g.x \suchthat g \in G\}$.
+    \item
+      Es ist $X/G = \{G.x \suchthat x \in X\}$ die Menge der $G$-Bahnen.
+    \item
+      Der \emph{Stabilisator} von $x$ ist $G_x \defined \{g \in G \suchthat g.x = x\}$.
+    \item
+      Die \emph{Fixpunktmenge} von $X$ ist $X^G \defined \{x \in X \suchthat \forall g \in G: g.x = x\}$.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  Ist $X$ eine $G$-Menge, so gilt $G_x \subgroup G$ für jedes $x \in X$.
+\end{lemma}
+
+\begin{definition}
+  Es sei $X$ eine $G$-Menge.
+  \begin{enumerate}
+    \item
+      Die Wirkung von $G$ auf $X$ ist \emph{transitiv}, wenn es für alle $x, y \in X$ ein $g \in G$ mit $g.x = y$ gibt.
+    \item
+      Die Wirkung von $G$ auf $X$ ist \emph{treu}, wenn es für alle $g, h \in G$ aus
+      \[
+        \text{$g.x = h.x$ für alle $x \in X$}
+      \]
+      folgt, dass $g = h$ gilt.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  Eine Wirkung von $G$ auf $X$ ist genau dann treu, wenn der zugehörige Gruppenhomomorphismus $G \to \symmetric{X}$ injektiv ist.
+\end{remark}
+
+
+
+
+\subsection{Die Bahnenformel}
+
+Es sei $X$ eine $G$-Menge.
+Durch
+\[
+        x \sim y
+  \iff  \exists g \in G: g.x = y
+\]
+wird eine Äquivalenzrelation auf $X$ definiert.
+Für alle $x \in X$ gilt dann $[x]_{\sim} = G.x$.
+Je zwei Bahnen $G.x$ und $G.y$ sind also entweder gleich oder disjunkt, und $X$ ist die disjunkte Vereinigung der $G$-Bahnen.
+Ist $(x_i)_{i \in I}$ ein Repräsentantensystem der $G$-Bahnen von $X$, so gilt deshalb
+\begin{equation}
+\label{equation: orbit formula alpha}
+    \card{X}
+  = \sum_{i \in I} \card{G.x_i} \,.
+\end{equation}
+Für jedes $x \in X$ ist dabei die Abbildung $G \to G.x$, $g \mapsto g.x$ surjektiv, und es gilt
+\[
+        g.x = h.x
+  \iff  h^{-1}g.x = x
+  \iff  h^{-1} g \in G_x
+  \iff  g G_x = h G_x \,.
+\]
+
+\begin{lemma}
+  Für jedes $x \in G$ ist die Abbildung
+  \[
+            G/G_x
+    \to     G.x \,,
+    \quad   g G_x
+    \mapsto g.x
+  \]
+  eine wolhdefinierte Bijektion.
+  Insbesondere gilt $\card{G.x} = \card{G/G_x} = \groupindex{G}{G_x}$.
+\end{lemma}
+
+Gleichung~\eqref{equation: orbit formula alpha} lässt sich somit zu
+\[
+    \card{X}
+  = \sum_{i \in I} \groupindex{G}{G_{x_i}} \,
+\]
+umschreiben.
+Dabei gilt genau dann $|G.x_i| = \groupindex{G}{G_{x_i}} = 1$, wenn $x_i$ ein Fixpunkt ist.
+Durch umschreiben der obigen Summe ergibt sich damit die Bahnenformel:
+
+\begin{corollary}[Bahnenformel]
+  Ist $X$ eine $G$-Menge und $(x_i)_{i \in I}$ ein Repräsentantensystem der $G$-Bahnen von $X$, so gilt
+  \[
+      \card{X}
+    =   \card*{X^G}
+      + \sum_{\substack{i \in I \\ x_i \notin X^G}} \groupindex{G}{G_{x_i}}.
+  \]
+
+\end{corollary}
+
+
+
+
+
+\section{\texorpdfstring{$p$}{p}-Gruppen \& Sylowsätze}
+
+Es sei $G$ eine endliche Gruppe und $p$ prim.
+
+\begin{definition}
+  Gilt $\ord{G} = p^n$ für ein $n \in \Natural$, so ist $G$ eine \emph{$p$-Gruppe}.
+\end{definition}
+
+\begin{definition}
+  Eine \emph{$p$-Sylow\-unter\-gruppe} von $G$ eine $p$-Untergruppe $S \subgroup G$ mit $\ord{S} = p^r$ und $p \notdivides \groupindex{G}{S}$, d.h.\ es gilt $\ord{G} = p^r m$ mit $p \notdivides m$.
+\end{definition}
+
+\begin{theorem}[Sylowsätze]
+  Es gelte $G = p^r m$ mit $p \notdivides m$.
+  \begin{enumerate}
+    \item
+      Jede $p$-Untergruppe $H \subgroup G$ ist in einer $p$-Sylowuntergruppe von $G$ enthalten.
+      Inbesondere ergibt sich für $H = \{1\}$, dass $G$ eine $p$-Sylowuntergruppe besitzt.
+    \item
+      Je zwei $p$-Sylowuntergruppen $S, S' \subseteq G$ sind konjugiert zueinander, d.h.\ es gibt ein $g \in G$ mit $g S g^{-1} = S'$.
+    \item
+      Bezeichnet $n_p$ die Anzahl der $p$-Sylowuntergruppen von $G$, so gilt
+      \[
+                n_p
+        \equiv  1
+        \pmod{p}
+        \quad\text{und}\quad
+        n_p \divides m \,.
+      \]
+
+  \end{enumerate}
+\end{theorem}
+
+
+
+\section{Klassifikation endlicher abelscher Gruppen}
+
+\begin{theorem}
+  Ist $G$ abelsch, so gibt es genau eine $p$-Sylowuntergruppe $S_p \subgroup G$.
+  Ist die Primfaktorzerlegung von $\ord{G}$ durch $\ord{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gegeben, so ist die Abbildung
+  \[
+                        S_{p_1} \times \dotsb \times S_{p_r}
+    \xrightarrow{\sim}  G \,,
+    \quad               (g_1, \dotsc, g_r)
+    \mapsto             g_1 \dotsm g_r
+  \]
+  ein Isomorphismus.
+\end{theorem}
+
+\begin{proposition}
+  Es sei $p$ prim.
+  Jede abelsche $p$-Gruppe $G$ ist isomorph zu einem Produkt zyklischer $p$-Gruppen, d.h.\ es gilt
+  \[
+          G
+    \cong \Integer/p^{n_1} \times \dotsm \times \Integer/p^{n_r}
+  \]
+  mit $n_1, \dotsc, n_r \geq 1$.
+\end{proposition}
+
+\begin{corollary}[Klassifikation endlicher abelscher Gruppen]
+  Jede endliche abelsche Gruppe ist isomorph zu einem Produkt zyklischer $p$-Gruppen, d.h.\ es gilt
+  \[
+          G
+    \cong \Integer/p_1^{n_1} \times \dotsm \times \Integer/p_r^{n_r}
+  \]
+  mit $p_1, \dotsc, p_r$ prim und $n_1, \dotsc, n_r \geq 1$.
+\end{corollary}
+
+\begin{remark}
+  Tatsächlich ist diese Zerlegung bereits eindeutig bis auf Permutation der Faktoren, d.h.\ die Paare $(p_1, n_1), \dotsc, (p_r, n_r)$ sind eindeutig bis auf Permuation.
+  Diese Eindeutigkeit wurde in der Vorlesung allerdings nicht gezeigt.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

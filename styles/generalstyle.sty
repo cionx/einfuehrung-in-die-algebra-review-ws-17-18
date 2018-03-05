@@ -1,6 +1,7 @@
 \usepackage{fontspec}
 \usepackage{xparse}
 \usepackage{amsmath, amssymb, mathtools}
+\usepackage{stmaryrd} % provides \longmapsfrom
 \usepackage{amsthm}
 \usepackage{tikz-cd}
 \usepackage{enumitem}
@@ -13,6 +14,9 @@
 % prevents breaking inline math around binary or relationship symbols
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
+
+% no indentation for new paragraphs
+% \setlength{\parindent}{0pt}
 
 % colours for hyperref links
 \hypersetup{
@@ -38,8 +42,9 @@
 \newcommand{\divides}{\mathrel{|}}
 \newcommand{\notdivides}{\mathrel{\nmid}}
 \newcommand{\subgroup}{\leq}
-\newcommand{\normalsubgroup}{\trianglelefteq}
+\newcommand{\normalgroup}{\trianglelefteq}
 \newcommand{\ideal}{\trianglelefteq}
+\newcommand{\defined}{\coloneqq}
 
 % different collections of scalars
 \newcommand{\Natural}{\mathbb{N}}
@@ -75,6 +80,7 @@
 \DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{#1}
 \DeclarePairedDelimiterX{\card}[1]{\lvert}{\rvert}{#1}
 \newcommand{\ord}[1]{\operatorname{ord}(#1)}
+\DeclarePairedDelimiterX{\groupindex}[2]{[}{]}{#1 : #2}
 \newcommand{\kgV}{\operatorname{kgV}}
 \newcommand{\ggT}{\operatorname{ggT}}
 \newcommand{\ringchar}[1]{\operatorname{char} #1}
