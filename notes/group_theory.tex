@@ -189,20 +189,20 @@ eine Gruppenstruktur definieren.
   In anderen Worten:
   Es ergibt sich eine Bijektion
   \begin{align*}
-                        \{ \text{Gruppenhomo.\ $\induced{f} \colon G/N \to H$} \}
-    &\xrightarrow{\sim} \{ \text{Gruppenhomo.\ $f \colon G \to H$ mit $N \subseteq \ker(f)$} \} \,,  \\
-                        \induced{f}
-    &\mapsto            \induced{f} \circ p \,.
+                            \{ \text{Gruppenhomo.\ $\induced{f} \colon G/N \to H$} \}
+    &\xlongrightarrow{\sim} \{ \text{Gruppenhomo.\ $f \colon G \to H$ mit $N \subseteq \ker(f)$} \} \,,  \\
+                            \induced{f}
+    &\mapsto                \induced{f} \circ p \,.
   \end{align*}
 \end{theorem}
 
 \begin{corollary}[1.\ Isomorphiesatz]
   Jeder Gruppenhomomorphismus $f \colon G \to H$ induziert einen Isomorphismus
   \[
-                        G/{\ker(f)}
-    \xrightarrow{\sim}  \im(f)
-    \quad               \class{g}
-    \mapsto             f(g)
+                            G/{\ker(f)}
+    \xlongrightarrow{\sim}  \im(f)
+    \quad                   \class{g}
+    \mapsto                 f(g)
   \]
 \end{corollary}
 
@@ -210,10 +210,10 @@ eine Gruppenstruktur definieren.
   Es seien $N, K \normalgroup G$ zwei Normalteiler mit $N \subgroup K$.
   Dann ist $K/N$ normal in $G/N$, und es gibt einen wohldefinierten Isomorphismus
   \[
-                        (G/N)/(K/N)
-    \xrightarrow{\sim}  G/K \,,
-    \quad               \class{ \class{g} }
-    \mapsto             \class{g} \,.
+                            (G/N)/(K/N)
+    \xlongrightarrow{\sim}  G/K \,,
+    \quad                   \class{ \class{g} }
+    \mapsto                 \class{g} \,.
   \]
 \end{corollary}
 
@@ -221,10 +221,10 @@ eine Gruppenstruktur definieren.
   Es sei $H \subgroup G$ eine Untergruppe und $N \normalgroup G$ eine normale Untergruppe.
   Dann ist $HN = \{hn \suchthat h \in H, n \in N\}$ eine Untergruppe von $G$, $H \cap N$ eine normale Untergruppe von $H$, und es gibt einen wohldefinierten Isomorphismus
   \[
-                        H/(H \cap N)
-    \xrightarrow{\sim}  HN/N \,,
-    \quad               \class{h}
-    \mapsto             \class{h} \,.
+                            H/(H \cap N)
+    \xlongrightarrow{\sim}  HN/N \,,
+    \quad                   \class{h}
+    \mapsto                 \class{h} \,.
   \]
 \end{corollary}
 
@@ -339,7 +339,8 @@ Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent
 Es gilt auch die Umkehrung der obigen Beispiele, d.h.\ jede zyklische Gruppe ist zu genau einer der Gruppen $\Integer/n$ mit $n \geq 0$ isomorph.
 
 \begin{lemma}
-  Jede Untergruppe $H \subseteq G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \in \Natural$.
+\label{lemma: subgroups of Z}
+  Jede Untergruppe $H \subgroup G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \in \Natural$.
   Für $H = \{0\}$ gilt $n = 0$, und sonst gilt $n = \min \{k > 0 \suchthat k \in H\}$.
 \end{lemma}
 
@@ -567,10 +568,10 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
   Ist $G$ abelsch, so gibt es genau eine $p$-Sylowuntergruppe $S_p \subgroup G$.
   Ist die Primfaktorzerlegung von $\ord{G}$ durch $\ord{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gegeben, so ist die Abbildung
   \[
-                        S_{p_1} \times \dotsb \times S_{p_r}
-    \xrightarrow{\sim}  G \,,
-    \quad               (g_1, \dotsc, g_r)
-    \mapsto             g_1 \dotsm g_r
+                            S_{p_1} \times \dotsb \times S_{p_r}
+    \xlongrightarrow{\sim}  G \,,
+    \quad                   (g_1, \dotsc, g_r)
+    \mapsto                 g_1 \dotsm g_r
   \]
   ein Isomorphismus.
 \end{theorem}

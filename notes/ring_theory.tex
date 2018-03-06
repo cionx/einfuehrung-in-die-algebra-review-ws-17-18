@@ -40,6 +40,10 @@ Es seien $R, S$ zwei Ringe.
   für alle $s_1, s_2 \in S$ gilt.
 \end{definition}
 
+\begin{definition}
+  Für $x, y \in R$ ist $x$ ein \emph{Teiler} von $y$, bzw.\ $y$ wird von $x$ \emph{geteilt}, wenn es ein $z \in R$ mit $y = xz$ gibt.
+  Dies wird mit $x \divides y$ notiert.
+\end{definition}
 
 
 
@@ -97,10 +101,10 @@ Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion
   In anderen Worten:
   Es ergibt sich eine Bijektion
   \begin{align*}
-                        \{ \text{Ringhomo.\ $\induced{f} \colon R/I \to S$} \}
-    &\xrightarrow{\sim} \{ \text{Ringomo.\ $f \colon R \to S$ mit $I \subseteq \ker(f)$} \} \,,  \\
-                        \induced{f}
-    &\mapsto            \induced{f} \circ p \,.
+                            \{ \text{Ringhomo.\ $\induced{f} \colon R/I \to S$} \}
+    &\xlongrightarrow{\sim} \{ \text{Ringomo.\ $f \colon R \to S$ mit $I \subseteq \ker(f)$} \} \,,  \\
+                            \induced{f}
+    &\mapsto                \induced{f} \circ p \,.
   \end{align*}
 \end{theorem}
 
@@ -118,10 +122,10 @@ Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion
 \begin{corollary}[2.\ Isomorphiesatz]
   Sind $I, J \ideal R$ Ideale mit $J \subseteq I$, so ist $I/J$ ein Ideal in $R/J$ gibt es einen wohldefinierten Ringisomorphismus
   \[
-                        (R/J)/(I/J)
-    \xrightarrow{\sim}  R/I \,,
-    \quad               \class{\class{r}}
-    \mapsto             \class{r} \,.
+                            (R/J)/(I/J)
+    \xlongrightarrow{\sim}  R/I \,,
+    \quad                   \class{\class{r}}
+    \mapsto                 \class{r} \,.
   \]
 
 \end{corollary}
@@ -130,10 +134,10 @@ Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion
   Es sei $S \subseteq R$ ein Unterring und $I \ideal R$ ein Ideal.
   Dann ist $S + I$ ein Unterring von $R$, $I$ ein Ideal in $S + I$, $S \cap I$ ein Ideal in $S$, und es gibt einen wohldefinierten Ringisomorphismus
   \[
-                        R/(R \cap I)
-    \xrightarrow{\sim}  (R + I)/I \,,
-    \quad               \class{r}
-    \mapsto             \class{r} \,.
+                            R/(R \cap I)
+    \xlongrightarrow{\sim}  (R + I)/I \,,
+    \quad                   \class{r}
+    \mapsto                 \class{r} \,.
   \]
 \end{corollary}
 
@@ -271,6 +275,11 @@ Es sei $R$ ein kommutativer Ring.
 \end{lemma}
 
 \begin{corollary}
+  Ist $M \ideal R$ maximal, so ist $M$ auch prim.
+\end{corollary}
+
+
+\begin{corollary}
   Ist $I \ideal R$ ein Ideal und $p \colon R \to R/I$ die kanonische Projektion, so schränkt sich die 1:1-Korrespondenz
   \begin{align*}
     \{ \text{Ideale $J \ideal R$ mit $I \subseteq J$} \}
@@ -286,9 +295,7 @@ Es sei $R$ ein kommutativer Ring.
     p^{-1}(J')
     &\longmapsfrom
     J' \,.
-  \end{align*}
-  aus Lemma~\ref{lemma: correspondence between ideals} zu 1:1-Korrespondenzen
-  \begin{align*}
+  \intertext{aus Lemma~\ref{lemma: correspondence between ideals} zu 1:1-Korrespondenzen}
     \{ \text{Primideale $P \ideal R$ mit $I \subseteq P$} \}
     &\xleftrightarrow{1:1}
     \{ \text{Primideale $P' \ideal R/I$} \} \,,
@@ -302,7 +309,7 @@ Es sei $R$ ein kommutativer Ring.
 
 
 \begin{lemma}[Existenz maximaler Ideale]
-  Jedes echte Ideal $I \ideal R$ gibt es ein maximales Ideal $M \ideal R$ mit $I \subseteq M$.
+  Für jedes echte Ideal $I \ideal R$, $I \neq R$ gibt es ein maximales Ideal $M \ideal R$ mit $I \subseteq M$.
 \end{lemma}
 
 \begin{corollary}
@@ -316,6 +323,76 @@ Es sei $R$ ein kommutativer Ring.
 \section{Polynomringe}
 
 Es sei $R$ ein Ring.
+
+
+
+\subsection{Polynomring in einer Variables}
+
+Der Polynomring $R[t]$ ein einer Variablen $t$ besteht aus \emph{Polynomen}, d.h.\ Ausdrücken der Form $\sum_{k=0}^\infty a_k t^k$ mit $a_k = 0$ für fast alle $k$.
+Dabei gilt genau dann die Gleichheit $\sum_{k=0}^\infty a_k t^k = \sum_{k=0}^\infty b_k t^k$, wenn $a_k = b_k$ für alle $k$ gilt.
+Die Addition und Multiplikation auf $R[t]$ sind durch
+\begin{align*}
+              \left( \sum_{k=0}^\infty a_k t^k \right)
+            + \left( \sum_{k=0}^\infty b_k t^k \right)
+  &\defined \sum_{k=0}^\infty (a_k + b_k) t^k
+\shortintertext{und}
+                  \left( \sum_{k=0}^\infty a_k t^k \right)
+            \cdot \left( \sum_{k=0}^\infty b_k t^k \right)
+  &\defined \sum_{k,\ell=0}^\infty a_k b_\ell t^{k+\ell}
+\end{align*}
+definiert.
+Es gilt also $(\sum_{k=0}^\infty a_k t^k) \cdot (\sum_{k=0}^\infty b_k t^k) = \sum_{k=0}^\infty c_k t^k$ mit
+\[
+    c_k
+  = \sum_{i + j = k} a_i b_j
+  = \sum_{\ell=0}^k a_\ell b_{k - \ell}
+\]
+für alle $k$.
+Der \emph{Grad} eines Polynom $f = \sum_{k=0}^\infty a_k t^k \in R[t]$ ist für $f \neq 0$ durch
+\[
+            \deg(f)
+  \defined  \max \{k \suchthat a_k \neq 0\}
+\]
+definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
+
+\begin{proposition}
+  \begin{enumerate}
+    \item
+      $R[t]$ ist genau dann kommutativ, wenn $R$ kommutativ ist.
+    \item
+      Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
+    \item
+      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keine von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
+      Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
+    \item
+      $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Polynomdivision]
+  Es sei $K$ ein Körper.
+  Für alle $f, g \in K[t]$ mit $g \neq 0$ gibt es eindeutige Polynome $q, r \in K[t]$ mit
+  \[
+    f = qg + r \,,
+    \qquad
+    \text{wobei $\deg(r) < \deg(g)$} \,.
+  \]
+\end{proposition}
+
+
+
+\subsection{Polynomringe in endlich vielen Variablen}
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
@@ -402,10 +479,10 @@ Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorph
   In anderen Worten:
   Es gibt eine Bijektion
   \begin{align*}
-                        \{ \text{Ringhomo.\ $\induced{f} \colon S^{-1} R \to T$} \}
-    &\xrightarrow{\sim} \{ \text{Ringhomo.\ $f \colon R \to T$ mit $f(S) \subseteq \unitgroup{T}$} \} \,,  \\
-                        \induced{f}
-    &\mapsto            \induced{f} \circ i \,.
+                            \{ \text{Ringhomo.\ $\induced{f} \colon S^{-1} R \to T$} \}
+    &\xlongrightarrow{\sim} \{ \text{Ringhomo.\ $f \colon R \to T$ mit $f(S) \subseteq \unitgroup{T}$} \} \,,  \\
+                            \induced{f}
+    &\mapsto                \induced{f} \circ i \,.
   \end{align*}
 \end{theorem}
 
@@ -481,11 +558,194 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
   Ein \emph{Hauptidealring} ist ein Integritätsbereich $R$, so dass jedes Ideal $I \ideal R$ ein Hauptideal ist.
 \end{definition}
 
+\begin{definition}
+  Ein \emph{euklidischer Ring} ist ein kommutativer Ring $R$ zusammen mit einer \emph{Gradabbildung} $\deg \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
+  \[
+    f = qg + r \,,
+    \quad
+    \text{wobei $r = 0$ oder $\deg(r) < \deg(g)$} \,.
+  \]
+\end{definition}
+
+\begin{lemma}
+  Jeder euklidische Ring $R$ ist ein Hauptidealring:
+  Ist $I \ideal R$ mit $I \neq \{0\}$ und hat $x \in I$ minimalen Grad unter allen Elementen in $I \smallsetminus \{0\}$, so gilt $I = \genideal{x}$.
+\end{lemma}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Der Ring $\Integer$ ist ein euklidischer Ring bezüglich der Gradabbildung $\deg(n) \defined \abs{x}$.
+      Die Folgerung, dass $\Integer$ ein Hauptidealring ist, sowie die obige explizite Beschreibung eines Erzeugers eines Ideal $I \ideal R$ entspricht genau Lemma~\ref{lemma: subgroups of Z}.
+    \item
+      Ist $K$ ein Körper, so ist der Polynomring $K[t]$ ein euklidischer Ring bezüglich der üblichen Gradabbildung $\deg$.
+      Insbesondere ist $K[t]$ ein Hauptidealring.
+  \end{enumerate}
+\end{example}
+
+\begin{remark}
+  Ist $R$ ein kommutativer Ring, so ist für jedes $a \in R$ ist das Ideal $\genideal{t, a} \ideal R[t]$ genau dann ein Hauptideal, wenn $a$ eine Einheit in $R$ ist.
+  Deshalb ist $R[t]$ genau dann ein Hauptidealring, wenn $R$ ein Körper ist.
+  
+  So sind etwa $\Integer[t]$ und $K[t,u] \cong K[t][u]$ für einen Körper $K$ keine Hauptidealringe, denn $\genideal{t, 2} \ideal \Integer[t]$ und $\genideal{t, u} \in K[t][u]$ sind keine Hauptideale.
+\end{remark}
+
+
+% TODO: Example Z[i]
+
+
+
 
 
 
 
 \section{Faktorielle Ringe}
+
+Es sei $R$ ein Integritätsbereich.
+
+\subsection{Definition faktorieller Ringe}
+
+\begin{definition}
+  Es sei $p \in R$ eine Nichteinheit mit $p \neq 0$.
+  \begin{enumerate}
+    \item
+      $p$ ist \emph{irreduzibel}, wenn für jede Zerlegung $p = xy$ bereits $x \in \unitgroup{R}$ oder $y \in \unitgroup{R}$ gilt.
+    \item
+       $p$ ist prim, wenn für alle $x, y \in R$ mit $p \divides xy$ bereits $p \divides x$ oder $p \divides y$ gilt.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition: ufd}
+  Der Ring $R$ ist \emph{faktoriell}, wenn jedes $r \in R$, $r \neq 0$ eine Zerlegung
+  \begin{equation}
+  \label{equation: decomposition into irreducibles}
+    r = \varepsilon p_1 \dotsm p_n
+  \end{equation}
+  besitzt, wobei
+  \begin{itemize}
+    \item
+      $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und $p_1, \dotsc, p_n$ irreduzibel sind, und
+    \item
+      diese Zerlegung eindeutig \enquote{bis auf Einheiten und Permutation} ist:
+      
+      Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weiter solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\gamma_1, \dotsc, \gamma_n \in \unitgroup{R}$ und eine Permutation $\pi \in S_n$ mit $p'_i = \gamma_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
+  \end{itemize}
+\end{definition}
+
+\begin{lemma}
+  Ist $R$ faktoriell, so ist $p \in R$ genau dann irreduzibel, wenn $p$ prim ist.
+\end{lemma}
+
+In faktoriellen Ringen muss also nicht zwischen Prim- und irreduziblen Elementen unterschieden werden.
+Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation: decomposition into irreducibles} als \emph{Primfaktorzerlegung}.
+
+\begin{proposition}
+  Hauptidealringe sind faktoriell.
+\end{proposition}
+
+
+
+\subsection{Prim- und irreduzible Elemente im Allgemeinen}
+
+Es sei $p \in R$.
+
+\begin{lemma}
+  Ist $p$ prim, so ist $p$ auch irreduzibel.
+\end{lemma}
+
+\begin{lemma}
+  Ist $R$ ein Hauptidealring, so sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Das Element $p$ ist prim.
+    \item
+      Das Element $p$ ist irreduzibel.
+    \item
+      Das Ideal $\genideal{p}$ ist maximal.
+  \end{enumerate}
+\end{lemma}
+
+% TODO: Counterexample Z[sqrt(-5)]
+
+
+\subsection{\texorpdfstring{$\ggT$}{ggT} und \texorpdfstring{$\kgV$}{kgV}}
+
+% TODO: Write this.
+
+
+
+\subsection{Der Satz von Gauß}
+
+Es sei $R$ ein faktorieller Ring.
+
+\begin{definition}
+  Ein Polynom $f = \sum_{k=0}^n a_k t^k \in R[t]$ ist \emph{primitiv}, wenn die Koeffizienten $a_0, \dotsc, a_n$ insgesamt teilerfremd sind, d.h.\ für $r \in R$ mit $r \divides a_k$ für alle $k = 0, \dotsc, n$ gilt bereits $r \in \unitgroup{R}$.
+\end{definition}
+
+\begin{theorem}[Satz von Gauß]
+  Der Polynomring $R[t]$ ist ebenfalls faktoriell.
+  Dabei ist ein Polynom $p \in R[t]$ genau dann irreduzibel, wenn eine der folgenden beiden Bedingungen erfüllt ist:
+  \begin{itemize}
+    \item
+      Es gilt $p \in R$, und $p$ ist irreduzibel in $R$.
+    \item
+      Das Polynom $p$ ist primitiv und irreduzibel in $\Quot{R}[t]$.
+  \end{itemize}
+  Insbesondere ist ein primitives Polynom $p \in R[t]$ genau dann irreduzibel in $R[t]$, wenn $p$ irreduzibel in $\Quot{R}[t]$ ist.
+\end{theorem}
+
+\begin{corollary}
+  Der Polynomring $R[t_1, \dotsc, t_n]$ ist faktoriell.
+\end{corollary}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Ist $K$ ein Körper, so ist $K[t_1, \dotsc, t_n]$ faktoriell.
+    \item
+      $\Integer[t_1, \dotsc, t_n]$ ist faktoriell.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Irreduziblitätskriterien}
+
+Es sei $R$ ein faktorieller Ring.
+
+\begin{lemma}
+  Ist $K$ ein Körper, so ist ein nicht-konstantes Polynom $f \in K[t]$ vom Grad $\deg(f) \leq 3$ genau dann irreduzibel, wenn $f$ keine Nullstelle in $K$ besitzt.
+\end{lemma}
+
+
+\begin{proposition}[Eisenstein]
+  Es sei $f = \sum_{k=0}^n a_k t^k \in R[t]$ primitiv, und es gebe $p \in R$ prim mit
+  \[
+    p \notdivides a_n \,,
+    \qquad
+    \text{$p \divides a_k$ für alle $k < n$} \,,
+    \qquad
+    p^2 \notdivides a_0 \,.
+  \]
+  Dann ist $f$ irreduzibel in $R[t]$, und somit auch in $\Quot{R}[t]$.
+\end{proposition}
+
+\begin{proposition}[Reduktionskriterium]
+  Es sei $f = \sum_{k=0}^n a_k t^k \in R[t]$ primitiv.
+  Es sei $p \in R$ prim, und für jedes Polynom $g = \sum_{k=0}^m b_k t^k \in R[t]$ sei
+  \[
+              \class{g}
+    \defined  \sum_{k=0}^m \class{b_k} t^k
+    \in       (R/\genideal{p})[t]
+  \]
+  das Polynom, dass durch Reduzieren der Koeffizienten modulo $p$ entsteht.
+  Ist $\class{f}$ irreduzibel in $(R/\genideal{p})[t]$, so ist $f$ in $R[t]$ irreduzibel, und somit auch in $\Quot{R}[t]$.
+\end{proposition}
+
+
 
 
 
@@ -494,28 +754,31 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
 \section{Chinesischer Restsatz}
 
 Es sei $R$ ein Ring.
-Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen $I_i \colon R \to R/I_i$ einen Ringhomomorphismus
+Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen $p_i \colon R \to R/I_i$ einen Ringhomomorphismus
 \[
             p
-  \defined  R
+  \defined  (p_1, \dotsc, p_n)
+  \colon    R
   \to       (R/I_1) \times \dotsb \times (R/I_n) \,,
   \quad     r
   \mapsto   (\class{r}, \dotsc, \class{r})
 \]
-mit $\ker(p) = \bigcap_{i=1}^n \ker(p_i) = \bigcap_{i \in I} I_i$.
+mit $\ker(p) = \bigcap_{i=1}^n \ker(p_i) = \bigcap_{i=1}^n I_i$.
 Gilt dabei $I_i + I_j = R$ für alle $i \neq j$, so ist $p$ auch surjektiv:
 
 \begin{theorem}[Chinesischer Restsatz]
   Sind $I_1, \dotsc, I_n \ideal R$ Ideale mit $I_i + I_j = R$ für alle $i \neq j$, so gibt es einen wohldefinierten Isomorphismus
   \[
-                        R / \bigcap_{i=1}^n I_i
-    \xrightarrow{\sim}  \prod_{i=1}^n (R/I_i) \,,
-    \quad               \class{r}
-    \mapsto             (\cass{r}, \dotsc, \class{r}) \,.
+                            R / \bigcap_{i=1}^n I_i
+    \xlongrightarrow{\sim}  \prod_{i=1}^n (R/I_i) \,,
+    \quad                   \class{r}
+    \mapsto                 (\class{r}, \dotsc, \class{r}) \,.
   \]
 \end{theorem}
 
+% TODO: Special Case PID
 
+% TODO: Calculations for Z
 
 
 
