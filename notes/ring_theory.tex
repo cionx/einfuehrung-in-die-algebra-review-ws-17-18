@@ -1,9 +1,5 @@
 \chapter{Ringtheorie}
 
-
-
-\section{Grundlegendes}
-
 Es seien $R, S$ zwei Ringe.
 
 \begin{definition}
@@ -94,7 +90,7 @@ Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion
       \\
         {}
       & R/I
-        \arrow{ru}[below right]{\induced{f}}
+        \arrow[dashed]{ru}[below right]{\induced{f}}
       & {}
     \end{tikzcd}
   \]
@@ -362,7 +358,7 @@ definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
     \item
       Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
     \item
-      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keine von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
+      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keinen von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
       Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
     \item
       $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
@@ -379,11 +375,15 @@ definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
   \]
 \end{proposition}
 
+% TODO: Universal Property.
+
 
 
 \subsection{Polynomringe in endlich vielen Variablen}
 
+% TODO: Write this.
 
+% TODO: Define R[a].
 
 
 
@@ -472,7 +472,7 @@ Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorph
       \\
         {}
       & S^{-1} R
-        \arrow{ur}[below right]{\induced{f}}
+        \arrow[dashed]{ur}[below right]{\induced{f}}
       & {}
     \end{tikzcd}
   \]
@@ -529,7 +529,7 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
     \\
       {}
     & \Quot{R}
-      \arrow{ur}[below right]{\induced{j}}
+      \arrow[dashed]{ur}[below right]{\induced{j}}
     & {}
   \end{tikzcd}
 \]
@@ -601,9 +601,27 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
 
 \section{Faktorielle Ringe}
 
-Es sei $R$ ein Integritätsbereich.
+Es sei $R$ ein kommutativer Ring.
+
+\begin{definition}
+  Zwei Elemente $a, b \in R$ sind \emph{assoziiert \textup(zueinander\textup)}, wenn sie \enquote{gleich bis auf Einheit} sind, d.h.\ wenn es eine Einheit $\varepsilon \in \unitgroup{R}$ mit $b = \varepsilon a$ gibt.
+\end{definition}
+
+\begin{lemma}
+  Assoziiertheit ist eine Äuquivalenzrelation
+\end{lemma}
+
+\begin{lemma}
+  Ist $R$ ein Integritätsbereich, so sind zwei Elemente $a, b \in R$ genau dann assoziiert, wenn $\genideal{a} = \genideal{b}$ gilt, wenn also $a \divides b$ und $b \divides a$ gelten.
+\end{lemma}
+
+Wenn wir im Folgenden von \enquote{Eindeutigkeit bis auf Assoziiertheit} sprechen, so geht es also eigentlich um eindeutige Hauptideale.
+
+
 
 \subsection{Definition faktorieller Ringe}
+
+Es sei $R$ ein Integritätsbereich.
 
 \begin{definition}
   Es sei $p \in R$ eine Nichteinheit mit $p \neq 0$.
@@ -627,7 +645,7 @@ Es sei $R$ ein Integritätsbereich.
     \item
       $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und $p_1, \dotsc, p_n$ irreduzibel sind, und
     \item
-      diese Zerlegung eindeutig \enquote{bis auf Einheiten und Permutation} ist:
+      diese Zerlegung eindeutig \enquote{bis auf Assoziiertheit und Permutation} ist:
       
       Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weiter solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\gamma_1, \dotsc, \gamma_n \in \unitgroup{R}$ und eine Permutation $\pi \in S_n$ mit $p'_i = \gamma_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
   \end{itemize}
@@ -639,6 +657,16 @@ Es sei $R$ ein Integritätsbereich.
 
 In faktoriellen Ringen muss also nicht zwischen Prim- und irreduziblen Elementen unterschieden werden.
 Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation: decomposition into irreducibles} als \emph{Primfaktorzerlegung}.
+
+\begin{remark}
+  Es sei $R$ faktoriell $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Ässoziiertheitsklassen, so lässt sich jedes Element $r \in R$, $r \neq 0$ als
+  \[
+    r = \varepsilon \prod_{p \in \mathcal{P}} p^{\nu_p}
+  \]
+  schreiben, wobei $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und für die Exponenten $\nu_p \in \Natural$ gilt $\nu_p = 0$ für fast alle $p \in \mathcal{P}$.
+  Diese Zerlegung ist dann eindeutig (bis auf Permutation der $p^{\nu_p}$).
+\end{remark}
+
 
 \begin{proposition}
   Hauptidealringe sind faktoriell.
@@ -671,7 +699,54 @@ Es sei $p \in R$.
 
 \subsection{\texorpdfstring{$\ggT$}{ggT} und \texorpdfstring{$\kgV$}{kgV}}
 
-% TODO: Write this.
+Es sei $R$ ein kommutativer Ring
+
+\begin{definition}
+  Es seien $a_i \in R$, $i \in I$.
+  \begin{enumerate}
+    \item
+      Ein \emph{größter gemeinsamer Teiler} der $a_i$ ist ein Element $a \in R$ mit $a \divides a_i$ für alle $i \in I$, so dass für jedes andere $b \in R$ mit $b \divides a_i$ für alle $i \in I$ bereits $b \divides a$ gilt.
+      Man schreibt $a = \ggT( a_i \suchthat i \in I )$.
+    \item
+      Ein \emph{kleinstes gemeinsames Vielfaches} der $a_i$ ist ein Element $a \in R$ mit $a_i \divides a$ für alle $i \in I$, so dass für jedes andere $b \in R$ mit $a_i \divides b$ für alle $i \in I$ bereits $a \divides b$ gilt.
+      Man schreibt $a = \kgV( a_i \suchthat i \in I )$.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  Ist $R$ ein Integritätsbereich, so sind $\ggT$ und $\kgV$ \textup(sofern diese existieren\textup) eindeutig bis auf Assoziiertheit.
+\end{lemma}
+
+\begin{lemma}
+  Es sei $R$ ein faktorieller Ring und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Assoziiertheitsklassen der Primelement von $R$.
+  Es seien $a_1, \dotsc, a_n \in R$ mit Primfaktorzerlegungen
+  \[
+      a_i
+    = \varepsilon_i \prod_{p \in \mathcal{P}} p^{\nu_{p,i}} \,.
+  \]
+  Dann existieren $\ggT(a_1, \dotsc, a_n)$ und $\kgV(a_1, \dotsc, a_n)$, und es gilt
+  \begin{align*}
+        \kgV(a_1, \dotsc, a_n)
+    &=  \prod_{p \in \mathcal{P}} p^{\max \{ \nu_{p,1}, \dotsc, \nu_{p,n} \}}
+  \shortintertext{und}
+        \ggT(a_1, \dotsc, a_n)
+    &=  \prod_{p \in \mathcal{P}} p^{\min \{ \nu_{p,1}, \dotsc, \nu_{p,n} \}}
+  \end{align*}
+\end{lemma}
+
+\begin{lemma}
+  Ist $R$ ein Hauptidealring, so gilt für alle $a_1, \dotsc, a_n \in R$, dass
+  \begin{gather*}
+      \genideal{ a_1 } + \dotsb + \genideal{ a_n }
+    = \genideal{ a_1, \dotsc, a_n }
+    = \genideal{ \ggT(a_1, \dotsc, a_n) }
+  \shortintertext{sowie}
+      \genideal{ a_1 } \cap \dotsb \cap \genideal{ a_n }
+    = \genideal{ \kgV(a_1, \dotsc, a_n) } \,.
+  \end{gather*}
+\end{lemma}
+
+% TODO: Calculating ggT and kgV in euclidian domains
 
 
 
@@ -717,7 +792,15 @@ Es sei $R$ ein faktorieller Ring.
 Es sei $R$ ein faktorieller Ring.
 
 \begin{lemma}
-  Ist $K$ ein Körper, so ist ein nicht-konstantes Polynom $f \in K[t]$ vom Grad $\deg(f) \leq 3$ genau dann irreduzibel, wenn $f$ keine Nullstelle in $K$ besitzt.
+  Es sei $K$ ein Körper und $f \in K[t]$ nicht-konstant.
+  \begin{enumerate}
+    \item
+      Gilt $\deg(f) = 1$, so ist $f$ irreduzibel.
+    \item
+      Gilt $\deg(f) = 2$ oder $\deg(f) = 3$ so ist $f$ genau dann irreduzibel, wenn $f$ keine Nullstelle in $K$ besitzt.
+    \item
+      Gilt $\deg(f) \geq 2$ und besitzt $f$ eine Nullstelle in $K$, so ist $f$ reduzibel.
+  \end{enumerate}
 \end{lemma}
 
 
@@ -754,7 +837,7 @@ Es sei $R$ ein faktorieller Ring.
 \section{Chinesischer Restsatz}
 
 Es sei $R$ ein Ring.
-Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen $p_i \colon R \to R/I_i$ einen Ringhomomorphismus
+Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen $p_j \colon R \to R/I_j$ einen Ringhomomorphismus
 \[
             p
   \defined  (p_1, \dotsc, p_n)
@@ -763,20 +846,39 @@ Für Ideale $I_1, \dotsc, I_n \ideal R$ induzieren die kanonischen Projektionen 
   \quad     r
   \mapsto   (\class{r}, \dotsc, \class{r})
 \]
-mit $\ker(p) = \bigcap_{i=1}^n \ker(p_i) = \bigcap_{i=1}^n I_i$.
-Gilt dabei $I_i + I_j = R$ für alle $i \neq j$, so ist $p$ auch surjektiv:
+mit $\ker(p) = \bigcap_{j=1}^n \ker(p_j) = \bigcap_{j=1}^n I_j$.
+Gilt dabei $I_j + I_k = R$ für alle $j \neq k$, so ist $p$ auch surjektiv:
 
 \begin{theorem}[Chinesischer Restsatz]
-  Sind $I_1, \dotsc, I_n \ideal R$ Ideale mit $I_i + I_j = R$ für alle $i \neq j$, so gibt es einen wohldefinierten Isomorphismus
+  Sind $I_1, \dotsc, I_n \ideal R$ Ideale mit $I_j + I_k = R$ für alle $j \neq k$, so gibt es einen wohldefinierten Isomorphismus
   \[
-                            R / \bigcap_{i=1}^n I_i
-    \xlongrightarrow{\sim}  \prod_{i=1}^n (R/I_i) \,,
+                            R / \bigcap_{j=1}^n I_j
+    \xlongrightarrow{\sim}  (R/I_1) \times \dotsb \times (R/I_n) \,,
     \quad                   \class{r}
     \mapsto                 (\class{r}, \dotsc, \class{r}) \,.
   \]
 \end{theorem}
 
-% TODO: Special Case PID
+\begin{corollary}
+  Es sei $R$ ein Hauptidealring, und es seien $a_1, \dotsc, a_n \in R$ paarweise teilerfremd.
+  Dann gibt es einen wohldefinierten Ringhomomorphismus
+  \[
+                            R/\genideal{\kgV(a_1, \dotsc, a_n)}
+    \xlongrightarrow{\sim}  R/\genideal{a_1} \times \dotsb \times R/\genideal{a_n} \,,
+    \quad                   \class{r}
+    \mapsto                 ( \class{r}, \dotsc, \class{r} ) \,.
+  \]
+\end{corollary}
+
+\begin{corollary}
+  Für jedes $n \geq 1$ mit Primfakorzerlegung $n = p_1^{n_1} \dotsm p_r^{n_r}$ gilt
+  \[
+          \Integer/n
+    \cong \Integer/p_1^{n_1} \times \dotsb \times \Integer/p_r^{n_r} \,.
+  \]
+\end{corollary}
+
+
 
 % TODO: Calculations for Z
 

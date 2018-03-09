@@ -83,9 +83,10 @@
 \DeclarePairedDelimiterX{\card}[1]{\lvert}{\rvert}{#1}
 \newcommand{\ord}[1]{\operatorname{ord}(#1)}
 \DeclarePairedDelimiterX{\groupindex}[2]{[}{]}{#1 : #2}
+\DeclarePairedDelimiterX{\fieldindex}[2]{[}{]}{#1 : #2}
 \newcommand{\kgV}{\operatorname{kgV}}
 \newcommand{\ggT}{\operatorname{ggT}}
-\newcommand{\ringchar}[1]{\operatorname{char} #1}
+\newcommand{\ringchar}[1]{\operatorname{char}(#1)}
 \newcommand{\eval}{\operatorname{ev}}
 \newcommand{\id}{\operatorname{id}}
 \renewcommand{\Re}{\operatorname{Re}}
@@ -97,6 +98,7 @@
 % decorations
 \newcommand{\alg}{\mathrm{alg}}
 \newcommand{\class}[1]{\overline{#1}}
+\newcommand{\closure}[1]{\overline{#1}}
 \newcommand{\conjugate}[1]{\overline{#1}}
 \newcommand{\induced}[1]{\overline{#1}}
 \NewDocumentCommand{\restrict}{smmO{}}{
