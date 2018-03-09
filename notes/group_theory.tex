@@ -318,12 +318,16 @@ Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent
 \end{definition}
 
 \begin{definition}
-  Eine Gruppe $G$ ist \emph{endlich erzeugt}, wenn es eine endliche Teilmenge $S \subseteq G$ mit $G = \generated{S}$ gibt, und \emph{zyklisch}, wenn es ein $g \in G$ mit $G = \generated{g}$ gibt.
+  Eine Gruppe $G$ ist \emph{endlich erzeugt}, wenn es eine endliche Teilmenge $S \subseteq G$ mit $G = \generated{S}$ gibt.
 \end{definition}
 
 
 
 \subsection{Klassifikation zyklischer Gruppen}
+
+\begin{definition}
+  Ein Gruppe $G$ \emph{zyklisch}, wenn es ein $g \in G$ mit $G = \generated{g}$ gibt.
+\end{definition}
 
 \begin{example}
   \begin{enumerate}
@@ -333,6 +337,9 @@ Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent
       Wird $G$ von $g \in G$ zyklisch erzeugt, so wird für jeden Normalteiler $N \normalgroup G$ die Quotientengruppe $G/N$ von $\class{1}$ zyklisch erzeugt.
     \item
       Insbesondere ist für alle $n \in \Integer$ ist die Quotientengruppe $\Integer/n \defined \Integer/n\Integer = \Integer/\generated{n}$ zyklisch mit Erzeuger $\class{1} \in \Integer/n$.
+    \item
+      Ist $K$ ein Körper, so ist jede endliche Untergruppe $H \subgroup K^\times$ zyklisch.
+      Inbesondere ist $K^\times$ zyklisch, wenn $K$ endlich ist.
   \end{enumerate}
 \end{example}
 

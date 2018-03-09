@@ -297,6 +297,16 @@ Es seien $L/K$ und $L'/K$ zwei Körpererweiterungen.
   Ist $P$ der Primkörper von $K$, so ist jeder Körperhomomorphismus $L_1 \to L_2$ bereits $P$-linear, also ein $P$-Homomorphismus.
 \end{example}
 
+\begin{definition}
+  Es ist $\Aut{L/K} \defined \{\text{$K$-Automorphismen $L \to L$}\}$ die \emph{Automorphismengruppe} der Erweiterung $L/K$.
+\end{definition}
+
+Wie der Name vermuten lässt, bildet $\Aut{L/K}$ zusammen mit der Komposition von Abbildungen eine Gruppe.
+
+\begin{lemma}
+  ISt $L/K$ endlich, so ist jeder $K$-Homomorphismus $L \to L$ bereits ein $K$-Automorphismus.
+\end{lemma}
+
 \begin{lemma}
   Es sei $a \in L$.
   \begin{enumerate}
@@ -334,6 +344,18 @@ Es seien $L/K$ und $L'/K$ zwei Körpererweiterungen.
   \]
   ist.
 \end{remark}
+
+\begin{proposition}
+  Es sei $a \in L$.
+  Für jede Nullstelle $a' \in L'$ des Minimalpolynoms $m_a \in K[t]$ gibt es dann einen eindeutigen $K$-Homomorphismus $\varphi \colon a' \to L'$ mit $\varphi(a) = a'$.
+  Es ergibt sich somit eine Bijektion
+  \begin{align*}
+                            \{ \text{$K$-Homomorphismen $K(a) \to L'$} \}
+    &\xlongrightarrow{\sim} \{ \text{Nullstellen von $m_a$ in $L'$} \} \,,  \\
+                            \varphi
+    &\mapsto                \varphi(a) \,.
+  \end{align*}
+\end{proposition}
 
 
 
@@ -553,10 +575,193 @@ Dies führt zu folgendem Ergebnis:
 
 \section{Separablität}
 
+Es sei $K$ ein Körper.
+
+\begin{definition}
+  Die \emph{\textup(formale\textup) Ableitung} eines Polynoms $f = \sum_{i \geq 0} a_i t^i \in K[t]$ ist das Polynom
+  \[
+              f'
+    \defined  \sum_{i \geq 1} i a_i t^{i-1}
+    =         \sum_{i \geq 0} (i+1) a_{i+1} t^i \,.
+  \]
+\end{definition}
+
+\begin{lemma}
+  Für alle $f, g \in K[t]$, $\lambda \in K$ gelten die Gleichheiten.
+  \[
+    (f + g)' = f' + g' \,,
+    \qquad
+    (\lambda f)' = \lambda f' \,,
+    \qquad
+    (fg)' = fg' + f'g \,.
+  \]
+
+\end{lemma}
+
+
+
+\subsection{Mehrfache Nullstellen}
+
+\begin{lemma}
+  Ein Element $a \in K$ ist genau dann mehrfache Nullstelle eines Polynoms $f \in K[t]$, wenn $a$ eine gemeinsame Nullstelle von $f$ und $f'$ ist.
+\end{lemma}
+
+Ist $K$ algebraisch abgeschlossen, so besitzen zwei Polynome $f, g \in K[t]$ genau dann eine gemeinsame Nullstelle, wenn sie einen gemeinsamen Linearfaktoren besitzten.
+Da die Linearfaktoren ein Repräsentantensystem der irreduziblen Elemente von $K[t]$ bilden, ist dies äquivalent dazu, dass $f$ und $g$ nicht teilerfremd sind, dass also $\ggT(f,g) \neq 1$ gilt.
+Da sich der $\ggT$ zweier Polynome mithilfe des euklidischen Algorithmus und Polynomdivison berechen lässt, hängt der $\ggT$ dabei nicht von dem Körper $K$ ab:
+
+\begin{lemma}
+  Ist $L/K$ eine Körperweiterung, so haben $f, g \in K[t]$ den gleichen größten gemeinsamen Teiler in $K[t]$ und $L[t]$, d.h.\ ein Polynom $h \in K[t]$ ist genau dann ein $\ggT$ von $f$ und $g$ in $K[t]$, wenn $h$ in $L[t]$ ein $\ggT$ von $f$ und $g$ ist.
+  Inbesondere sind $f$ und $g$ genau dann teilerfremd in $K[t]$, wenn sie es in $L[t]$ sind.
+\end{lemma}
+
+Dies führt zu der folgenden Charakterisierung gemeinsamer Nullstellen:
+
+\begin{corollary}
+  Für zwei Polynome $f, g \in K[t]$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Ist $\closure{K}$ ein algebraischer Abschluss von $K$, so haben $f$ und $g$ eine gemeinsame Nullstelle in $K$.
+    \item
+      Es gibt eine Körpererweiterung $L/K$, so dass $f$ und $g$ eine gemeinsame Nullstelle in $L$ haben.
+    \item
+      Es gibt eine algebraische Körpererweiterung $L/K$, so dass $f$ und $g$ eine gemeinsame Nullstelle in $L$ haben.
+    \item
+      Die Polynome $f$ und $g$ sind nicht teilerfremd.
+  \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+  Für ein Polynom $f \in K[t]$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Das Polynom $f$ hat in einem algebraische Abschluss $\closure{K}$ keine mehrfache Nullstelle.
+    \item
+      Das Polynom $f$ hat in einem Zerfällungkörper von $f$ keine mehrfache Nullstelle.
+    \item
+      Die Polynome $f$ und $f'$ sind teilerfremd.
+  \end{enumerate}
+\end{corollary}
+
+\begin{definition}
+  Ein Polynom $f \in K[t]$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist \emph{separabel}.
+\end{definition}
+
+\begin{example}
+  Gilt $\ringchar{K} = 0$, so ist jedes irreduzible Polynom $f \in K[t]$ separabel:
+  Es gilt $\deg(f') = \deg(f)-1$, weshalb $f$ kein Teiler von $f'$ ist, und somit $f$ und $f'$ teilerfremd sind.
+\end{example}
 
 
 
 
+
+
+\subsection{Separable Elemente und Erweiterungen}
+
+Es sei $L/K$ ein Körpererweiterung.
+
+\begin{lemma}
+  Für jedes Element $a \in L$ die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Es gibt ein separables Polynom $f \in K[t]$ mit $f(a) = 0$.
+    \item
+      Das Element $a$ ist algebraisch, und das Minimalpolynom $m_a \in K[t]$ ist separabel.
+  \end{enumerate}
+\end{lemma}
+
+\begin{definition}
+  Ein Element $a \in L$ ist \emph{separabel \textup(über $K$\textup)}, wenn es eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt;
+  ansonsten ist $a$ \emph{inseparabel}.
+  
+  Die Erweiterung $L/K$ ist \emph{separabel}, wenn jedes Element $a \in L$ separabel über $K$ ist;
+  ansonsten ist die Erweiterung \emph{inseparabel}.
+\end{definition}
+
+\begin{example}
+  Gilt $\ringchar{K} = 0$, so ist jedes algebraische Element $a \in L$ separabel.
+\end{example}
+
+\begin{definition}
+  Der \emph{Separablitätsgrad} der Erweiterung $L/K$ ist die Anzahl der $K$-Homomorphismen $L \to \closure{K}$, und wird mit $\sepindex{L}{K}$ notiert.
+\end{definition}
+
+\begin{lemma}[Multiplikativität des Separablitätsgrades]
+  Für alle Körpererweiterungen $M/L/K$ gilt $\sepindex{M}{K} = \sepindex{M}{L} \sepindex{L}{K}$.
+\end{lemma}
+
+\begin{proposition}
+  Die Erweiterung $L/K$ sei endlich.
+  \begin{enumerate}
+    \item
+      Es gilt $\sepindex{L}{K} \leq \fieldindex{L}{K}$.
+    \item
+      Es gilt genau dann Gleichheit, wenn $L/K$ separabel ist.
+  \end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+  Sind $M/L$ und $L/K$ endliche Körpererweiterungen, so ist $M/K$ genau dann separabel, wenn $M/L$ und $L/K$ separabel sind.
+\end{corollary}
+
+\begin{lemma}
+    Ist $a \in L$ separabel, so ist die Erweiterung $L/K$ separabel.
+\end{lemma}
+
+\begin{corollary}
+  Sind $a, b \in L$ separabel, so sind auch $a + b$ und $a \cdot b$ separabel;
+  gilt $a \neq 0$, so ist auch $1/a$ separabel.
+\end{corollary}
+
+\begin{corollary}
+  Es ist $L' = \{x \in L \suchthat \text{$x$ ist separabel}\}$ ein Zwischenkörper von $L/K$.
+\end{corollary}
+
+\begin{corollary}
+  Die Erweiterung $L/K$ ist genau dann separabel, wenn sie von separablen Elementen erzeugt wird.
+\end{corollary}
+
+\begin{theorem}[Satz vom primitiven Element]
+  Ist $L/K$ endlich und separabel, so gibt es ein $a \in L$ mit $L = K(a)$, d.h.\ die Erweiterung $L/K$ ist einfach.
+\end{theorem}
+
+
+
+\subsection{Perfekte Körper}
+
+\begin{definition}
+  Ein Körper $K$ ist \emph{perfekt} oder \emph{vollkommen}, wenn jede algebraische Körpererweiterung $L/K$ separabel ist.
+\end{definition}
+
+\begin{example}
+  Jeder Körper von Charakteristik $0$ ist perfekt.
+\end{example}
+
+Ob ein Körper $K$ der Charakteristik $\ringchar{K} = p > 0$ perfekt ist, hängt vom Verhalten des \emph{Frobenius-Homomorphismus} ab:
+
+\begin{lemma}
+  Ist $R$ ein Ring mit $\ringchar{R} = p > 0$, so ist die Abbildung $\sigma \colon R \to R$, $x \mapsto x^p$ ein Ringhomomorphismus.
+\end{lemma}
+
+\begin{definition}
+  Der Ringhomomorphismus $\sigma$ wie oben ist der \emph{Frobenius-Homo\-mor\-phis\-mus} von $R$.
+\end{definition}
+
+\begin{proposition}
+  Ein Körper $K$ von Charakteristik $\ringchar{K} = p > 0$ ist genau dann perfekt, wenn der Frobenius-Homomorphismus $\sigma \colon K \to K$, $x \mapsto x^p$ surjektiv ist.
+\end{proposition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Endliche Körper sind perfekt.
+    \item
+      Algebraisch abgeschlossene Körper sind perfekt.
+    \item
+      Der Körper $\Finite_p(t)$ ist nicht perfekt, denn es gibt kein $x \in \Finite_p(t)$ mit $x^p = t$.
+  \end{enumerate}
+\end{example}
 
 
 
@@ -564,31 +769,36 @@ Dies führt zu folgendem Ergebnis:
 \section{Klassifikation endlicher Körper}
 
 Es sei $p$ eine Primzahl.
-Im Folgenden seien alle Körper und Ringe von Charakteristik~$p$.
+Im Folgenden seien alle Körper von Charakteristik~$p$;
+der zugehörige Primkörper ist also stets $\Finite_p$.
 
 \begin{lemma}
   Ist $K$ ein endlicher Körper, so gilt $\card{\Finite_p} = p^n$ für $n = \fieldindex{K}{\Finite_p}$.
 \end{lemma}
 
-% \begin{lemma}
-%   Ist $R$ ein Ring, so ist die Abbildung $\sigma \colon R \to R$, $x \mapsto x^p$ ein Ringhomomorphismus.
-% \end{lemma}
-% 
-% \begin{definition}
-%   Der Ringhomomorphismus $\sigma$ wie oben ist der \emph{Frobenius-Homo\-mor\-phis\-mus} von $R$.
-% \end{definition}
-% 
-% Ist $K$ ein endlicher Körper, so ist der Frobenius-Homomorphismus $\sigma \colon K \to K$ bereits ein Körperautomorphismus.
+Es sei $K$ ein Körper mit $\card{K} = q$.
+Dann gilt $\card{\unitgroup{K}} = q-1$, und somit $x^{q-1} = 1$ für alle $x \in \unitgroup{K}$.
+Für alle $x \in K$ gilt somit $x^q = x$.
 
+\begin{lemma}
+  Ist $K$ ein endlicher Körper mit $\card{K} = p^n = q$, so gilt besteht $K$ aus den $q$ verschiedenen Nullstellen des Polynomes $t^q - t \in \Finite_p[t]$.
+  Inbesondere ist $K$ ein Zerfällungskörper des Polynoms $t^q - t$.
+\end{lemma}
 
+\begin{corollary}
+  Je zwei endliche Körper $K$, $K'$ mit $\card{K} = p^n = \card{K'}$ sind isomorph.
+\end{corollary}
 
+Es sei andererseits $n \geq 1$, $q \defined p^n$ und $K$ ein Zerfällungskörper des Polynoms $f \defined t^q - t \in \Finite_p[t]$.
+Dann ist die Menge der Nullstellen $K' \defined \{x \in K \suchthat x^q = x \}$ ein Unterkörper von $K$, und somit $K = K'$.
+Es gilt $f' = -1$, weshalb $f$ und $f'$ teilerfremd sind.
+Es ist also $f$ separabel, und somit $\card{K} = \deg(f) = q = p^n$.
 
-
-
-
-
-
-
+\begin{theorem}[Klassifikation endlicher Körper]
+  Es sei $p$ eine Primzahl.
+  Dann gibt es für alle $n \geq 0$ einen bis auf Isomorphismus eindeutigen Körper $\Finite_{p^n}$ mit $p^n$ Elementen, und jeder endliche Körper von Charakteristik $p$ ist von dieser Form.
+  Der Körper $\Finite_{p^n}$ besteht aus den Nullstellen des Polynoms $x^{p^n} - p \in \Finite_p[t]$.
+\end{theorem}
 
 
 

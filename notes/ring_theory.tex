@@ -44,6 +44,80 @@ Es seien $R, S$ zwei Ringe.
 
 
 
+
+\section{Polynomringe}
+
+Es sei $R$ ein Ring.
+
+
+
+\subsection{Polynomring in einer Variables}
+
+Der Polynomring $R[t]$ ein einer Variablen $t$ besteht aus \emph{Polynomen}, d.h.\ Ausdrücken der Form $\sum_{k=0}^\infty a_k t^k$ mit $a_k = 0$ für fast alle $k$.
+Dabei gilt genau dann die Gleichheit $\sum_{k=0}^\infty a_k t^k = \sum_{k=0}^\infty b_k t^k$, wenn $a_k = b_k$ für alle $k$ gilt.
+Die Addition und Multiplikation auf $R[t]$ sind durch
+\begin{align*}
+              \left( \sum_{k=0}^\infty a_k t^k \right)
+            + \left( \sum_{k=0}^\infty b_k t^k \right)
+  &\defined \sum_{k=0}^\infty (a_k + b_k) t^k
+\shortintertext{und}
+                  \left( \sum_{k=0}^\infty a_k t^k \right)
+            \cdot \left( \sum_{k=0}^\infty b_k t^k \right)
+  &\defined \sum_{k,\ell=0}^\infty a_k b_\ell t^{k+\ell}
+\end{align*}
+definiert.
+Es gilt also $(\sum_{k=0}^\infty a_k t^k) \cdot (\sum_{k=0}^\infty b_k t^k) = \sum_{k=0}^\infty c_k t^k$ mit
+\[
+    c_k
+  = \sum_{i + j = k} a_i b_j
+  = \sum_{\ell=0}^k a_\ell b_{k - \ell}
+\]
+für alle $k$.
+Der \emph{Grad} eines Polynom $f = \sum_{k=0}^\infty a_k t^k \in R[t]$ ist für $f \neq 0$ durch
+\[
+            \deg(f)
+  \defined  \max \{k \suchthat a_k \neq 0\}
+\]
+definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
+
+\begin{proposition}
+  \begin{enumerate}
+    \item
+      $R[t]$ ist genau dann kommutativ, wenn $R$ kommutativ ist.
+    \item
+      Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
+    \item
+      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keinen von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
+      Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
+    \item
+      $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Polynomdivision]
+  Es sei $K$ ein Körper.
+  Für alle $f, g \in K[t]$ mit $g \neq 0$ gibt es eindeutige Polynome $q, r \in K[t]$ mit
+  \[
+    f = qg + r \,,
+    \qquad
+    \text{wobei $\deg(r) < \deg(g)$} \,.
+  \]
+\end{proposition}
+
+% TODO: Universal Property.
+
+
+
+\subsection{Polynomringe in endlich vielen Variablen}
+
+% TODO: Write this.
+
+% TODO: Define R[a].
+
+
+
+
+
 \section{Ideale und Quotientenringe}
 
 Es sei $R$ ein Ring.
@@ -230,6 +304,8 @@ Es bildet $\unitgroup{R}$ bezüglich der Multiplikation von $R$ eine Gruppe, was
       Es gilt $\unitgroup{\Integer} = \{1, -1\}$.
     \item
       Für $n \geq 1$ ist ein Element $\class{k} \in \Integer/n$ ist genau dann eine Einheit, wenn $n$ und $k$ teilerfremd sind.
+    \item
+      Ist $R$ ein Integritätsbereich, so gilt $\unitgroup{R[t]} = \unitgroup{R}$.
   \end{enumerate}
 \end{example}
 
@@ -311,88 +387,6 @@ Es sei $R$ ein kommutativer Ring.
 \begin{corollary}
   Ist $R \neq 0$, so gibt es ein maximales Ideal $M \ideal R$.
 \end{corollary}
-
-
-
-
-
-\section{Polynomringe}
-
-Es sei $R$ ein Ring.
-
-
-
-\subsection{Polynomring in einer Variables}
-
-Der Polynomring $R[t]$ ein einer Variablen $t$ besteht aus \emph{Polynomen}, d.h.\ Ausdrücken der Form $\sum_{k=0}^\infty a_k t^k$ mit $a_k = 0$ für fast alle $k$.
-Dabei gilt genau dann die Gleichheit $\sum_{k=0}^\infty a_k t^k = \sum_{k=0}^\infty b_k t^k$, wenn $a_k = b_k$ für alle $k$ gilt.
-Die Addition und Multiplikation auf $R[t]$ sind durch
-\begin{align*}
-              \left( \sum_{k=0}^\infty a_k t^k \right)
-            + \left( \sum_{k=0}^\infty b_k t^k \right)
-  &\defined \sum_{k=0}^\infty (a_k + b_k) t^k
-\shortintertext{und}
-                  \left( \sum_{k=0}^\infty a_k t^k \right)
-            \cdot \left( \sum_{k=0}^\infty b_k t^k \right)
-  &\defined \sum_{k,\ell=0}^\infty a_k b_\ell t^{k+\ell}
-\end{align*}
-definiert.
-Es gilt also $(\sum_{k=0}^\infty a_k t^k) \cdot (\sum_{k=0}^\infty b_k t^k) = \sum_{k=0}^\infty c_k t^k$ mit
-\[
-    c_k
-  = \sum_{i + j = k} a_i b_j
-  = \sum_{\ell=0}^k a_\ell b_{k - \ell}
-\]
-für alle $k$.
-Der \emph{Grad} eines Polynom $f = \sum_{k=0}^\infty a_k t^k \in R[t]$ ist für $f \neq 0$ durch
-\[
-            \deg(f)
-  \defined  \max \{k \suchthat a_k \neq 0\}
-\]
-definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
-
-\begin{proposition}
-  \begin{enumerate}
-    \item
-      $R[t]$ ist genau dann kommutativ, wenn $R$ kommutativ ist.
-    \item
-      Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
-    \item
-      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keinen von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
-      Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
-    \item
-      $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
-  \end{enumerate}
-\end{proposition}
-
-\begin{proposition}[Polynomdivision]
-  Es sei $K$ ein Körper.
-  Für alle $f, g \in K[t]$ mit $g \neq 0$ gibt es eindeutige Polynome $q, r \in K[t]$ mit
-  \[
-    f = qg + r \,,
-    \qquad
-    \text{wobei $\deg(r) < \deg(g)$} \,.
-  \]
-\end{proposition}
-
-% TODO: Universal Property.
-
-
-
-\subsection{Polynomringe in endlich vielen Variablen}
-
-% TODO: Write this.
-
-% TODO: Define R[a].
-
-
-
-
-
-
-
-
- 
 
 
 
@@ -714,10 +708,10 @@ Es sei $R$ ein kommutativer Ring
 \end{definition}
 
 \begin{lemma}
-  Ist $R$ ein Integritätsbereich, so sind $\ggT$ und $\kgV$ \textup(sofern diese existieren\textup) eindeutig bis auf Assoziiertheit.
+  Ist $R$ ein Integritätsbereich, so sind größte gemeinsame Teiler und kleinste gemeinsame Vielfache \textup(sofern sie existieren\textup) eindeutig bis auf Assoziiertheit.
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma}[Berechnung von $\ggT$ und $\kgV$ in faktoriellen Ringen]
   Es sei $R$ ein faktorieller Ring und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Assoziiertheitsklassen der Primelement von $R$.
   Es seien $a_1, \dotsc, a_n \in R$ mit Primfaktorzerlegungen
   \[
@@ -734,7 +728,14 @@ Es sei $R$ ein kommutativer Ring
   \end{align*}
 \end{lemma}
 
-\begin{lemma}
+\begin{definition}
+  Es sei $R$ ein faktorieller Ring und es seien $a_1, \dotsc, a_n \in R$.
+  Die Elemente $a_1, \dotsc, a_n$ sind \emph{\textup(insgesamt\textup) teilerfremd}, wenn $\ggT(a_1, \dotsc, a_n) = 1$ gilt.
+  Mit anderen Worten:
+  Jedes Element $a \in R$ mit $a \divides a_i$ für alle $i$ ist bereits eine Einheit.
+\end{definition}
+
+\begin{lemma}[Charakterisierung von $\ggT$ und $\kgV$ in Hauptidealringen]
   Ist $R$ ein Hauptidealring, so gilt für alle $a_1, \dotsc, a_n \in R$, dass
   \begin{gather*}
       \genideal{ a_1 } + \dotsb + \genideal{ a_n }
@@ -744,9 +745,57 @@ Es sei $R$ ein kommutativer Ring
       \genideal{ a_1 } \cap \dotsb \cap \genideal{ a_n }
     = \genideal{ \kgV(a_1, \dotsc, a_n) } \,.
   \end{gather*}
+  Inbesondere gibt es Koeffizienten $c_1, \dotsc, c_n \in R$ mit
+  \[
+      \ggT(a_1, \dotsc, a_n)
+    = c_1 a_1 + \dotsb + c_n a_n \,.
+  \]
 \end{lemma}
 
-% TODO: Calculating ggT and kgV in euclidian domains
+\begin{corollary}
+  Ist $R$ ein Hauptidealring, so sind je zwei Elemente $a, b \in R$ genau dann teilerfremd, wenn $\genideal{a} + \genideal{b} = R$ gilt.
+\end{corollary}
+
+Ist $R$ ein euklidischer Ring mit Graddabbildung $\deg$, so lässt sich der größte gemeinsame Teiler von $f, g \in R$ mithilfe des \emph{euklidischen Algortihmus} berechnen:
+Es gibt $q, r \in R$ mit $a = qb + r$, wobei $r = 0$ oder $\deg(r) < \deg(b)$ gilt.
+Es gilt dann
+\[
+    \ggT(a,b)
+  = \ggT(qb+r,b)
+  = \ggT(r,b)
+  = \ggT(b,r) \,.
+\]
+Iterierart man dieses Vorgehen, so ergibt sich aus $\deg(r) < \deg(b)$, dass nach endlich vielen Schritten der Fall $r = 0$ eintritt.
+Dann lässt sich nutzen, dass
+\[
+    \ggT(a,0)
+  = b
+\]
+gilt.
+Es lassen sich dann auch Koeffizienten $c, d \in R$ mit $\ggT(a,b) = ca + db$ bestimmen.
+
+\begin{example}
+  Es gilt
+  \begin{align*}
+     &\,  \ggT(84,30)
+    =     \ggT(2 \cdot 30 + 24, 30) \\
+    =&\,  \ggT(30, 24)
+    =     \ggT(24 + 6, 24)  \\
+    =&\,  \ggT(24, 6)
+    =     \ggT(4 \cdot 6 + 0, 6)  \\
+    =&\,  \ggT(6,0)
+    =     6 \,.
+  \end{align*}
+  Wir erhalten außerdem, dass
+  \[
+      6
+    = 30 - 24
+    = 30 - (84 - 2 \cdot 30)
+    = 3 \cdot 30 - 84 \,.
+  \]
+\end{example}
+
+
 
 
 
