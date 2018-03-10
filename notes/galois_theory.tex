@@ -1,0 +1,72 @@
+\chapter{Galois-Theorie}
+
+
+
+
+
+\section{Galois-Erweiterungen}
+
+Es sei $L/K$ eine endliche Körpererweiterung.
+
+\begin{definition}
+  Der \emph{Fixkörper} einer Untergruppe $H \subgroup \Aut{L/K}$ ist
+  \[
+              L^H
+    \defined  \{
+                x \in L
+              \suchthat
+                \text{$\sigma(x) = x$ für alle $\sigma \in H$}
+              \} \,.
+  \]
+
+\end{definition}
+
+\begin{lemma}
+  \begin{enumerate}
+    \item
+      Es gilt $\card{\Aut{L/K}} \leq \sepindex{L}{K}$.
+    \item
+      Ist $L/K$ normal, so gilt bereits Gleichheit.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proposition}
+  Für $L/K$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Es gilt $\card{\Aut{L/K}} = \fieldindex{L}{K}$.
+    \item
+      Die Erweiterung $L/K$ ist normal und separabel.
+    \item
+      Für jedes $a \in L$ gilt $m_a \defined \prod_{\sigma \in \Aut{L/K}} (t - \sigma(a)) \in K[t]$.
+    \item
+      Es gilt $K = L^{\Aut{L/K}}$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+  Erfüllt die Erweiterung $L/K$ eine \textup(und damit alle\textup) der obigen Bedingungen, so ist $L/K$ \emph{galoissch}.
+  Es ist dann $\Gal{L/K} \defined \Aut{L/K}$ die \emph{Galois-Gruppe} der Erweiterung $L/K$.
+\end{definition}
+
+\begin{theorem}[Hauptsatz der Galoistheorie]
+  Die Erweiterung $L/K$ sei galoissch.
+  \begin{enumerate}
+    \item
+      Es gibt es eine inklusionsumkehrende Bijektion
+      \begin{align*}
+                                \{ \text{Zwischenkörper $K \subseteq M \subseteq L$} \}
+        &\xlongrightarrow{\sim} \{ \text{Untergruppen $H \subgroup \Gal{L/K}$} \} \,, \\
+                                M
+        &\longmapsto            \Aut{L/M} \,, \\
+                                L^H
+        &\longmapsfrom          H \,.
+      \end{align*}
+    \item
+      Dabei gelten $\fieldindex{L}{M} = \card{\Aut{L/M}}$ und $\fieldindex{M}{K} = \groupindex{Aut{L/M}}{\Gal{L/K}}$.
+    \item
+      Die Erweiterung $M/K$ ist genau dann normal, wenn die zugehörige Untergruppe $\Aut{L/M} \subgroup \Gal{L/K}$ normal ist.
+      Dann ist auch $M/K$ galoissch, und es gilt $\Gal{M/K} \cong \Gal{L/K} / {\Aut{L/M}}$.
+  \end{enumerate}
+\end{theorem}

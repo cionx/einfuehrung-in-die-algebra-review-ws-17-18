@@ -104,6 +104,13 @@ definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
   \]
 \end{proposition}
 
+Ist $S$ ein Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^\infty a_i t^i \in R[t]$ einsetzen:
+\[
+            f(s)
+  \defined  \sum_{i=0}^\infty a_i s_i \,.
+\]
+Die Abbildung $R[t] \to S$, $f \mapsto f(s)$ ist dabei ein Ringhomomorphismus.
+
 % TODO: Universal Property.
 
 
@@ -584,10 +591,29 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
   So sind etwa $\Integer[t]$ und $K[t,u] \cong K[t][u]$ für einen Körper $K$ keine Hauptidealringe, denn $\genideal{t, 2} \ideal \Integer[t]$ und $\genideal{t, u} \in K[t][u]$ sind keine Hauptideale.
 \end{remark}
 
+\begin{example}
+  Es ist $\Integer[\sqrt{-1}] \defined \Integer[i] = \{a + bi \suchthat a, b \in \Integer\}$ ein Unterring von $\Complex$, der Ring der \emph{Gaußschen Zahlen}.
+  Für jedes $z \in \Integer[i]$ ist $N(z) \defined \abs{z}^2 \in \Natural$ die \emph{Norm} von $z$.
+  Dann ist $\Integer[i]$ zusammen mit der Norm $N$ ein euklidischer Ring:
+  
+  Für jedes $z \in \Complex$ gibt es ein Element $w \in \Integer[i]$ mit $\abs{z-w} \leq \sqrt{2}/2 = 1/\sqrt{2}$.
+  Sind nun $f, g \in \Integer[i]$ mit $g \neq 0$, so lässt sich in $\Complex$ der Quotient $f/g$ bilden.
+  Dann gibt es ein $q \in \Integer[i]$ mit $\abs{f/g - q} < 1/\sqrt{2}$.
+  Für den Rest $r \defined f - qg$ gilt dann $f = qg + r$, sowie
+  \[
+          N(r)
+    =     \abs{r}^2
+    =     \abs{f - qg}^2
+    =     \abs{f/g - q}^2 \abs{g}^2
+    \leq  \frac{1}{2} \abs{g}^2
+    <     \abs{g}^2
+    =     N(g) \,.
+  \]
+\end{example}
 
-% TODO: Example Z[i]
-
-
+\begin{remark}
+  Es lässt sich analog zeigen, dass $\Integer[\sqrt{-2}] \defined \Integer[i\sqrt{2}]$ euklidisch ist.
+\end{remark}
 
 
 
@@ -665,6 +691,45 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
 \begin{proposition}
   Hauptidealringe sind faktoriell.
 \end{proposition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Der Ring der ganzen Zahlen $\Integer$ ist faktoriell.
+    \item
+      Ist $K$ ein Körper, so ist der Polynomring $K[t]$ faktoriell.
+    \item
+      Der Ring der gaußschen Zahlen $\Integer[i]$ ist faktoriell.
+  \end{enumerate}
+\end{example}
+
+\begin{example}
+  Es ist $\Integer[\sqrt{-5}] \defined \Integer[i\sqrt{5}] = \{a + bi\sqrt{5}\}$ ein Unterring von $\Complex$, der \emph{nicht} faktoriell ist:
+  Es sei $R \defined \Integer[\sqrt{-5}]$ und für jedes $z \in R$ sei $N(z) \defined \abs{z}^2$ die \emph{Norm} von $z$.
+  Dann gilt
+  \begin{itemize}
+    \item
+      $N(z) \in \Natural$ für alle $z \in R$, und
+    \item
+      $N(zw) = N(z) N(w)$ für alle $z, w \in R$.
+  \end{itemize}
+  
+  Mithilfe der Norm $N$ lassen sich die Einheiten von $R$ bestimmen:
+  Aus $zw = 1$ in $R$ folgt $N(z)N(w) = 1$, also $N(z) = N(w) = 1$ und somit $z, w = \pm 1$.
+  Somit gilt $\unitgroup{R} = \{1, -1\} = \{z \in R \suchthat N(z) = 1\}$.
+  
+  Hieraus ergibt sich, dass die Elemente $2, 3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ irreduzibel in $R$ sind.
+  Gilt etwa $2 = zw$ für $z,w \in R$, so gilt $4 = N(2) = N(z)N(w)$.
+  Es gilt somit $N(z) = 1$, $N(w) = 4$, oder $N(z) = 2$, $N(w) = 2$, oder $N(z) = 4$, $N(w) = 1$.
+  Da es aber kein $z' \in R$ mit $N(z') = 2$ gibt, muss $N(z) = 1$ oder $N(w) = 1$ gelten.
+  Somit ist $z$ oder $w$ eine Einheit.
+  Die Irreduziblität von $3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ ergibt sich analog.
+  
+  Nun gilt aber $6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})$.
+  Dabei sind die irreduziblen Elemente $2, 3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ paarweise nicht assoziiert zueinander (denn $z \in R$ ist nur zu $\pm z$ assoziiert).
+  Somit besitzt $6 \in R$ zwei nicht-äquivalente Zerlegungen in irreduzible Elemente.
+\end{example}
+
 
 
 
