@@ -7,18 +7,18 @@ Es seien $G, H$ zwei Gruppen.
 \end{definition}
 
 \begin{definition}
-  Eine Teilmenge $H \subseteq G$ einer Gruppe ist eine \emph{Untergruppe}, wenn $1 \in H$ gilt, und für alle $h, h_1, h_2 \in H$ auch $h^{-1} \in H$ und $h_1 h_2 \in H$ gelten.
-  Dies wird mit $H \subgroup G$ notiert.
+  Eine Teilmenge $H \subseteq G$ ist eine \emph{Untergruppe} von $G$, wenn $1 \in H$ gilt, und für alle $h, h_1, h_2 \in H$ auch $h^{-1} \in H$ und $h_1 h_2 \in H$ gelten.
+  Dies wird dann mit $H \subgroup G$ notiert.
 \end{definition}
 
-Ist $H \subgroup G$ eine Untergruppe, so lässt sich die Multiplikation von $G$ auf $H$ einschränken, wodurch $H$ ebenfalls wieder eine Gruppe ist.
+Ist $H \subgroup G$ eine Untergruppe, so lässt sich die Verknüpfung von $G$ auf $H$ einschränken, wodurch $H$ ebenfalls wieder eine Gruppe ist.
 
 \begin{example}
-  Es ist $\groupcenter{G} = \{g \in G \suchthat \forall h \in G: gh = hg\} \subgroup G$ das Zentrum von $G$.
+  Es ist $\groupcenter{G} = \{g \in G \suchthat \forall h \in G: gh = hg\} \subgroup G$ das \emph{Zentrum} von $G$.
 \end{example}
 
 \begin{definition}
-  Ein Gruppenelement $g \in G$ ist \emph{zentral} in $G$.
+  Ein Gruppenelement $g \in \groupcenter{G}$ ist \emph{zentral} in $G$.
 \end{definition}
 
 \begin{definition}
@@ -82,7 +82,7 @@ sowie analog
   \iff  b a^{-1} \in H
   \iff  a b^{-1} \in H \,.
 \]
-Dabei ist $a^{-1} b$ das eindeutige Gruppenelement mit $a \cdot a^{-1} b = b$.
+Dabei ist $x = a^{-1} b$ das eindeutige Gruppenelement mit $a \cdot x = b$.
 Es folgt somit, dass
 \begin{align*}
       [a]_{\sim_L}
@@ -94,7 +94,6 @@ Es folgt somit, dass
 \end{align*}
 sowie analog, dass $[a]_{\sim_R} = Ha$.
 Die Äquivalenzklassen von $\sim_L$ und $\sim_R$ sind also genau die Linksnebenklassen Rechtsnebenklassen bezüglich $H$, also verschobene Versionen von $H$ selbst.
-
 Dabei ist für jedes $a \in H$ die Abbildung
 \[
           H
@@ -104,7 +103,7 @@ Dabei ist für jedes $a \in H$ die Abbildung
 \]
 bijektiv, weshalb $\card{aH} = \card{H}$ gilt, sowie analog auch $\card{Ha} = \card{H}$.
 
-Es ist nun $G$ die disjunkte Vereinigug Äquivalenzklassen von $\sim_L$, d.h.\ $G$ zerfällt in disjunkte verschobene Versionen von $H$.
+Es ist nun $G$ die disjunkte Vereinigung der Äquivalenzklassen von $\sim_L$, d.h.\ $G$ zerfällt in disjunkte verschobene Versionen von $H$.
 Ist $G$ endlich, so folgt somit, dass $\card{G}$ ein Vielfaches von $\card{H}$ ist.
 
 \begin{definition}
@@ -177,7 +176,7 @@ Für eine Untergruppe $N \subgroup G$ sind die folgenden Bedingungen äquivalent
     \item
       Jede Untergruppe $N \subgroup G$ vom Index $\groupindex{G}{N} = 2$ ist normal.
     \item
-      Für jeden Gruppenhomomorphismus $\phi \colon G \to H$ ist $\ker(\phi)$ ein Normalteiler.
+      Für jeden Gruppenhomomorphismus $f \colon G \to H$ ist $\ker(f)$ ein Normalteiler in $G$.
       \begin{enumerate}
         \item
           Für alle $n \geq 0$ ist $A_n \defined \{\sigma \in S_n \suchthat \sign(\sigma) = 1\} \normalgroup S_n$.
@@ -213,19 +212,26 @@ eine Gruppenstruktur definieren.
   Für $N \normalgroup G$ ist $G/N$ die \emph{Quotientengruppe} von $G$ nach $N$.
 \end{definition}
 
+Die Gruppenstruktur auf $G/N$ ist eindeutig dadurch bestimmt, dass die \emph{kanonische Projektion}
+\[
+            p
+  \colon    G
+  \to       G/N
+  \quad     g
+  \mapsto   \class{g}
+  \defined  gN
+\]
+ein Gruppenhomomorphismus ist.
+Dabei gilt $\ker(p) = N$.
+
+\begin{corollary}
+  Eine Untergruppe $N \subgroup G$ ist genau dann normal, wenn es einen Gruppenhomomorphismus $f \colon G \to H$ mit $\ker(f) = N$ gibt.
+\end{corollary}
+
 \begin{remark}
   Es handelt sich bei dem obigen Vorgehen um eine von mehrenen möglichen Vorgehensweisen, Quotientengruppen zu konstruieren.
   Inbesondere lassen sich Quotientengruppen auch ohne Verwendung von Nebenklassen konstruieren.
-  Entscheident ist für Quotientengruppen nur, dass die \emph{kanonische Projektion}
-  \[
-              p
-    \colon    G
-    \to       G/N
-    \quad     g
-    \mapsto   \class{g}
-    \defined  gN
-  \]
-  ein Gruppenhomomorphismus mit $\ker p = N$ ist, welcher die folgende universelle Eigenschaft besitzt:
+  Entscheident ist für die Quotientengruppe $G/N$ nur, dass die kanonische Projektion $p \colon G \to G/N$ ein Gruppenhomomorphismus mit $\ker(p) = N$ ist, welcher die folgende universelle Eigenschaft besitzt:
 \end{remark}
 
 
@@ -262,9 +268,9 @@ eine Gruppenstruktur definieren.
   Jeder Gruppenhomomorphismus $f \colon G \to H$ induziert einen Isomorphismus
   \[
                             G/{\ker(f)}
-    \xlongrightarrow{\sim}  \im(f)
+    \xlongrightarrow{\sim}  \im(f) \,,
     \quad                   \class{g}
-    \mapsto                 f(g)
+    \mapsto                 f(g) \,.
   \]
 \end{corollary}
 
@@ -335,7 +341,7 @@ eine Gruppenstruktur definieren.
       Für jeden Normalteiler $K \normalgroup G$ mit $N \subgroup K$ gilt dabei für den zugehörigen Normalteiler $K' = p(K) = K/N$ nach dem 2.\ Isomorphiesatz, dass
       \[
               G/K
-        \cong (G/N)/(N/K)
+        \cong (G/N)/(K/N)
         \cong (G/N)/K' \,.
       \]
       Auf beiden Seiten der obigen 1:1-Korrespondenz erhält man somit \textup(bis auf Isomorphie\textup) die gleichen Quotientengruppen.
@@ -404,18 +410,18 @@ Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent
     \item
       Wird $G$ von $g \in G$ zyklisch erzeugt, so wird für jeden Normalteiler $N \normalgroup G$ die Quotientengruppe $G/N$ von $\class{1}$ zyklisch erzeugt.
     \item
-      Insbesondere ist für alle $n \in \Integer$ ist die Quotientengruppe $\Integer/n \defined \Integer/n\Integer = \Integer/\generated{n}$ zyklisch mit Erzeuger $\class{1} \in \Integer/n$.
+      Insbesondere ist für alle $n \in \Integer$ die Quotientengruppe $\Integer/n \defined \Integer/n\Integer = \Integer/\generated{n}$ zyklisch mit Erzeuger $\class{1} \in \Integer/n$.
     \item
       Ist $K$ ein Körper, so ist jede endliche Untergruppe $H \subgroup K^\times$ zyklisch.
       Inbesondere ist $K^\times$ zyklisch, wenn $K$ endlich ist.
   \end{enumerate}
 \end{example}
 
-Es gilt auch die Umkehrung der obigen Beispiele, d.h.\ jede zyklische Gruppe ist zu genau einer der Gruppen $\Integer/n$ mit $n \geq 0$ isomorph.
+Es gilt auch die Umkehrung der obigen Beispiele, d.h.\ jede zyklische Gruppe ist zu genau einer der Gruppen $\Integer/n$ mit $n \geq 0$ isomorph:
 
 \begin{lemma}
 \label{lemma: subgroups of Z}
-  Jede Untergruppe $H \subgroup G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \in \Natural$.
+  Jede Untergruppe $H \subgroup G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \geq 0$.
   Für $H = \{0\}$ gilt $n = 0$, und sonst gilt $n = \min \{k > 0 \suchthat k \in H\}$.
 \end{lemma}
 
@@ -437,7 +443,7 @@ ein surjektiver Gruppenhomomorphismus, und induziert somit einen Isomorphismus
 \]
 Es gibt es eindeutiges $n \geq 0$ mit $\ker(f) = n\Integer$.
 Gilt $n = 0$, so ist gilt $\Integer \cong G$, und $G$ ist unendlich.
-Ansonsent gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
+Ansonsten gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
 
 \begin{corollary}[Klassifikation zyklischer Gruppen]
   Jede zyklische Gruppe $G$ ist zu genau einer der Gruppen $\Integer$, $\Integer/n$ mit $n \geq 1$ isomorph.
@@ -467,14 +473,14 @@ Ansonsent gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
   \begin{enumerate}
     \item
       Ist $G$ eine endliche Gruppe, so gilt $\ord{g} \divides \ord{G}$.
-      Also gilt $g^{\ord{G}} = 1$.
+      Insbesondere gilt $g^{\ord{G}} = 1$.
     \item
-      Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n > 0 \suchthat g^n = 1 \}$.
+      Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n \geq 1 \suchthat g^n = 1 \}$.
   \end{enumerate}
 \end{lemma}
 
 \begin{example}[Gruppen von Ordnung $p$]
-  Es sei $p$ prim und $G$ eine Gruppe von Ordnung $p$.
+  Es sei $p$ prim und $G$ eine Gruppe von Ordnung $\ord{G} = p$.
   Dann gibt es ein nicht-triviales Element $g \in G$.
   Dann ist $\ord{g} \neq 1$ ein Teiler von $\ord{G} = p$, und somit $\ord{g} = \ord{G}$, also $\generated{g} = G$.
   Somit ist $G$ zyklisch, also $G \cong \Integer/p$.
@@ -499,10 +505,17 @@ Ansonsent gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
   Eine \emph{$G$-Menge} ist eine Menge $X$ zusammen mit einer Wirkung von $G$ auf $X$.
 \end{definition}
 
+\noindent
+\begin{minipage}[t]{\textwidth}
 Es sei $G$ eine Gruppe und $X$ eine Menge.
-Wirkt $G$ auf $X$, so ist für jedes $g \in G$ die Abbildung $\lambda_g \colon X \to X$, $x \mapsto g.x$ eine Bijektion, und die Abbildung $G \to \symmetric{X}$, $g \mapsto \lambda_g$ ist ein Gruppenhomomorphismus.
-Ist andererseits $\varphi \colon G \to \symmetric{X}$ ein Gruppenhomomorphismus, so definiert $g.x \defined \varphi(g)(x)$ eine Wirkung von $G$ auf $X$.
+\begin{itemize}
+  \item
+    Wirkt $G$ auf $X$, so ist für jedes $g \in G$ die Abbildung $\lambda_g \colon X \to X$, $x \mapsto g.x$ eine Bijektion, und die Abbildung $G \to \symmetric{X}$, $g \mapsto \lambda_g$ ist ein Gruppenhomomorphismus.
+  \item
+    Ist andererseits $\varphi \colon G \to \symmetric{X}$ ein Gruppenhomomorphismus, so wird durch $g.x \defined \varphi(g)(x)$ eine Wirkung von $G$ auf $X$ definiert.
+\end{itemize}
 Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$ auf $X$ einem Gruppenhomomorphismus $G \to \symmetric{X}$ entspricht.
+\end{minipage}
 
 \begin{definition}
   Es sei $X$ eine $G$-Menge und $x \in X$.
@@ -510,7 +523,7 @@ Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$
     \item
       Die \emph{$G$-Bahn} von $x$ ist $G.x \defined \{g.x \suchthat g \in G\}$.
     \item
-      Es ist $X/G = \{G.x \suchthat x \in X\}$ die Menge der $G$-Bahnen.
+      Es ist $X/G \defined \{G.x \suchthat x \in X\}$ die Menge der $G$-Bahnen.
     \item
       Der \emph{Stabilisator} von $x$ ist $G_x \defined \{g \in G \suchthat g.x = x\}$.
     \item
@@ -532,7 +545,8 @@ Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$
   Die Gruppe $\GL{n}{K}$ wirkt auf dem Vektorraum $K^n$ durch $A.x \defined Ax$ für alle $A \in \GL{n}{K}$, $x \in K^n$.
   Für alle $x, y \in K^n$ mit $x, y \neq 0$ gibt es ein $A \in \GL{n}{K}$ mit $Ax = y$, weshalb diese Gruppenwirkung zwei Bahnen besitzt:
   $\{0\}$ und $K^n \smallsetminus \{0\}$.
-  Insbesondere ist $0$ der einzige Fixpunkt dieser Wirkung.
+  Insbesondere ist im Allgemeinen $0$ der einzige Fixpunkt dieser Wirkung;
+  einzige Ausnahme ist der Fall $K = \Finite_2$, $n = 1$, dann sind beide Elemente Fixpunkte.
   Der Stabilisator des Standardbasisvektors $e_1$ ist die Untergruppe
   \[
               H
@@ -584,7 +598,7 @@ Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$
       Dies ist der \emph{Satz von Cayley}:
       Jede Gruppe ist isomorph zu einer Gruppe von Permutationen.
     \item
-      Due Gruppe $G$ wirkt auf sich selbst durch Konjugation, d.h.\ für alle $g \in G$, $x \in X$ ist $g.x \defined gxg^{-1}$.
+      Die Gruppe $G$ wirkt auf sich selbst durch Konjugation, d.h.\ für alle $g \in G$, $x \in X$ ist $g.x \defined gxg^{-1}$.
       Die Bahnen dieser Wirkung sind die \emph{Konjugationsklassen} von $G$.
       Für alle $g \in G$ $x \in X$ gilt
       \[
@@ -630,8 +644,8 @@ Für jedes $x \in X$ ist dabei die Abbildung $G \to G.x$, $g \mapsto g.x$ surjek
   \iff  g G_x = h G_x \,.
 \]
 
-\begin{lemma}
-  \label{lemma: classification of transitive G-sets}
+\begin{corollary}
+  \label{corollary: classification of transitive G-sets}
   Für jedes $x \in G$ ist die Abbildung
   \[
             G/G_x
@@ -641,34 +655,34 @@ Für jedes $x \in X$ ist dabei die Abbildung $G \to G.x$, $g \mapsto g.x$ surjek
   \]
   eine wolhdefinierte Bijektion.
   Insbesondere gilt $\card{G.x} = \card{G/G_x} = \groupindex{G}{G_x}$.
-\end{lemma}
+\end{corollary}
 
 \begin{remark}
-  Man bemerke, dass somit $\card{G.x}$ stets ein Teiler von $\card{G}$ ist.
+  Man bemerke, dass somit $\card{G.x}$ stets ein Teiler von $\card{G}$ ist!
 \end{remark}
 
-\begin{example}
-  Ist $H \subgroup G$ eine Untergruppe, so wirkt $G$ auf der Menge der Linksnebenklassen $G/H$ durch $g.(g'H) \defined (gg')H$ für alle $g \in G$, $g'H \in G/H$.
-  Diese Wirkung ist transitiv, und der Stabilisator der Nebenklasse $H = 1H \in G/H$ ist
-  \[
-      G_H
-    = \{ g \in G \suchthat g.H = H \}
-    = \{ g \in G \suchthat gH = H \}
-    = H \,.
-  \]
-  Die induzierte Bijektion
-  \[
-            G/H
-    \to     G.H
-    =       G/H \,,
-    \quad   gH
-    \mapsto g.H
-    =       gH
-  \]
-  ist die Identität.
-\end{example}
+% \begin{example}
+%   Ist $H \subgroup G$ eine Untergruppe, so wirkt $G$ auf der Menge der Linksnebenklassen $G/H$ durch $g.(g'H) \defined (gg')H$ für alle $g \in G$, $g'H \in G/H$.
+%   Diese Wirkung ist transitiv, und der Stabilisator der Nebenklasse $H = 1H \in G/H$ ist
+%   \[
+%       G_H
+%     = \{ g \in G \suchthat g.H = H \}
+%     = \{ g \in G \suchthat gH = H \}
+%     = H \,.
+%   \]
+%   Die induzierte Bijektion
+%   \[
+%             G/H
+%     \to     G.H
+%     =       G/H \,,
+%     \quad   gH
+%     \mapsto g.H
+%     =       gH
+%   \]
+%   ist die Identität.
+% \end{example}
 
-Durch Lemma~\ref{lemma: classification of transitive G-sets} lässt sich Gleichung~\eqref{equation: orbit formula alpha} zu
+Durch Lemma~\ref{corollary: classification of transitive G-sets} lässt sich Gleichung~\eqref{equation: orbit formula alpha} zu
 \[
     \card{X}
   = \sum_{i \in I} \groupindex{G}{G_{x_i}}
