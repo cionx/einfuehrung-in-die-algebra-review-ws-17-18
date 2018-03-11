@@ -36,6 +36,22 @@ Es seien $R, S$ zwei Ringe.
   für alle $s_1, s_2 \in S$ gilt.
 \end{definition}
 
+Ist $X \subseteq R$ eine Teilmenge, so sind für jeden Unterring $S \subseteq R$ die folgenden Bedingungen äquivalent:
+
+\begin{enumerate}
+  \item
+    Es ist $S$ der kleinste Unterring, der $X$ enthälts, d.h.\ es gilt $X \subseteq S$, und für jeden Unterring $S' \subseteq R$ mit $X \subseteq S'$ gilt $S \subseteq S'$.
+  \item
+    Es gilt $S = \bigcap_{\text{Unterring $S' \subseteq S$, $X \subseteq S'$}} S'$.
+  \item
+    Es gilt $S = \{ \sum_{i=1}^n x_{i,1} \dotsm x_{i,m_i} \suchthat n, m_i \in \Natural, x_{i,j} \in X \}$.
+\end{enumerate}
+
+\begin{definition}
+  Der Unterring $S \subseteq R$ der eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist der \emph{von $X$ erzeugte} Unterring von $R$.
+\end{definition}
+
+
 \begin{definition}
   Für $x, y \in R$ ist $x$ ein \emph{Teiler} von $y$, bzw.\ $y$ wird von $x$ \emph{geteilt}, wenn es ein $z \in R$ mit $y = xz$ gibt.
   Dies wird mit $x \divides y$ notiert.
@@ -104,24 +120,88 @@ definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
   \]
 \end{proposition}
 
-Ist $S$ ein Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^\infty a_i t^i \in R[t]$ einsetzen:
+Es sei nun $R$ kommutativ.
+Ist $S$ ein kommutativer Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^\infty a_i t^i \in R[t]$ einsetzen:
 \[
             f(s)
   \defined  \sum_{i=0}^\infty a_i s_i \,.
 \]
 Die Abbildung $R[t] \to S$, $f \mapsto f(s)$ ist dabei ein Ringhomomorphismus.
+Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich für jedes $s \in S$ ein Ringhomomorphismus $R[t] \to S$, $\sum_i a_i t^i \mapsto \sum_i \varphi(a_i) s^i$.
 
-% TODO: Universal Property.
+\begin{theorem}[Universelle Eigenschaft des Polynomrings]
+  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und jedes Element $s \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t) = s$;
+  es gilt $\hat{\varphi}(\sum_i a_i t^i) = \sum_i \varphi(a_i) s^i$.
+  Es ergibt sich also eine Bijektion
+  \begin{align*}
+                                \{\text{Ringhomo.\ $\hat{\varphi} \colon R[t] \to S$}\}
+    &\xlongrightarrow{\sim} \{
+                              (\varphi, s)
+                            \suchthat
+                                \text{Ringhomo.\ $\varphi \colon R \to S$, $s \in S$}
+                            \}  \\
+                            \hat{\varphi}
+    &\longmapsto            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t) ) \,.
+  \end{align*}
+\end{theorem}
 
 
 
 \subsection{Polynomringe in endlich vielen Variablen}
 
-% TODO: Write this.
+Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlich vielen Variablen induktiv als $R[t_1, \dotsc, t_n] \defined R[t_1, \dotsc, t_{n-1}][t_n]$ definieren.
 
-% TODO: Define R[a].
+Jedes Polynom $f \in R[t_1, \dotsc, t_n]$ ist also von der Form $\sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n}$ mit eindeutigen Koeffizienten $a_\alpha \in R$, wobei $a_\alpha = 0$ für fast alle $\alpha \in \Natural^n$ gilt.
+Addition und Multiplikation sind durch
+\begin{align*}
+        \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+      + \left( \sum_{\alpha \in \Natural^n} b_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+  &=  \sum_{\alpha \in \Natural^n} (a_\alpha + b_\alpha)  t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \,,
+  \\
+            \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+      \cdot \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+  &=  \sum_{\alpha, \beta \in \Natural^n} a_\alpha b_\beta  t_1^{\alpha_1 + \beta_1} \dotsm t_n^{\alpha_n + \beta_n} \,.
+\end{align*}
+Es gilt also $( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} ) \cdot ( \sum_{\alpha \in \Natural^n} b_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} ) = \sum_{\alpha \in \Natural^n} c_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n}$ mit
+\[
+    c_\alpha
+  = \sum_{\substack{\beta, \gamma \in \Natural^n \\ \beta + \gamma = \alpha}} a_\beta b_\gamma \,.
+\]
 
+\begin{theorem}[Universelle Eigenschaft des Polynomrings]
+  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und alle Elemente $s_1, \dotsc, s_n \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t_i) = s_i$ für alle $i$;
+  es gilt
+  \[
+      \hat{\varphi}\left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+    = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm ts_n^{\alpha_n} \,.
+  \]
+  Es ergibt sich also eine Bijektion
+  \begin{align*}
+                          &\, \{\text{Ringhomomorphismen \ $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$}\}  \\
+    \xlongrightarrow{\sim}&\, \{
+                                (\varphi, s_1, \dotsc, s_n)
+                              \suchthat
+                                  \text{Ringhomomorphismen $\varphi \colon R \to S$, $s_i \in S$}
+                              \}  \\
+                              \hat{\varphi}
+    \longmapsto&\,            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t_1), \dotsc, \hat{\varphi}(t_n) ) \,.
+  \end{align*}
+\end{theorem}
 
+\begin{remark}
+  Es lassen sich auch allgemeiner Polynomringe $R[t_i \suchthat i \in I]$ für eine beliebige Menge $I$ konstruieren.
+\end{remark}
+
+\begin{lemma}
+  \label{lemma: constructed of generated subring}
+  Es seien $R, S$ kommutative Ringe, so dass $R \subseteq S$ ein Unterring ist.
+  Für $s_1, \dotsc, s_n \in S$ sei $\eval_{s_1, \dotsc, s_n} \colon R[t_1, \dotsc, t_n] \to S$ der eindeutige Ringhomomorphismu mit $\restrict{\eval_{s_1, \dotsc, s_n}}{R} = \id_R$ und $\eval_{s_1, \dotsc, s_n}(t_i) = s_i$ für alle $i$.
+  Dann ist $\im(\eval_{s_1, \dotsc, s_n})$ der von $R$ und $s_1, \dotsc, s_n$ erzeugte Unterring von $S$.
+\end{lemma}
+
+\begin{definition}
+  In der Situation von Lemma~\ref{lemma: constructed of generated subring} ist $\eval_{s_1, \dotsc, s_n}$ der \emph{Einsetzhomomorphismus} und $R[s_1, \dotsc, s_n] \defined \im(\eval_{s_1, \dotsc, s_n})$.
+\end{definition}
 
 
 
@@ -159,7 +239,7 @@ Dann ist auf der Quotientengruppe $R/I$ durch
 eine Ringstruktur definiert.
 Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion $p \colon R \to R/I$, $r \mapsto \class{r}$ zu einem Ringhomomorphismus macht, und es gilt $\ker p = I$.
 
-\begin{theorem}[Homomorphiesatz]
+\begin{theorem}[Homomorphiesatz für Ringe]
   Ist $f \colon R \to S$ ein Ringhomomorphismus mit $I \subseteq \ker f$, so induziert $f$ einen eindeutigen Ringhomomorphismus $\induced{f} \colon R/I \to S$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
   \[
     \begin{tikzcd}
@@ -541,13 +621,10 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
       Es gilt $\Quot{\Integer} = \Rational$.
     \item
       Ist $K$ ein Körper, so ist der kanonische Ringhomomorphismus $i \colon K \to \Quot{K}$ ein Isomorphismus.
-%   TODO: Function fields.
+    \item
+      Ist $K$ ein Körper, so ist $\Quot{K[t_1, \dotsc, t_n]} \eqqcolon K(t_1, \dotsc, t_n)$ der \emph{Funktionenkörper} oder \emph{Körper der rationalen Funktionen} in den Variablen $t_1, \dotsc, t_n$.
   \end{enumerate}
 \end{example}
-
-
-
-
 
 
 

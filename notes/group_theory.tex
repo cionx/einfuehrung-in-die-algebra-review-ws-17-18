@@ -1,5 +1,45 @@
 \chapter{Gruppentheorie}
 
+Es seien $G, H$ zwei Gruppen.
+
+\begin{definition}
+  Eine Abbildung $f \colon G \to H$ ist ein \emph{Gruppenhomomorphismus}, wenn $f(g_1 g_2) = f(g_1) f(g_2)$ für alle $g_1, g_2 \in G$ gilt.
+\end{definition}
+
+\begin{definition}
+  Eine Teilmenge $H \subseteq G$ einer Gruppe ist eine \emph{Untergruppe}, wenn $1 \in H$ gilt, und für alle $h, h_1, h_2 \in H$ auch $h^{-1} \in H$ und $h_1 h_2 \in H$ gelten.
+  Dies wird mit $H \subgroup G$ notiert.
+\end{definition}
+
+Ist $H \subgroup G$ eine Untergruppe, so lässt sich die Multiplikation von $G$ auf $H$ einschränken, wodurch $H$ ebenfalls wieder eine Gruppe ist.
+
+\begin{example}
+  Es ist $\groupcenter{G} = \{g \in G \suchthat \forall h \in G: gh = hg\} \subgroup G$ das Zentrum von $G$.
+\end{example}
+
+\begin{definition}
+  Der \emph{Kern} eines Gruppenhomomorphismus $f \colon G \to H$ ist
+  \[
+              \ker(f)
+    \defined  \{
+                g \in G
+              \suchthat
+                f(g) = 1
+              \}
+    \subgroup G \,.
+  \]
+\end{definition}
+
+\begin{definition}
+  Zwei Gruppenelemente $g_1, g_2 \in G$ sind \emph{konjugiert \textup(zueinander\textup)}, wenn es ein $h \in G$ mit $h g_1 h^{-1} = g_2$ gibt.
+  Zwei Untergruppen $H_1, H_2 \subgroup G$ sind \emph{konjugiert \textup(zueinander\textup)}, wenn es ein $g \in G$ mit $g H_1 g^{-1} = H_2$ gibt.
+\end{definition}
+
+
+
+
+
+
 
 
 \section{Nebenklassen und Satz von Lagrange}
@@ -78,7 +118,6 @@ Ist $G$ endlich, so folgt somit, dass $\card{G}$ ein Vielfaches von $\card{H}$ i
   Es ist $G/H \defined G/{\sim_L} = \{aH \suchthat a \in H\}$ die Menge der Linksnebenklassen und $H \backslash G \defined G/{\sim_R} = \{Ha \suchthat a \in G\}$ die Menge der Rechtsnebenklassen.
 \end{definition}
 
-
 Für die Inversions-Abbildung $(-)^{-1} \colon G \to G$, $g \mapsto g^{-1}$ gilt
 \[
     (aH)^{-1}
@@ -96,6 +135,11 @@ Es gibt deshalb gleich viele Links-\ und Rechtsnebenklassen, d.h.\ es gilt $\car
   Ist $G$ endlich, so gilt $\ord{G} = \ord{H} \groupindex{G}{H}$, sowie äquivalent $\groupindex{G}{H} = \ord{G}/{\ord{H}}$.
   Insbesondere ist auch $\groupindex{G}{H}$ ein Teiler von $\ord{G}$.
 \end{corollary}
+
+\begin{lemma}
+  Für $K \subgroup H \subgroup G$ gilt $\groupindex{G}{K} = \groupindex{G}{H} \groupindex{H}{K}$.
+\end{lemma}
+
 
 
 
@@ -130,6 +174,8 @@ Für eine Untergruppe $N \subgroup G$ sind die folgenden Bedingungen äquivalent
     \item
       Für $N \normalgroup G$ und $H \subgroup G$ mit $N \subgroup H$ gilt auch $N \normalgroup H$
     \item
+      Jede Untergruppe $N \subgroup G$ vom Index $\groupindex{G}{N} = 2$ ist normal.
+    \item
       Für jeden Gruppenhomomorphismus $\phi \colon G \to H$ ist $\ker(\phi)$ ein Normalteiler.
   \end{enumerate}
 \end{example}
@@ -138,7 +184,6 @@ Für eine Untergruppe $N \subgroup G$ sind die folgenden Bedingungen äquivalent
 
 \subsection{Konstruktion von Quotientengruppen}
 
-Es gilt auch die Umkehrung des obigen Beispiels:
 Ist $N \normalgroup G$ ein Normalteiler, so lässt sich auf $G/N$ durch
 \[
             gN
@@ -170,7 +215,7 @@ eine Gruppenstruktur definieren.
 
 \subsection{Universelle Eigenschaft der Quotientengruppe}
 
-\begin{theorem}[Homomorphiesatz]
+\begin{theorem}[Homomorphiesatz für Gruppen]
   Ist $f \colon G \to H$ ein Gruppenhomomorphismus mit $N \subseteq \ker(f)$, so induziert $f$ einen eindeutigen Gruppenhomomorphismus $\induced{f} \colon G/N \to H$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
   \[
     \begin{tikzcd}
@@ -317,9 +362,15 @@ Für eine Untergruppe $H \subseteq G$ sind die folgenden Bedingungen äquivalent
   Es ist $S$ ein \emph{Erzeugendensystem} von $H$.
 \end{definition}
 
-\begin{definition}
-  Eine Gruppe $G$ ist \emph{endlich erzeugt}, wenn es eine endliche Teilmenge $S \subseteq G$ mit $G = \generated{S}$ gibt.
-\end{definition}
+\begin{example}
+  \begin{enumerate}
+    \item
+      Die symmetrische Gruppe $S_n$ wird von der Menge der Transpositionen $\{ (i, j) \suchthat 1 \leq i \neq j \leq n \}$ erzeugt.
+      Ein weiteres Erzeugendensystem ist die Menge der einfachen Transpositionen $\{ (i, i+1) \suchthat 1 \leq i < n \}$.
+    \item
+      Ist $K$ ein Körper, so wird die Gruppe $\GL{n}{K}$ von der Menge der Elementarmatrizen erzeugt.
+  \end{enumerate}
+\end{example}
 
 
 
@@ -399,6 +450,7 @@ Ansonsent gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
   \begin{enumerate}
     \item
       Ist $G$ eine endliche Gruppe, so gilt $\ord{g} \divides \ord{G}$.
+      Also gilt $g^{\ord{G}} = 1$.
     \item
       Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n > 0 \suchthat g^n = 1 \}$.
   \end{enumerate}
@@ -450,8 +502,34 @@ Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$
 \end{definition}
 
 \begin{lemma}
-  Ist $X$ eine $G$-Menge, so gilt $G_x \subgroup G$ für jedes $x \in X$.
+  Es sei $X$ eine $G$-Menge.
+  \begin{enumerate}
+    \item
+      Für alle $x \in X$ ist $G_x \subgroup G$ eine Untergruppe.
+    \item
+      Für alle $g \in G$, $x \in X$ gilt $G_{g.x} = g G_x g^{-1}$.
+  \end{enumerate}
 \end{lemma}
+
+\begin{example}
+  Die Gruppe $\GL{n}{K}$ wirkt auf dem Vektorraum $K^n$ durch $A.x \defined Ax$ für alle $A \in \GL{n}{K}$, $x \in K^n$.
+  Für alle $x, y \in K^n$ mit $x, y \neq 0$ gibt es ein $A \in \GL{n}{K}$ mit $Ax = y$, weshalb diese Gruppenwirkung zwei Bahnen besitzt:
+  $\{0\}$ und $K^n \smallsetminus \{0\}$.
+  Insbesondere ist $0$ der einzige Fixpunkt dieser Wirkung.
+  Der Stabilisator des Standardbasisvektors $e_1$ ist die Untergruppe
+  \[
+              H
+    \defined  \left\{
+                \begin{pmatrix}
+                  1 & * \\
+                  0 & A
+                \end{pmatrix}
+              \suchthat*
+                A \in \GL{n-1}{K}
+              \right\} \,;
+  \]
+  der Stabilisator eines beliebigen Vektors $x \in K^n$, $x \neq 0$ ist konjugiert zu $H$.
+\end{example}
 
 \begin{definition}
   Es sei $X$ eine $G$-Menge.
@@ -471,6 +549,41 @@ Diese beiden Konstruktionen sind invers zueinander, weshalb eine Wirkung von $G$
   Eine Wirkung von $G$ auf $X$ ist genau dann treu, wenn der zugehörige Gruppenhomomorphismus $G \to \symmetric{X}$ injektiv ist.
 \end{remark}
 
+\begin{example}
+  Jede Gruppe $G$ wirkt auf sich selbst, d.h.\ auf $X \defined G$, auf zwei Weisen:
+  \begin{enumerate}
+    \item
+      Die Gruppe $G$ wirkt auf sich selbst durch Linksmultiplikation, d.h.\ durch $g.x \defined gx$ für alle $g \in G$, $x \in X$.
+      Diese Wirkung ist transitiv und treu, und für jedes $x \in X$ ist der Stabilisator $G_x$ trivial.
+      
+      Man bemerke, dass diese treue Wirkung einem injektiven Gruppenhomomorphismus $G \hookrightarrow \symmetric{X}$ entspricht, durch den sich $G$ als eine Untergruppe der symmetrischen Gruppe $\symmetric{X}$ auffassen lässt.
+      Dies ist der \emph{Satz von Cayley}:
+      Jede Gruppe ist isomorph zu einer Gruppe von Permutationen.
+    \item
+      Due Gruppe $G$ wirkt auf sich selbst durch Konjugation, d.h.\ für alle $g \in G$, $x \in X$ ist $g.x \defined gxg^{-1}$.
+      Die Bahnen dieser Wirkung sind die \emph{Konjugationsklassen} von $G$.
+      Für alle $g \in G$ $x \in X$ gilt
+      \[
+          g.x
+        = x
+        \iff
+          gxg^{-1}
+        = x
+        \iff
+          gx
+        = xg \;
+      \]
+      die Fixpunktmenge $X^G$ dieser Wirkung ist deshalb das Zentrum $\groupcenter{G}$, und für jedes $x \in X$ ist $G_x = \{g \in G \suchthat gx = xg\}$ der \emph{Zentralisator} von $x$;
+      dies ist die größte Untergruppe von $G$, in der $x$ zentral ist.
+  \end{enumerate}
+\end{example}
+
+\begin{example}
+  Die symmetrische Gruppe $S_n$ wirkt auf der Menge $X \defined \{1, \dotsc, n\}$ durch $\sigma.i \defined \sigma(i)$ für alle $\sigma \in S_n$, $i \in X$.
+  Dies Wirkung ist transitiv und treu.
+  Der zugehörige Gruppenhomomorphismus $S_n \to \symmetric{X} = S_n$ ist die Identität $\id_{S_n}$.
+  Der Stabilisator von $i \in X$ ist $\{ \sigma \in S_n \suchthat \sigma(i) = i \} \cong S_{n-1}$.
+\end{example}
 
 
 
@@ -500,6 +613,7 @@ Für jedes $x \in X$ ist dabei die Abbildung $G \to G.x$, $g \mapsto g.x$ surjek
 \]
 
 \begin{lemma}
+  \label{lemma: classification of transitive G-sets}
   Für jedes $x \in G$ ist die Abbildung
   \[
             G/G_x
@@ -511,7 +625,28 @@ Für jedes $x \in X$ ist dabei die Abbildung $G \to G.x$, $g \mapsto g.x$ surjek
   Insbesondere gilt $\card{G.x} = \card{G/G_x} = \groupindex{G}{G_x}$.
 \end{lemma}
 
-Gleichung~\eqref{equation: orbit formula alpha} lässt sich somit zu
+\begin{example}
+  Ist $H \subgroup G$ eine Untergruppe, so wirkt $G$ auf der Menge der Linksnebenklassen $G/H$ durch $g.(g'H) \defined (gg')H$ für alle $g \in G$, $g'H \in G/H$.
+  Diese Wirkung ist transitiv, und der Stabilisator der Nebenklasse $H = 1H \in G/H$ ist
+  \[
+      G_H
+    = \{ g \in G \suchthat g.H = H \}
+    = \{ g \in G \suchthat gH = H \}
+    = H \,.
+  \]
+  Die induzierte Bijektion
+  \[
+            G/H
+    \to     G.H
+    =       G/H \,,
+    \quad   gH
+    \mapsto g.H
+    =       gH
+  \]
+  ist die Identität.
+\end{example}
+
+Durch Lemma~\ref{lemma: classification of transitive G-sets} lässt sich Gleichung~\eqref{equation: orbit formula alpha} zu
 \[
     \card{X}
   = \sum_{i \in I} \groupindex{G}{G_{x_i}} \,
@@ -541,6 +676,16 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
 \begin{definition}
   Gilt $\ord{G} = p^n$ für ein $n \in \Natural$, so ist $G$ eine \emph{$p$-Gruppe}.
 \end{definition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Es ist $\Integer/p$ bis auf Isomorphie die einzige Gruppe der Ordnung $p$.
+    \item
+      Jede Gruppe der Ordnung $p^2$ ist abelsch, und entweder isomorph zu $\Integer/p^2$ oder zu $\Integer/p \times \Integer/p$.
+  \end{enumerate}
+\end{example}
+
 
 \begin{definition}
   Eine \emph{$p$-Sylow\-unter\-gruppe} von $G$ eine $p$-Untergruppe $S \subgroup G$ mit $\ord{S} = p^r$ und $p \notdivides \groupindex{G}{S}$, d.h.\ es gilt $\ord{G} = p^r m$ mit $p \notdivides m$.
