@@ -1,0 +1,37 @@
+sudo: required
+dist: trusty
+language: generic
+before_install:
+- sudo apt-get -qq update
+- git clone https://github.com/cryptofuture/install-tl-ubuntu.git
+- cd install-tl-ubuntu
+- sudo ./install-tl-ubuntu
+- eval "$(sed 's/^/export /' /etc/environment)"
+- cd ..
+script:
+- mkdir github-pages
+- mkdir github-pages/styles
+- mkdir github-pages/notes
+- mkdir github-pages/exercises
+# compiling the notes
+- cd notes
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/notes notes.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/notes notes.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/notes notes.tex
+# compiling the exercises
+- cd ../exercises
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # defined in travis dashboard
+  target_branch: gh-pages
+  local_dir: github-pages
+  on:
+    branch: master
+
+notifications:
+  email: false
