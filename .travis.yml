@@ -25,6 +25,8 @@ script:
 - xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
 
 deploy:
+  edge:
+    branch: v1.8.47
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN # defined in travis dashboard
@@ -32,6 +34,6 @@ deploy:
   local_dir: github-pages
   on:
     branch: master
-
+  
 notifications:
   email: false
