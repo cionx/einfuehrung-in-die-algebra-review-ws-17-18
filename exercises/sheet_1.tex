@@ -1,0 +1,82 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+\usepackage{../styles/generalstyle}
+\usepackage{../styles/exercisestyle}
+
+\subject{Repetitorium Einführung in die Algebra, WS 2017/18}
+\title{Tag 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{question}
+  Zeigen Sie, dass jede echte Untergruppe der symmetrischen Gruppe $S_3$ zyklisch ist.
+  Bestimmen Sie anschließend alle Untergruppen.
+\end{question}
+
+\begin{question}
+  Es seien $G, H$ zwei endliche Gruppen mit teilerfremden Ordnungen $\ord{G}, \ord{H}$.
+  Zeigen Sie, dass jeder Gruppenhomomorphismus $G \to H$ bereits trivial ist.
+\end{question}
+
+\begin{question}
+  Es sei $G$ eine Gruppe und $H \subgroup G$ eine Untergruppe von endlichem Index.
+  Zeigen Sie, dass es eine normale Untergruppe $N \normalgroup G$ mit $N \subgroup H$ gibt, so dass auch $N$ endlichen Index in $G$ hat.
+  \newline
+  (\emph{Hinweis}:
+  Konstruieren Sie für $n \defined \groupindex{G}{H}$ einen Gruppenhomomorphismus $G \to S_n$.)
+\end{question}
+
+\begin{question}
+  Es sei $G$ ein Gruppe der Ordnung $77$, die auf einer $17$-elementigen Menge $X$ wirkt.
+  Zeigen Sie, dass diese Wirkung mindestens $3$ Fixpunkte hat.
+\end{question}
+
+\begin{question}
+  Es sei $G$ eine endliche Gruppe und $x_1, \dotsc, x_n$ ein Repräsentantensystem der Konjugationsklassen von $G$.
+  Stellen Sie einen Zusammenhang zwischen den Zahlen $\card{G}$, $\card{\groupcenter{G}}$ und $\card{\centralizer{G}{x_i}}$ her.
+\end{question}
+
+\begin{question}
+  Es sei $p$ prim und $G$ eine endliche $p$-Gruppe, d.h.\ es gelte $\card{G} = p^n$ für passendes $n \geq 0$.
+  \begin{enumerate}
+    \item
+      Die Gruppe $G$ wirke auf einer endlichen Menge $X$.
+      Zeigen Sie, dass
+      \[
+                \card{X}
+        \equiv  \card*{X^G}
+        \pmod{p}
+      \]
+      gilt.
+      Folgern Sie, dass diese Wirkung einen Fixpunkt besitzt, falls $p \notdivides \card{X}$ gilt.
+    \item
+      Es gelte zusätzlich $G \neq 1$.
+      \begin{enumerate}
+        \item
+          Zeigen Sie, dass $\groupcenter{G} \neq 1$ gilt.
+        \item
+          Zeigen Sie allgemeiner, dass für jede normale Untergruppe $N \normalgroup G$ mit $N \neq 1$ bereits $N \cap \groupcenter{G} \neq 1$ gilt.
+      \end{enumerate}
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Es sei $G$ eine endliche Gruppe mit genau zwei Konjugationsklassen.
+  Zeigen Sie, dass bereits $G \cong \Integer/2$ gilt.
+\end{question}
+
+\begin{question}
+  Es sei $K$ ein Körper.
+  Zeigen Sie, dass die Gruppen $(K,+)$ und $(K^\times, \cdot)$ nicht isomorph zueinander sind.
+  \newline
+  (\emph{Hinweis}:
+  Betrachten Sie Elemente der Ordnung $2$.)
+\end{question}
+
+
+
+
+
+
+\end{document}
