@@ -24,9 +24,9 @@ Es sei $L/K$ eine endliche Körpererweiterung.
 \begin{lemma}
   \begin{enumerate}
     \item
-      Es gilt $\card{\Aut{L/K}} \leq \sepindex{L}{K}$.
+      Es gilt $\card{\Aut{L/K}} \leq \sepindex{L}{K} \leq \fieldindex{L}{K}$.
     \item
-      Ist $L/K$ normal, so gilt bereits Gleichheit.
+      Die Eweiterung $L/K$ ist genau dann normal, wenn $\card{\Aut{L/K}} = \sepindex{L}{K}$ gilt.
   \end{enumerate}
 \end{lemma}
 
@@ -47,7 +47,7 @@ Es sei $L/K$ eine endliche Körpererweiterung.
 
 \begin{definition}
   Erfüllt die Erweiterung $L/K$ eine \textup(und damit alle\textup) der obigen Bedingungen, so ist $L/K$ \emph{galoissch}.
-  Es ist dann $\Gal{L/K} \defined \Aut{L/K}$ die \emph{Galois-Gruppe} der Erweiterung $L/K$.
+  Es ist dann $\Gal{L/K} \defined \Aut{L/K}$ die \emph{Galoisgruppe} der Erweiterung $L/K$.
 \end{definition}
 
 \begin{theorem}[Hauptsatz der Galoistheorie]
@@ -75,8 +75,148 @@ Es sei $L/K$ eine endliche Körpererweiterung.
 
 
 
-\section{Beispiel: \texorpdfstring{$\Rational(\sqrt{2}, \sqrt{3})$}{Q(sqrt(2),sqrt(3))}}
+\section{Beispiel: \texorpdfstring{$\Complex/\Real$}{C/R}}
 
-Wir zeigen, dass die Körpererweiterung $\Rational(\sqrt{2}, \sqrt{3}) / \Rational$ galoissch ist, und bestimmen die Galois-Korrespondenz:
+Die Körpererweiterung $\Complex/\Real$ ist normal, da $\Complex = \Real(i)$ ein Zerfällungskörper des Polynoms $f \defined t^2 + 1 \in \Real[t]$ ist.
+Die Erweiterung ist separabel, da $\Real$ perfekt ist, da $\ringchar{\Real} = 0$ gilt.
+Somit ist die Erweiterung $\Complex/\Real$ galoissch.
 
+Aus $\card{\Gal{\Complex/\Real}} = \fieldindex{\Complex}{\Real} = 2$ ergibt sich bereits, dass $\Gal{\Complex/\Real} \cong \Integer/2$ gilt.
+Ein nicht-trivialer $\Real$-Automorphismus $\Complex \to \Complex$ ist durch die Konjugationsabbildung $c \colon \Complex \to \Complex$, $z \mapsto \conjugate{z}$ gegeben.
+Somit gilt $\Gal{\Complex/\Real} = \{\id, c\}$.
+
+Ersetzt man $\Real$ durch $\Rational$, und $\Complex$ durch $\Rational(i)$, so ergibt sich, dass $\Rational(i)/\Rational$ ebenfalls galoissch ist, und dass die Galoisgruppe $\Gal{\Rational(i)/\Rational}$ ebenfalls $\id$ und der Konjugationsabbildung besteht.
+Zur Bestimmung des Grades $\fieldindex{\Rational(i)}{\Rational} = 2$ bemerke man dabei, dass $f \in \Rational[t]$ bereits das Minimalpolynom von $i \in \Rational(i)$ ist:
+Das Polynom $f$ ist normiert mit $f(i) = 0$, und es ist irreduzibel in $\Rational[t]$, da es vom Grad $\leq 3$ ist und keine Nullstelle in $\Rational$ besitzt.
+
+\[
+  \begin{tikzcd}
+      \{\id, c\}
+    \\
+      1
+      \arrow{u}[left]{2}
+  \end{tikzcd}
+  \qquad
+  \leftrightsquigarrow
+  \qquad
+  \begin{tikzcd}
+      \Real
+      \arrow{d}[left]{2}
+    \\
+      \Complex
+  \end{tikzcd}
+\]
+
+
+
+
+
+\section{Beispiel: \texorpdfstring{$\Finite_{p^n}/\Finite_p$}{F\_(pn)/F\_p}}
+
+Die Erweiterung $\Finite_{p^n}/\Finite_p$ ist normal, da $\Finite_{p^n}/\Finite_p$ ein Zerfällungskörper des Polynoms $f \defined t^{p^n} - t \in \Finite_p[t]$ ist.
+Da der endliche Körper $\Finite_p$ perfekt ist, ist die Erweiterung auch seperabel.
+Somit ist $\Finite_{p^n}/\Finite_p$ galoissch.
+
+Der Frobenius-Homomorphismus $\sigma \colon \Finite_{p^n} \to \Finite_{p^n}$, $x \mapsto x^p$ ist ein Körperautomorphismus von $\Finite_{p^n}$, und $\Finite_p$-linear, da $\Finite_p$ der Primkörper von $\Finite_{p^n}$ ist.
+Somit gilt $\sigma \in \Finite_{p^n}$.
+
+Gilt dabei $\sigma^m = \id$ für $m \geq 1$, so gilt $x^{p^m} - x = 0$ für alle $x \in \Finite{p^n}$, d.h.\ $\Finite{p^n}$ besteht aus Nullstellen des Polynoms $g \defined t^{p^m} - t \in \Finite_p[t]$.
+Dann gilt allerdings $p^n = \card{\Finite_{p^n}} \leq \deg(g) = p^m$, und somit $n \geq m$.
+Es gilt also $\ord{\sigma} \geq n$.
+
+Andererseits gilt $\ord{\sigma} \divides \ord{ \Gal{\Finite_{p^n}/\Finite_p} } = \fieldindex{\Finite_{p^n}}{\Finite_p} = n$.
+
+Ingesamt gilt also $\ord{\sigma} = n = \ord{ \Gal{\Finite_{p^n}/\Finite_p} }$.
+Somit ist die Galoisgruppe $\Gal{\Finite_{p^n}/\Finite_p}$ zyklisch, und wird vom Frobenius-Homomorphismus $\sigma$ erzeugt.
+
+Für $n = 6$ ergibt sich etwa das folgende Bild:
+
+\[
+  \begin{tikzcd}[column sep = tiny]
+      {}
+    & \{1, \sigma, \dotsc, \sigma^5\}
+    & {}
+    \\
+      \{1, \sigma^2, \sigma^4\}
+      \arrow{ur}[above left]{2}
+    & {}
+    & \{1, \sigma^3\}
+      \arrow{ul}[above right]{3}
+    \\
+      {}
+    & 1
+      \arrow{lu}[below left]{3}
+      \arrow{ru}[below right]{2}
+    & {}
+  \end{tikzcd}
+  \qquad\leftrightsquigarrow\qquad
+    \begin{tikzcd}[column sep = tiny]
+      {}
+    & \Finite_p
+      \arrow{dl}[above left]{2}
+      \arrow{dr}[above right]{3}
+    & {}
+    \\
+      \Finite_{p^2}
+      \arrow{dr}[below left]{3}
+    & {}
+    & \Finite_{p^3}
+      \arrow{dl}[below right]{2}
+    \\
+      {}
+    & \Finite_{p^6}
+    & {}
+  \end{tikzcd}
+\]
+
+
+
+
+
+
+\section{Beispiel: \texorpdfstring{$\Rational(\sqrt{2}, \sqrt{3})/\Rational$}{Q(sqrt(2),sqrt(3))/Q}}
+
+Es sei $L \defined \Rational(\sqrt{2}, \sqrt{3})$.
+Dann ist $L = \Rational(\sqrt{2}, -\sqrt{2}, \sqrt{3}, -\sqrt{3})$ ein Zerfällungskörper des Polynoms $f \defined (t^2 - 2)(t^2 - 3) \in \Rational[t]$, und die Erweiterung $L/\Rational$ somit normal.
+Diese Erweiterung ist auch separabel, da $\Rational$ perfekt ist, da $\ringchar{\Rational} = 0$ gilt.
+Die Erweiterung $L/\Rational$ ist also galoissch.
+
+Es gilt $\fieldindex{L}{\Rational} = \fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} \fieldindex{\Rational(\sqrt{2})}{\Rational}$.
+Dabei gilt $\fieldindex{\Rational(\sqrt{2})}{\Rational} = 2$, denn das Minimalpolynom von $\sqrt{2}$ ist $t^2 - 2 \in \Rational[t]$ (siehe Beispiel~\ref{example: minimal polynomials}).
+Da $\sqrt{3}$ Nullstelle des Polynoms $t^2 - 3 \in \Rational(\sqrt{2})[t]$ ist, gilt $\fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} \leq 2$.
+Im Fall $\fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} = 1$ wäre $\sqrt{3} \in \Rational(\sqrt{2})$, was aber nicht gilt:
+
+\begin{lemma}
+  Es gilt $\sqrt{3} \notin \Rational(\sqrt{2})$.
+\end{lemma}
+
+Es gilt also $\fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} = 2$.
+Insgesamt gilt somit $\fieldindex{L}{\Rational} = 2$.
+Dabei ist $1, \sqrt{2}$ eine $\Rational$-Basis von $\Rational(\sqrt{2})$, und $1, \sqrt{3}$ eine $\Rational(\sqrt{2})$-Basis von $\Rational(\sqrt{2})(\sqrt{3}) = L$.
+Eine $\Rational$-Basis von $L$ ist deshalb durch
+\[
+  1         \cdot 1         = 1 \,,
+  \quad
+  \sqrt{2}  \cdot 1         = \sqrt{2}  \,,
+  \quad
+  1         \cdot \sqrt{3}  = \sqrt{3}  \,,
+  \quad
+  \sqrt{2}  \cdot \sqrt{3}  = \sqrt{6}
+\]
+gegeben.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Beispiel: Kreisteilungskörper \texorpdfstring{$\Rational(\zeta_n)/\Rational$}{Q(zeta\_n)/Q}}
 

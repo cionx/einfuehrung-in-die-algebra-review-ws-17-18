@@ -232,6 +232,19 @@ Ist $p \in K[t]$ ein weiteres irreduzibles normiertes Polynom mit $p(a) = 0$, so
   Ist $a \in L$ algebraisch über $K$, so ist $m_a \in K[t]$ das eindeutige normierte irreduzible Polynom, dass $a$ als Nullstelle hat.
 \end{corollary}
 
+\begin{example}
+  \label{example: minimal polynomials}
+  \begin{enumerate}
+    \item
+      Für die Erweiterung $\Complex/\Rational$ ist $f \defined t^2 + 1 \in \Real[t]$ das Minimalpolynom von $i \in \Complex$:
+      Das Polynom $f$ ist normiert mit $f(i) = 0$.
+      Es ist irreduzibel in $\Real[t]$, da es vom Grad $\leq 3$ ist, und keine Nullstelle in $\Real$ besitzt.
+    \item
+      Für die Erweiterung $\Rational(\sqrt{2})/\Rational$ ist $f \defined t^2 - 2 \in \Rational[t]$ das Minimalpolynom von $\sqrt{2} \in \Rational(\sqrt{2})$:
+      Das Polynom $f$ ist normiert mit $f(\sqrt{2}) = 0$, und irreduzibel nach dem Eisenstein-Kriterium.
+  \end{enumerate}
+\end{example}
+
 Der Körperisomorphismus $\induced{\varphi}$ ist auch $K$-linear, und somit ein Isomorphismus von $K$-Vektorräumen.
 Dabei ist für $\deg(m_a) = d$ eine $K$-Basis von $K[t]/(m_a)$ durch $\class{1}, \class{t}, \dotsc, \class{t^{d-1}}$ gegeben.
 
@@ -561,6 +574,11 @@ Dies führt zu folgendem Ergebnis:
   Erfüllt die Erweiterung $L/K$ eine \textup(und damit alle\textup) der obigen Bedingungen, so ist die Erweiterung $L/K$ \emph{normal}.
 \end{definition}
 
+\begin{example}
+  Körpererweiterungen $L/K$ vom Grad $\fieldindex{L}{K} = 2$ sind immer normal.
+% TODO: Add actual examples.
+\end{example}
+
 \begin{lemma}
   Sind $M/L/K$ Körpererweiterungen, so dass $M/K$ normal ist, so ist auch $M/L$ normal.
 \end{lemma}
@@ -573,6 +591,22 @@ Dies führt zu folgendem Ergebnis:
       Sind $M/L$ und $L/K$ normal, so ist $M/K$ nicht notwendigerweise normal.
   \end{enumerate}
 \end{warning}
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+
+
+
+
+
 
 
 
@@ -804,6 +838,11 @@ Es ist also $f$ separabel, und somit $\card{K} = \deg(f) = q = p^n$.
   Dann gibt es für alle $n \geq 0$ einen bis auf Isomorphismus eindeutigen Körper $\Finite_{p^n}$ mit $p^n$ Elementen, und jeder endliche Körper von Charakteristik $p$ ist von dieser Form.
   Der Körper $\Finite_{p^n}$ besteht aus den Nullstellen des Polynoms $x^{p^n} - p \in \Finite_p[t]$.
 \end{theorem}
+
+\begin{lemma}
+  Für alle $n, m \geq 1$ gibt es genau dann eine Einbettung \textup(d.h.\ einen Körperhomomorphismus\textup) $\Finite_{p^n} \to \Finite_{p^m}$, wenn $n \divides m$ gilt.
+\end{lemma}
+
 
 
 
