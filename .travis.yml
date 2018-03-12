@@ -23,6 +23,9 @@ script:
 - xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
 - xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
 - xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_1.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_2.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_2.tex
+- xelatex -interaction=nonstopmode -halt-on-error -output-dir=../github-pages/exercises sheet_2.tex
 
 deploy:
   edge:

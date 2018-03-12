@@ -732,7 +732,7 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
     \item
       Es ist $\Integer/p$ bis auf Isomorphie die einzige Gruppe der Ordnung $p$.
     \item
-      Jede Gruppe der Ordnung $p^2$ ist abelsch, und entweder isomorph zu $\Integer/p^2$ oder zu $\Integer/p \times \Integer/p$.
+      Jede Gruppe der Ordnung $p^2$ ist abelsch, und isomorph zu entweder $\Integer/p^2$ oder $\Integer/p \times \Integer/p$.
     \item
       Die Heisenberg-Gruppe
       \[
@@ -746,20 +746,21 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
                   \suchthat*
                     a, b, c \in \Finite_p
                   \right\}
+        \subgroup \GL{3}{\Finite_p}
       \]
       ist eine nicht abelsche Gruppe der Ordnung $p^3$.
   \end{enumerate}
 \end{example}
 
 \begin{lemma}
-  Ist $G \neq 1$ eine nicht-triviale $p$-Gruppe, so gilt auch $\groupcenter{G} \neq 1$.
+  Ist $G$ eine nicht-triviale $p$-Gruppe, so ist auch $\groupcenter{G}$ nicht-trivial.
 \end{lemma}
 
 \begin{corollary}
-  Ist $G$ eine $p$-Gruppe, so besitzt besitzt $G$ eine Normalenreihe
+  Ist $G$ eine $p$-Gruppe, so besitzt $G$ eine Normalenreihe
   \[
-                  G_0
-    =             \{ 1 \}
+                  \{ 1 \}
+    =             G_0
     \normalgroup  G_1
     \normalgroup  G_2
     \normalgroup  G_3
@@ -771,7 +772,7 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
 \end{corollary}
 
 \begin{definition}
-  Eine \emph{$p$-Sylow\-unter\-gruppe} von $G$ eine $p$-Untergruppe $S \subgroup G$ mit $\ord{S} = p^r$ und $p \notdivides \groupindex{G}{S}$, d.h.\ es gilt $\ord{G} = p^r m$ mit $p \notdivides m$.
+  Eine \emph{$p$-Sylow\-unter\-gruppe} von $G$ ist eine $p$-Untergruppe $S \subgroup G$ mit $p \notdivides \groupindex{G}{S}$, d.h.\ für $\ord{G} = p^r m$ mit $p \notdivides m$ gilt $\ord{S} = p^r$.
 \end{definition}
 
 \begin{theorem}[Sylowsätze]
@@ -788,7 +789,7 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
                 n_p
         \equiv  1
         \pmod{p}
-        \quad\text{und}\quad
+        \qquad\text{und}\qquad
         n_p \divides m \,.
       \]
   \end{enumerate}
@@ -808,16 +809,15 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
 
 \section{Klassifikation endlicher abelscher Gruppen}
 
-Es sei $G$ eine endliche abelsche Gruppe.
 
 \begin{theorem}
-  Für jede Primzahl $p$ sei $S_p$ die eindeutige $p$-Sylowuntergruppe von $G$.
+  Es sei $G$ eine endliche abelsche Gruppe, und für jede Primzahl $p$ sei $S_p$ die eindeutige $p$-Sylowuntergruppe von $G$.
   Sind $p_1, \dotsc, p_n$ die Primfaktoren von $\card{G}$, so ist die Abbildung
   \[
-                            S_{p_1} \times \dotsb \times S_{p_r}
+                            S_{p_1} \times \dotsb \times S_{p_n}
     \xlongrightarrow{\sim}  G \,,
-    \quad                   (g_1, \dotsc, g_r)
-    \mapsto                 g_1 \dotsm g_r
+    \quad                   (g_1, \dotsc, g_n)
+    \mapsto                 g_1 \dotsm g_n
   \]
   ein Isomorphismus.
 \end{theorem}
@@ -833,7 +833,7 @@ Es sei $G$ eine endliche abelsche Gruppe.
 \end{proposition}
 
 \begin{corollary}[Klassifikation endlicher abelscher Gruppen]
-  Jede endliche abelsche Gruppe ist isomorph zu einem Produkt zyklischer $p$-Gruppen, d.h.\ es gilt
+  Jede endliche abelsche Gruppe $G$ ist isomorph zu einem Produkt zyklischer $p$-Gruppen, d.h.\ es gilt
   \[
           G
     \cong \Integer/p_1^{n_1} \times \dotsm \times \Integer/p_r^{n_r}
@@ -844,7 +844,7 @@ Es sei $G$ eine endliche abelsche Gruppe.
 Man bemerke, dass dabei $\card{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gilt.
 
 \begin{remark}
-  Tatsächlich ist diese Zerlegung bereits eindeutig bis auf Permutation der Faktoren, d.h.\ die Paare $(p_1, n_1), \dotsc, (p_r, n_r)$ sind eindeutig bis auf Permuation.
+  Tatsächlich ist diese Zerlegung bereits eindeutig bis auf Permutation der Faktoren, d.h.\ die Paare $(p_1, n_1), \dotsc, (p_r, n_r)$ sind eindeutig bis auf Permutation.
   Diese Eindeutigkeit wurde in der Vorlesung allerdings nicht gezeigt.
 \end{remark}
 
@@ -855,7 +855,7 @@ Man bemerke, dass dabei $\card{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gilt.
 \section{Beispiel: Die Diedergruppe \texorpdfstring{$D_n$}{D\_n}}
 
 Es sei $n \geq 3$.
-Die \emph{Diedergruppe} $D_n$ ist die Symmetriegruppe des regelmäßigen $n$-Ecks.
+Die \emph{Diedergruppe} $D_n$ ist die Symmetriegruppe eines regelmäßigen $n$-Ecks.
 \begin{center}
   \[
     \begin{tikzpicture}
@@ -907,8 +907,7 @@ Die \emph{Diedergruppe} $D_n$ ist die Symmetriegruppe des regelmäßigen $n$-Eck
 Die Gruppe $D_n$ besteht also aus zwei Arten von Elementen:
 \begin{itemize}
   \item
-    Den Rotationen um Vielfache des Winkels $2\pi/n$.
-    Dies sind insgesamt $n$ Rotationen.
+    Die insgesamt $n$ Rotationen um Vielfache des Winkels $2\pi/n$.
     \[
       % triangle
       \begin{tikzpicture}
@@ -947,10 +946,10 @@ Die Gruppe $D_n$ besteht also aus zwei Arten von Elementen:
       \end{tikzpicture}
     \]
   \item
-    Es gibt $n$ Spiegelungen in $D_n$:
+    Ingesamt $n$ Spiegelungen:
     \begin{itemize}
       \item
-        Ist $n$ ungerade, so gehen die Spiegelungsachsen durch jeweils einen der Eckpunkte sowie den Mittelpunkt der gegenüberliegenden Achse:
+        Ist $n$ ungerade, so gehen die Spiegelungsachsen durch jeweils einen der Eckpunkte sowie den Mittelpunkt der gegenüberliegenden Seite:
         \[
           \begin{tikzpicture}
             % first triangle
@@ -1028,9 +1027,9 @@ Die Gruppe $D_n$ besteht also aus zwei Arten von Elementen:
     \end{itemize}
 \end{itemize}
 
-Ingesamt besteht die Gruppe $D_n$ somit aus $2n$ Elementen, davon $n$ Rotationen und $n$ Spiegelungen.
-Jedes $\sigma \in D_n$ permutiert die Eckpunkte des regelmäßigen $n$-Ecks, dabei ist die Wirkung von $\sigma$ auf dem gesamten $n$-Eck bereits eindeutig durch die Wirkung auf den Eckpunkten bestimmt.
-Indem man die Eckpunkte mit $1, \dotsc, n$ durchnummeriert, lässt sich also $D_n$ mit einer Untergruppe von $S_n$ identifizieren.
+Insgesamt besteht die Diedergruppe $D_n$ somit aus $2n$ Elementen, davon $n$ Rotationen und $n$ Spiegelungen.
+Jedes $\sigma \in D_n$ permutiert die Eckpunkte des regelmäßigen $n$-Ecks, wobei die Wirkung von $\sigma$ auf dem gesamten $n$-Eck bereits eindeutig durch die Wirkung auf den Eckpunkten bestimmt ist.
+Indem man die Eckpunkte mit $1, \dotsc, n$ durchnummeriert, lässt sich $D_n$ auf diese Weise mit einer Untergruppe von $S_n$ identifizieren.
 
 \begin{example}
   Es sei $n = 4$.
@@ -1086,26 +1085,28 @@ Für $n = 3$ gilt $\card{D_3} = 2 \cdot 3 = 6 = 3! = \card{S_3}$, weshalb die Ei
   \begin{enumerate}
     \item
       Gilt $n \divides m$, so gibt es eine Einbettung $D_n \hookrightarrow D_m$:
-      \[
-        \begin{tikzpicture}[scale=1.5]
-          % hexagon
-          \draw (0:1)
-          \foreach \x in {60, 120, ..., 360} {
-            -- (\x:1)
-          };
-          \foreach \x in {60, 120, ..., 360} {
-            \fill[black] (\x:1) circle (0.06);
-          }
-          % triangle
-          \draw[dashed] (0:1)
-          \foreach \x in {120, 240, 360} {
-            -- (\x:1)
-          };
-        \end{tikzpicture}
-      \]
-
+      \begin{center}
+        \[
+          \begin{tikzpicture}[scale=1.5]
+            % hexagon
+            \draw (0:1)
+            \foreach \x in {60, 120, ..., 360} {
+              -- (\x:1)
+            };
+            \foreach \x in {60, 120, ..., 360} {
+              \fill[black] (\x:1) circle (0.06);
+            }
+            % triangle
+            \draw[dashed] (0:1)
+            \foreach \x in {120, 240, 360} {
+              -- (\x:1)
+            };
+          \end{tikzpicture}
+        \]
+        Beispiel: $D_3 \hookrightarrow D_6$.
+      \end{center}
     \item
-      Gilt $n = 2m$ mit $m$ ungerade, so gilt $D_n \cong D_m \times (\Integer/2)$.
+      Gilt $n = 2m$ mit $m$ ungerade, so gilt bereits $D_n \cong D_m \times (\Integer/2)$.
   \end{enumerate}
 \end{proposition}
 

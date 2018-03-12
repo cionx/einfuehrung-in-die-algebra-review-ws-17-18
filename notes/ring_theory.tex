@@ -40,7 +40,7 @@ Ist $X \subseteq R$ eine Teilmenge, so sind für jeden Unterring $S \subseteq R$
 
 \begin{enumerate}
   \item
-    Es ist $S$ der kleinste Unterring, der $X$ enthälts, d.h.\ es gilt $X \subseteq S$, und für jeden Unterring $S' \subseteq R$ mit $X \subseteq S'$ gilt $S \subseteq S'$.
+    Es ist $S$ der kleinste Unterring, der $X$ enthält, d.h.\ es gilt $X \subseteq S$, und für jeden Unterring $S' \subseteq R$ mit $X \subseteq S'$ gilt $S \subseteq S'$.
   \item
     Es gilt $S = \bigcap_{\text{Unterring $S' \subseteq S$, $X \subseteq S'$}} S'$.
   \item
@@ -49,6 +49,7 @@ Ist $X \subseteq R$ eine Teilmenge, so sind für jeden Unterring $S \subseteq R$
 
 \begin{definition}
   Der Unterring $S \subseteq R$ der eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist der \emph{von $X$ erzeugte} Unterring von $R$.
+  Es ist $X$ ein \emph{Erzeugendensystem} von $R$.
 \end{definition}
 
 
@@ -91,8 +92,6 @@ Es bildet $\unitgroup{R}$ bezüglich der Multiplikation von $R$ eine Gruppe, was
       Es gilt $\unitgroup{\Integer} = \{1, -1\}$.
     \item
       Für $n \geq 1$ ist ein Element $\class{k} \in \Integer/n$ ist genau dann eine Einheit, wenn $n$ und $k$ teilerfremd sind.
-    \item
-      Ist $R$ ein Integritätsbereich, so gilt $\unitgroup{R[t]} = \unitgroup{R}$.
   \end{enumerate}
 \end{example}
 
@@ -106,16 +105,16 @@ Es bildet $\unitgroup{R}$ bezüglich der Multiplikation von $R$ eine Gruppe, was
     \item
       Für $n \geq 1$ ist $\class{k} \in \Integer/n$ genau dann ein Nullteiler, wenn $k$ und $n$ nicht teilerfremd sind.
     \item
-      Ist $V$ ein Vektorraum, so ist $f \in \End{V}$ genau dann
+      Ist $V$ ein Vektorraum, so ist $f \in \End{V}$ genau dann ein
       \begin{itemize}
         \item
-          ein Linksnullteiler, wenn $f$ nicht surjektiv ist,
+          Linksnullteiler, wenn $f$ nicht injektiv ist,
         \item
-          ein Rechtsnullteiler, wenn $f$ nicht injektiv ist.
+          Rechtsnullteiler, wenn $f$ nicht surjektiv ist.
       \end{itemize}
       Ist $V$ endlichdimensional, so sind beide Bedingungen äquivalent.
-      Ist $V$ unendlichdimensional, so gibt es $f \in \End{V}$, das injektiv aber nicht surjektiv ist, und somit einen Linksnullteiler der kein Rechtsnullteiler ist;
-      analog gibt es auch einen Rechtsnullteiler, der kein Linksnullteiler ist.
+      Ist $V$ unendlichdimensional, so gibt es ein $f \in \End{V}$, das surjektiv aber nicht injektiv ist, und somit ein Linksnullteiler aber kein Rechtsnullteiler ist;
+      analog gibt es in $\End{V}$ auch Rechtsnullteiler, die keine Linkssnullteiler sind.
   \end{enumerate}
 \end{example}
 
@@ -137,7 +136,7 @@ Es sei $R$ ein Ring.
 \subsection{Polynomring in einer Variables}
 
 \begin{definition}
-  Der \emph{Grad} eines Polynom $f = \sum_{i=0}^n a_i t^i \in R[t]$ ist für $f \neq 0$ durch
+  Der \emph{Grad} eines Polynoms $f = \sum_{i=0}^n a_i t^i \in R[t]$ ist für $f \neq 0$ durch
   \[
               \deg(f)
     \defined  \max \{i \suchthat a_i \neq 0\}
@@ -157,6 +156,8 @@ Es sei $R$ ein Ring.
       Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
     \item
       $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
+    \item
+      Ist $R$ ein Integritätsbereich, so gilt $\unitgroup{R[t]} = \unitgroup{R}$.
   \end{enumerate}
 \end{proposition}
 
@@ -174,12 +175,14 @@ Es sei nun $R$ kommutativ.
 Ist $S$ ein kommutativer Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^n a_i t^i \in R[t]$ einsetzen:
 \[
             f(s)
-  \defined  \sum_{i=0}^n a_i s_i \,.
+  \defined  \sum_{i=0}^n a_i s^i \,.
 \]
 Die Abbildung $R[t] \to S$, $f \mapsto f(s)$ ist dabei ein Ringhomomorphismus.
-Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich für jedes $s \in S$ ein Ringhomomorphismus $R[t] \to S$,
+Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich für jedes $s \in S$ ein Ringhomomorphismus ,
 \[
-          \sum_{i=0}^n a_i t^i
+          R[t]
+  \to     S \,,
+  \quad   \sum_{i=0}^n a_i t^i
   \mapsto \sum_{i=0}^n \varphi(a_i) s^i \,.
 \]
 
@@ -190,8 +193,8 @@ Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich 
       \hat{\varphi}\left( \sum_{i=0}^n a_i t^i \right)
     = \sum_{i=0}^n \varphi(a_i) s^i \,.
   \]
-  Mit anderen Worten:
-  Es gibt eine Bijektion
+  In anderen Worten:
+  Es ergibt sich eine Bijektion
   \begin{align*}
                             \{ \text{Ringhomo.\ $\hat{\varphi} \colon R[t] \to S$} \}
     &\xlongrightarrow{\sim} \{
@@ -217,19 +220,20 @@ Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlic
 
 
 \begin{theorem}[Universelle Eigenschaft des Polynomrings]
-  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und alle Elemente $s_1, \dotsc, s_n \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t_i) = s_i$ für alle $i$;
-  es gilt
+  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und alle Elemente $s_1, \dotsc, s_n \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t_i) = s_i$ für alle $i = 1, \dotsc, n$;
+  dabei gilt
   \[
       \hat{\varphi}\left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
     = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm ts_n^{\alpha_n} \,.
   \]
-  Es ergibt sich also eine Bijektion
+  In anderen Worten:
+  Es ergibt sich eine Bijektion
   \begin{align*}
-                          &\, \{\text{Ringhomomorphismen \ $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$}\}  \\
+                          &\, \{\text{Ringhomo.\ $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$}\}  \\
     \xlongrightarrow{\sim}&\, \{
                                 (\varphi, s_1, \dotsc, s_n)
                               \suchthat
-                                  \text{Ringhomomorphismen $\varphi \colon R \to S$, $s_i \in S$}
+                                  \text{Ringhomo.\ $\varphi \colon R \to S$, $s_i \in S$}
                               \}  \\
                               \hat{\varphi}
     \longmapsto&\,            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t_1), \dotsc, \hat{\varphi}(t_n) ) \,.
@@ -237,18 +241,32 @@ Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlic
 \end{theorem}
 
 \begin{remark}
-  Es lassen sich auch allgemeiner Polynomringe $R[t_i \suchthat i \in I]$ für eine beliebige Menge $I$ konstruieren.
+  Es lassen sich auch allgemeiner Polynomringe $R[t_i \suchthat i \in I]$ für eine beliebige Indexmenge $I$ konstruieren.
 \end{remark}
 
 \begin{lemma}
   \label{lemma: constructed of generated subring}
   Es seien $R, S$ kommutative Ringe, so dass $R \subseteq S$ ein Unterring ist.
-  Für $s_1, \dotsc, s_n \in S$ sei $\eval_{s_1, \dotsc, s_n} \colon R[t_1, \dotsc, t_n] \to S$ der eindeutige Ringhomomorphismu mit $\restrict{\eval_{s_1, \dotsc, s_n}}{R} = \id_R$ und $\eval_{s_1, \dotsc, s_n}(t_i) = s_i$ für alle $i$.
+  Für $s_1, \dotsc, s_n \in S$ sei
+  \[
+            \eval_{s_1, \dotsc, s_n}
+    \colon  R[t_1, \dotsc, t_n]
+    \to     S
+  \]
+  der eindeutige Ringhomomorphismu mit
+  \[
+      \restrict{\eval_{s_1, \dotsc, s_n}}{R}
+    = \id_R
+    \qquad\text{und}\qquad
+      \eval_{s_1, \dotsc, s_n}(t_i)
+    = s_i
+  \]
+  für alle $i$.
   Dann ist $\im(\eval_{s_1, \dotsc, s_n})$ der von $R$ und $s_1, \dotsc, s_n$ erzeugte Unterring von $S$.
 \end{lemma}
 
 \begin{definition}
-  In der Situation von Lemma~\ref{lemma: constructed of generated subring} ist $\eval_{s_1, \dotsc, s_n}$ der \emph{Einsetzhomomorphismus} und $R[s_1, \dotsc, s_n] \defined \im(\eval_{s_1, \dotsc, s_n})$.
+  In der obigen Situation ist $\eval_{s_1, \dotsc, s_n}$ der \emph{Einsetzhomomorphismus} und $R[s_1, \dotsc, s_n] \defined \im(\eval_{s_1, \dotsc, s_n})$ der von $R$ und den $s_i$ erzeugte Unterring von $S$.
 \end{definition}
 
 
@@ -301,7 +319,7 @@ Man beachte jedoch, dass $I \ideal R$ für $I \neq R$ kein Unterring ist, da dan
 
 So wie sich Quotientegruppen $G/N$ konstruieren lassen, gibt es nun auch Quotientenringe $R/I$:
 Es sei $I \ideal R$ ein Ideal.
-Dann ist auf der Quotientengruppe $R/I$ durch
+Dann wird auf der Quotientengruppe $R/I$ durch
 \[
     \class{x} \cdot \class{y}
   = \class{xy}
@@ -377,9 +395,9 @@ Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion
     \item
       Es gibt es eine 1:1-Korrespondenz
       \begin{align*}
-        \{ \text{Unterringe $S \ideal R$ mit $I \subseteq S$} \}
+        \{ \text{Unterringe $S \subseteq R$ mit $I \subseteq S$} \}
         &\xleftrightarrow{1:1}
-        \{ \text{Ideale $S' \ideal R/I$} \} \,,
+        \{ \text{Unterringe $S' \subseteq R/I$} \} \,,
         \\
         S
         &\longmapsto
@@ -444,8 +462,8 @@ Für jedes Ideal $I \subseteq R$ sind dann die folgenden Bedingungen äquivalent
 \end{enumerate}
 
 \begin{definition}
-  Das Ideal $I \ideal R$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist das von $X$ \emph{erzeugte} Ideal, und wird mit $\genideal{X}$ notiert.
-  Es ist $X$ ist ein Erzeugendensystem von $I$.
+  Das Ideal $I \ideal R$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist das \emph{von $X$ erzeugte} Ideal, und wird mit $\genideal{X}$ notiert.
+  Es ist dann $X$ ist ein \emph{Erzeugendensystem} von $I$.
 \end{definition}
 
 \begin{definition}
@@ -463,7 +481,7 @@ Es sei $R$ ein kommutativer Ring.
 \begin{definition}
   \begin{enumerate}
     \item
-      Ein Ideal $P \ideal R$ ist ein \emph{Primideal}, wenn $P \neq R$ gilt, und für alle $x,y \in P$ mit $xy \in P$ bereits $x \in P$ oder $y \in P$ gilt.
+      Ein Ideal $P \ideal R$ ist ein \emph{Primideal}, bzw.\ \emph{prim}, wenn $P \neq R$ gilt, und für alle $x,y \in P$ mit $xy \in P$ bereits $x \in P$ oder $y \in P$ gilt.
     \item
       Ein Ideal $M \ideal R$ ist ein \emph{maximales Ideal}, wenn $M \neq R$ gilt, und für jedes Ideal $I \ideal R$ mit $M \subsetneq I$ bereits $I = R$ gilt;
       es gibt also bzgl.\ $\subseteq$ kein größeres echtes Ideal.
@@ -499,11 +517,11 @@ Es sei $R$ ein kommutativer Ring.
     \\
     p^{-1}(J')
     &\longmapsfrom
-    J' \,.
+    J'
   \intertext{aus Lemma~\ref{lemma: correspondence between ideals} zu 1:1-Korrespondenzen}
     \{ \text{Primideale $P \ideal R$ mit $I \subseteq P$} \}
     &\xleftrightarrow{1:1}
-    \{ \text{Primideale $P' \ideal R/I$} \} \,,
+    \{ \text{Primideale $P' \ideal R/I$} \}
   \intertext{und}
     \{ \text{maximale Ideale $M \ideal R$ mit $I \subseteq M$} \}
     &\xleftrightarrow{1:1}
