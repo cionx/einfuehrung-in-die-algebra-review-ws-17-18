@@ -20,7 +20,7 @@ Es seien $R, S$ zwei Ringe.
   Der \emph{Kern} eines Ringhomomorphismus $f \colon R \to S$ ist
   \[
               \ker(f)
-    \defined  \{x \in R \suchthat f(x) = 0\}
+    \defined  \{ x \in R \suchthat f(x) = 0 \} \,.
   \]
 \end{definition}
 
@@ -53,327 +53,8 @@ Ist $X \subseteq R$ eine Teilmenge, so sind für jeden Unterring $S \subseteq R$
 
 
 \begin{definition}
-  Für $x, y \in R$ ist $x$ ein \emph{Teiler} von $y$, bzw.\ $y$ wird von $x$ \emph{geteilt}, wenn es ein $z \in R$ mit $y = xz$ gibt.
+  Für $x, y \in R$ ist $x$ ein \emph{Teiler} von $y$ wenn es ein $z \in R$ mit $y = xz$ gibt.
   Dies wird mit $x \divides y$ notiert.
-\end{definition}
-
-
-
-
-
-\section{Polynomringe}
-
-Es sei $R$ ein Ring.
-
-
-
-\subsection{Polynomring in einer Variables}
-
-Der Polynomring $R[t]$ ein einer Variablen $t$ besteht aus \emph{Polynomen}, d.h.\ Ausdrücken der Form $\sum_{k=0}^\infty a_k t^k$ mit $a_k = 0$ für fast alle $k$.
-Dabei gilt genau dann die Gleichheit $\sum_{k=0}^\infty a_k t^k = \sum_{k=0}^\infty b_k t^k$, wenn $a_k = b_k$ für alle $k$ gilt.
-Die Addition und Multiplikation auf $R[t]$ sind durch
-\begin{align*}
-              \left( \sum_{k=0}^\infty a_k t^k \right)
-            + \left( \sum_{k=0}^\infty b_k t^k \right)
-  &\defined \sum_{k=0}^\infty (a_k + b_k) t^k
-\shortintertext{und}
-                  \left( \sum_{k=0}^\infty a_k t^k \right)
-            \cdot \left( \sum_{k=0}^\infty b_k t^k \right)
-  &\defined \sum_{k,\ell=0}^\infty a_k b_\ell t^{k+\ell}
-\end{align*}
-definiert.
-Es gilt also $(\sum_{k=0}^\infty a_k t^k) \cdot (\sum_{k=0}^\infty b_k t^k) = \sum_{k=0}^\infty c_k t^k$ mit
-\[
-    c_k
-  = \sum_{i + j = k} a_i b_j
-  = \sum_{\ell=0}^k a_\ell b_{k - \ell}
-\]
-für alle $k$.
-Der \emph{Grad} eines Polynom $f = \sum_{k=0}^\infty a_k t^k \in R[t]$ ist für $f \neq 0$ durch
-\[
-            \deg(f)
-  \defined  \max \{k \suchthat a_k \neq 0\}
-\]
-definiert, und für $f = 0$ durch $\deg(0) = -\infty$.
-
-\begin{proposition}
-  \begin{enumerate}
-    \item
-      $R[t]$ ist genau dann kommutativ, wenn $R$ kommutativ ist.
-    \item
-      Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
-    \item
-      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keinen von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
-      Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
-    \item
-      $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
-  \end{enumerate}
-\end{proposition}
-
-\begin{proposition}[Polynomdivision]
-  Es sei $K$ ein Körper.
-  Für alle $f, g \in K[t]$ mit $g \neq 0$ gibt es eindeutige Polynome $q, r \in K[t]$ mit
-  \[
-    f = qg + r \,,
-    \qquad
-    \text{wobei $\deg(r) < \deg(g)$} \,.
-  \]
-\end{proposition}
-
-Es sei nun $R$ kommutativ.
-Ist $S$ ein kommutativer Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^\infty a_i t^i \in R[t]$ einsetzen:
-\[
-            f(s)
-  \defined  \sum_{i=0}^\infty a_i s_i \,.
-\]
-Die Abbildung $R[t] \to S$, $f \mapsto f(s)$ ist dabei ein Ringhomomorphismus.
-Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich für jedes $s \in S$ ein Ringhomomorphismus $R[t] \to S$, $\sum_i a_i t^i \mapsto \sum_i \varphi(a_i) s^i$.
-
-\begin{theorem}[Universelle Eigenschaft des Polynomrings]
-  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und jedes Element $s \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t) = s$;
-  es gilt $\hat{\varphi}(\sum_i a_i t^i) = \sum_i \varphi(a_i) s^i$.
-  Es ergibt sich also eine Bijektion
-  \begin{align*}
-                                \{\text{Ringhomo.\ $\hat{\varphi} \colon R[t] \to S$}\}
-    &\xlongrightarrow{\sim} \{
-                              (\varphi, s)
-                            \suchthat
-                                \text{Ringhomo.\ $\varphi \colon R \to S$, $s \in S$}
-                            \}  \\
-                            \hat{\varphi}
-    &\longmapsto            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t) ) \,.
-  \end{align*}
-\end{theorem}
-
-
-
-\subsection{Polynomringe in endlich vielen Variablen}
-
-Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlich vielen Variablen induktiv als $R[t_1, \dotsc, t_n] \defined R[t_1, \dotsc, t_{n-1}][t_n]$ definieren.
-
-Jedes Polynom $f \in R[t_1, \dotsc, t_n]$ ist also von der Form $\sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n}$ mit eindeutigen Koeffizienten $a_\alpha \in R$, wobei $a_\alpha = 0$ für fast alle $\alpha \in \Natural^n$ gilt.
-Addition und Multiplikation sind durch
-\begin{align*}
-        \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-      + \left( \sum_{\alpha \in \Natural^n} b_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-  &=  \sum_{\alpha \in \Natural^n} (a_\alpha + b_\alpha)  t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \,,
-  \\
-            \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-      \cdot \left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-  &=  \sum_{\alpha, \beta \in \Natural^n} a_\alpha b_\beta  t_1^{\alpha_1 + \beta_1} \dotsm t_n^{\alpha_n + \beta_n} \,.
-\end{align*}
-Es gilt also $( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} ) \cdot ( \sum_{\alpha \in \Natural^n} b_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} ) = \sum_{\alpha \in \Natural^n} c_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n}$ mit
-\[
-    c_\alpha
-  = \sum_{\substack{\beta, \gamma \in \Natural^n \\ \beta + \gamma = \alpha}} a_\beta b_\gamma \,.
-\]
-
-\begin{theorem}[Universelle Eigenschaft des Polynomrings]
-  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und alle Elemente $s_1, \dotsc, s_n \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t_i) = s_i$ für alle $i$;
-  es gilt
-  \[
-      \hat{\varphi}\left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-    = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm ts_n^{\alpha_n} \,.
-  \]
-  Es ergibt sich also eine Bijektion
-  \begin{align*}
-                          &\, \{\text{Ringhomomorphismen \ $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$}\}  \\
-    \xlongrightarrow{\sim}&\, \{
-                                (\varphi, s_1, \dotsc, s_n)
-                              \suchthat
-                                  \text{Ringhomomorphismen $\varphi \colon R \to S$, $s_i \in S$}
-                              \}  \\
-                              \hat{\varphi}
-    \longmapsto&\,            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t_1), \dotsc, \hat{\varphi}(t_n) ) \,.
-  \end{align*}
-\end{theorem}
-
-\begin{remark}
-  Es lassen sich auch allgemeiner Polynomringe $R[t_i \suchthat i \in I]$ für eine beliebige Menge $I$ konstruieren.
-\end{remark}
-
-\begin{lemma}
-  \label{lemma: constructed of generated subring}
-  Es seien $R, S$ kommutative Ringe, so dass $R \subseteq S$ ein Unterring ist.
-  Für $s_1, \dotsc, s_n \in S$ sei $\eval_{s_1, \dotsc, s_n} \colon R[t_1, \dotsc, t_n] \to S$ der eindeutige Ringhomomorphismu mit $\restrict{\eval_{s_1, \dotsc, s_n}}{R} = \id_R$ und $\eval_{s_1, \dotsc, s_n}(t_i) = s_i$ für alle $i$.
-  Dann ist $\im(\eval_{s_1, \dotsc, s_n})$ der von $R$ und $s_1, \dotsc, s_n$ erzeugte Unterring von $S$.
-\end{lemma}
-
-\begin{definition}
-  In der Situation von Lemma~\ref{lemma: constructed of generated subring} ist $\eval_{s_1, \dotsc, s_n}$ der \emph{Einsetzhomomorphismus} und $R[s_1, \dotsc, s_n] \defined \im(\eval_{s_1, \dotsc, s_n})$.
-\end{definition}
-
-
-
-\section{Ideale und Quotientenringe}
-
-Es sei $R$ ein Ring.
-
-\begin{definition}
-  Eine Teilmenge $I \subseteq R$ ist ein Ideal, wenn $I$ eine additive Untergruppe ist, und $RI, IR \subseteq I$ gelten, d.h.\ für alle $r \in R$, $x \in I$ gilt $rx \in I$ und $xr \in I$.
-  Dies wird mit $I \ideal R$ notiert.
-\end{definition}
-
-\begin{example}
-  \begin{enumerate}
-    \item
-      Die Ideale in $\Integer$ sind genau $n\Integer$ mit $n \in \Integer$.
-    \item
-      Für jeden Ring $R$ sind $\{0\}$ und $R$ Ideale in $R$.
-    \item
-      Ist $K$ ein Körper, so sind $\{0\}$ und $K$ die einzigen beiden Ideale in $K$.
-    \item
-      Für jeden Ringhomomorphismus $f \colon R \to S$ ist $\ker(f)$ ein Ideal in $R$.
-  \end{enumerate}
-\end{example}
-
-Ein \emph{Ideal} in $R$ ist das analog zu einem Normalteiler einer Gruppe:
-\begin{center}
-  \begin{tabular}{|c|c|}
-    \hline
-      Gruppe $G$
-    & Ring $R$
-    \\
-    \hline
-      Untergruppe $H \subgroup G$
-    & Unterring $S \subseteq R$
-    \\
-    \hline
-      Normalteiler $N \normalgroup G$
-    & Ideal $I \ideal G$
-    \\
-    \hline
-  \end{tabular}
-\end{center}
-So wie sich Quotientegruppen $G/N$ konstruieren lassen, gibt es nun auch Quotientenringe $R/I$:
-
-Es sei $I \ideal R$ ein Ideal.
-Dann ist auf der Quotientengruppe $R/I$ durch
-\[
-    \class{x} \cdot \class{y}
-  = \class{xy}
-  \quad
-  \text{für alle $x, y \in R$}
-\]
-eine Ringstruktur definiert.
-Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion $p \colon R \to R/I$, $r \mapsto \class{r}$ zu einem Ringhomomorphismus macht, und es gilt $\ker p = I$.
-
-\begin{theorem}[Homomorphiesatz für Ringe]
-  Ist $f \colon R \to S$ ein Ringhomomorphismus mit $I \subseteq \ker f$, so induziert $f$ einen eindeutigen Ringhomomorphismus $\induced{f} \colon R/I \to S$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
-  \[
-    \begin{tikzcd}
-        R
-        \arrow{rr}[above]{f}
-        \arrow{dr}[below left]{p}
-      & {}
-      & S
-      \\
-        {}
-      & R/I
-        \arrow[dashed]{ru}[below right]{\induced{f}}
-      & {}
-    \end{tikzcd}
-  \]
-  In anderen Worten:
-  Es ergibt sich eine Bijektion
-  \begin{align*}
-                            \{ \text{Ringhomo.\ $\induced{f} \colon R/I \to S$} \}
-    &\xlongrightarrow{\sim} \{ \text{Ringomo.\ $f \colon R \to S$ mit $I \subseteq \ker(f)$} \} \,,  \\
-                            \induced{f}
-    &\mapsto                \induced{f} \circ p \,.
-  \end{align*}
-\end{theorem}
-
-\begin{corollary}[1.\ Isomorphiesatz]
-  Jeder Ringhomomorphismus $f \colon R \to S$ induziert einen Ringisomorphismus
-  \[
-            \induced{f}
-    \colon  R/{\ker(f)}
-    \to     \im(f) \,,
-    \quad   \class{r}
-    \mapsto f(r) \,.
-  \]
-\end{corollary}
-
-\begin{corollary}[2.\ Isomorphiesatz]
-  Sind $I, J \ideal R$ Ideale mit $J \subseteq I$, so ist $I/J$ ein Ideal in $R/J$ gibt es einen wohldefinierten Ringisomorphismus
-  \[
-                            (R/J)/(I/J)
-    \xlongrightarrow{\sim}  R/I \,,
-    \quad                   \class{\class{r}}
-    \mapsto                 \class{r} \,.
-  \]
-
-\end{corollary}
-
-\begin{corollary}[3.\ Isomorphiesatz]
-  Es sei $S \subseteq R$ ein Unterring und $I \ideal R$ ein Ideal.
-  Dann ist $S + I$ ein Unterring von $R$, $I$ ein Ideal in $S + I$, $S \cap I$ ein Ideal in $S$, und es gibt einen wohldefinierten Ringisomorphismus
-  \[
-                            R/(R \cap I)
-    \xlongrightarrow{\sim}  (R + I)/I \,,
-    \quad                   \class{r}
-    \mapsto                 \class{r} \,.
-  \]
-\end{corollary}
-
-\begin{lemma}
-  \label{lemma: correspondence between ideals}
-  Es sei $I \ideal R$ ein Ideal und $p \colon R \to R/I$ die kanonische Projektion.
-  Dann gibt es eine 1:1-Korrespondenz
-  \begin{align*}
-    \{ \text{Ideale $J \ideal R$ mit $I \subseteq J$} \}
-    &\xleftrightarrow{1:1}
-    \{ \text{Ideale $J' \ideal R/I$} \} \,,
-    \\
-    J
-    &\longmapsto
-    p(J)
-    =
-    J/I \,,
-    \\
-    p^{-1}(J')
-    &\longmapsfrom
-    J' \,.
-  \end{align*}
-  Für jedes Ideal $J \ideal R$ mit $I \subseteq J$ gilt dabei für das zugehörige Ideal $J' = p(J) = J/I$ nach dem 2.\ Isomorphiesatz, dass
-  \[
-          R/J
-    \cong (R/I)/(J/I)
-    \cong (R/I)/J' \,.
-  \]
-  Auf beiden Seiten der obigen 1:1-Korrespondenz erhält man also \textup(bis auf Isomorphie\textup) die gleichen Quotientenringe.
-\end{lemma}
-
-Es sei $X \subseteq R$ eine Teilmenge.
-Für jedes Ideal $I \subseteq R$ sind dann die folgenden Bedingungen äquivalent:
-
-\begin{enumerate}
-  \item
-    Es ist $I$ das kleinste Ideal, das $X$ enthält, d.h.\ es gilt $X \subseteq I$, und für jedes Ideal $J \ideal R$ mit $X \subseteq J$ gilt $I \subseteq J$.
-  \item
-    Es gilt $I = \bigcap_{J \ideal R, X \subseteq J} J$.
-  \item
-    Es gilt
-    $
-        I
-      = \{
-          r_1 x_1 r'_1 + \dotsb + r_n x_n r'_n
-        \suchthat
-          n \in \Natural,
-          r_i, r'_i \in R,
-          x_i \in X
-        \}
-    $
-\end{enumerate}
-
-\begin{definition}
-  Das Ideal $I \ideal R$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist das von $X$ \emph{erzeugte} Ideal, und wird mit $\genideal{X}$ notiert.
-  Es ist $X$ ist ein Erzeugendensystem von $I$.
-\end{definition}
-
-\begin{definition}
-  Gibt es für $I \ideal R$ ein $x \in R$ mit $I = \genideal{x}$, so ist $I$ ein \emph{Hauptideal}.
 \end{definition}
 
 
@@ -420,8 +101,355 @@ Es bildet $\unitgroup{R}$ bezüglich der Multiplikation von $R$ eine Gruppe, was
   Ist $r$ ein Links- und Rechtsnullteiler, so ist $r$ ein \emph{\textup(beidseitiger\textup) Nullteiler}.
 \end{definition}
 
+\begin{example}
+  \begin{enumerate}
+    \item
+      Für $n \geq 1$ ist $\class{k} \in \Integer/n$ genau dann ein Nullteiler, wenn $k$ und $n$ nicht teilerfremd sind.
+    \item
+      Ist $V$ ein Vektorraum, so ist $f \in \End{V}$ genau dann
+      \begin{itemize}
+        \item
+          ein Linksnullteiler, wenn $f$ nicht surjektiv ist,
+        \item
+          ein Rechtsnullteiler, wenn $f$ nicht injektiv ist.
+      \end{itemize}
+      Ist $V$ endlichdimensional, so sind beide Bedingungen äquivalent.
+      Ist $V$ unendlichdimensional, so gibt es $f \in \End{V}$, das injektiv aber nicht surjektiv ist, und somit einen Linksnullteiler der kein Rechtsnullteiler ist;
+      analog gibt es auch einen Rechtsnullteiler, der kein Linksnullteiler ist.
+  \end{enumerate}
+\end{example}
+
+
 \begin{definition}
-  Ein \emph{Integritätsbereich} ist ein kommutativer Ring $R$ mit $R \neq \{0\}$, so dass $0$ der einzige Nullteiler in $R$ ist.
+  Ein \emph{Integritätsbereich} ist ein kommutativer Ring $R$ mit $R \neq \{0\}$, so dass $0$ der einziger Nullteiler in $R$ ist.
+\end{definition}
+
+
+
+
+
+\section{Polynomringe}
+
+Es sei $R$ ein Ring.
+
+
+
+\subsection{Polynomring in einer Variables}
+
+\begin{definition}
+  Der \emph{Grad} eines Polynom $f = \sum_{i=0}^n a_i t^i \in R[t]$ ist für $f \neq 0$ durch
+  \[
+              \deg(f)
+    \defined  \max \{i \suchthat a_i \neq 0\}
+  \]
+  definiert, und für $f = 0$ durch $\deg(0) \defined -\infty$.
+\end{definition}
+
+
+\begin{proposition}
+  \begin{enumerate}
+    \item
+      $R[t]$ ist genau dann kommutativ, wenn $R$ kommutativ ist.
+    \item
+      Für alle $f, g \in R[t]$ gilt $\deg(fg) \leq \deg(f) + \deg(g)$.
+    \item
+      Dabei gilt genau dann Gleichheit für alle $f, g \in R[t]$, wenn $R$ keinen von $0$ verschiedenen Linksnullteiler \textup(und somit auch keinen von $0$ verschiedenen Rechtsnullteiler\textup) besitzt.
+      Dies gilt insbesondere, wenn $R$ ein Integritätsbereich ist.
+    \item
+      $R[t]$ ist genau dann ein Integritätsbereich, wenn $R$ ein Integritätsbereich ist.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Polynomdivision]
+  Es sei $K$ ein Körper.
+  Für alle $f, g \in K[t]$ mit $g \neq 0$ gibt es eindeutige Polynome $q, r \in K[t]$ mit
+  \[
+    f = qg + r \,,
+    \qquad
+    \text{wobei $\deg(r) < \deg(g)$} \,.
+  \]
+\end{proposition}
+
+Es sei nun $R$ kommutativ.
+Ist $S$ ein kommutativer Ring, so dass $R \subseteq S$ ein Unterring ist, so lassen sich Elemente $s \in S$ in Polynome $f = \sum_{i=0}^n a_i t^i \in R[t]$ einsetzen:
+\[
+            f(s)
+  \defined  \sum_{i=0}^n a_i s_i \,.
+\]
+Die Abbildung $R[t] \to S$, $f \mapsto f(s)$ ist dabei ein Ringhomomorphismus.
+Ist allgemeiner $\varphi \colon R \to S$ ein Ringhomomorphismus, so ergibt sich für jedes $s \in S$ ein Ringhomomorphismus $R[t] \to S$,
+\[
+          \sum_{i=0}^n a_i t^i
+  \mapsto \sum_{i=0}^n \varphi(a_i) s^i \,.
+\]
+
+\begin{theorem}[Universelle Eigenschaft des Polynomrings]
+  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und jedes Element $s \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t) = s$;
+  dabei gilt
+  \[
+      \hat{\varphi}\left( \sum_{i=0}^n a_i t^i \right)
+    = \sum_{i=0}^n \varphi(a_i) s^i \,.
+  \]
+  Mit anderen Worten:
+  Es gibt eine Bijektion
+  \begin{align*}
+                            \{ \text{Ringhomo.\ $\hat{\varphi} \colon R[t] \to S$} \}
+    &\xlongrightarrow{\sim} \{
+                              (\varphi, s)
+                            \suchthat
+                                \text{Ringhomo.\ $\varphi \colon R \to S$, $s \in S$}
+                            \} \,,  \\
+                            \hat{\varphi}
+    &\longmapsto            \left( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t) \right) \,.
+  \end{align*}
+\end{theorem}
+
+
+
+\subsection{Polynomringe in endlich vielen Variablen}
+
+Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlich vielen Variablen induktiv als $R[t_1, \dotsc, t_n] \defined R[t_1, \dotsc, t_{n-1}][t_n]$ definieren.
+
+\begin{example}
+  Es gilt $3tu^2 + 2u^2 + t^2 u - 4u + t + 6 \in \Integer[t, u]$.
+  Unter der Identifikation $\Integer[t,u] \cong \Integer[t][u]$ entspricht dies dem Polynom $(3t+2) u^2 + (t^2 - 4)u + (t + 6)$, und unter der Identifikation $\Integer[t,u] \cong \Integer[u][t]$ dem Polynom $ut^2 + (3u^2 + 1)t + (2u^2 - 4u + 6)$.
+\end{example}
+
+
+\begin{theorem}[Universelle Eigenschaft des Polynomrings]
+  Sind $R, S$ kommutative Ringe, so gibt es für jeden Ringhomomorphismus $\varphi \colon R \to S$ und alle Elemente $s_1, \dotsc, s_n \in S$ einen eindeutigen Ringhomomorphismus $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$ mit $\restrict{\hat{\varphi}}{R} = \varphi$ und $\hat{\varphi}(t_i) = s_i$ für alle $i$;
+  es gilt
+  \[
+      \hat{\varphi}\left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
+    = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm ts_n^{\alpha_n} \,.
+  \]
+  Es ergibt sich also eine Bijektion
+  \begin{align*}
+                          &\, \{\text{Ringhomomorphismen \ $\hat{\varphi} \colon R[t_1, \dotsc, t_n] \to S$}\}  \\
+    \xlongrightarrow{\sim}&\, \{
+                                (\varphi, s_1, \dotsc, s_n)
+                              \suchthat
+                                  \text{Ringhomomorphismen $\varphi \colon R \to S$, $s_i \in S$}
+                              \}  \\
+                              \hat{\varphi}
+    \longmapsto&\,            ( \restrict{\hat{\varphi}}{R}, \hat{\varphi}(t_1), \dotsc, \hat{\varphi}(t_n) ) \,.
+  \end{align*}
+\end{theorem}
+
+\begin{remark}
+  Es lassen sich auch allgemeiner Polynomringe $R[t_i \suchthat i \in I]$ für eine beliebige Menge $I$ konstruieren.
+\end{remark}
+
+\begin{lemma}
+  \label{lemma: constructed of generated subring}
+  Es seien $R, S$ kommutative Ringe, so dass $R \subseteq S$ ein Unterring ist.
+  Für $s_1, \dotsc, s_n \in S$ sei $\eval_{s_1, \dotsc, s_n} \colon R[t_1, \dotsc, t_n] \to S$ der eindeutige Ringhomomorphismu mit $\restrict{\eval_{s_1, \dotsc, s_n}}{R} = \id_R$ und $\eval_{s_1, \dotsc, s_n}(t_i) = s_i$ für alle $i$.
+  Dann ist $\im(\eval_{s_1, \dotsc, s_n})$ der von $R$ und $s_1, \dotsc, s_n$ erzeugte Unterring von $S$.
+\end{lemma}
+
+\begin{definition}
+  In der Situation von Lemma~\ref{lemma: constructed of generated subring} ist $\eval_{s_1, \dotsc, s_n}$ der \emph{Einsetzhomomorphismus} und $R[s_1, \dotsc, s_n] \defined \im(\eval_{s_1, \dotsc, s_n})$.
+\end{definition}
+
+
+
+\section{Ideale und Quotientenringe}
+
+Es sei $R$ ein Ring.
+
+\begin{definition}
+  Eine Teilmenge $I \subseteq R$ ist ein \emph{Linksideal}, wenn $I$ eine additive Untergruppe ist, und $RI \subseteq I$ gilt, d.h.\ für alle $r \in R$, $x \in I$ gilt $rx \in I$.
+  Gilt $IR \subseteq I$, so ist $I$ ein \emph{Rechtsideal}.
+  Ist $I$ ein Links-\ und Rechtsideal, so ist $I$ ein \emph{\textup(beidseitiges\textup) Ideal}.
+  Dies wird dann mit $I \ideal R$ notiert.
+\end{definition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Die Ideale in $\Integer$ sind genau $n\Integer$ mit $n \in \Integer$.
+    \item
+      Für jeden Ring $R$ sind $\{0\}$ und $R$ Ideale in $R$.
+    \item
+      Ein kommutativer Ring $K$ ist genau dann ein Körper, wenn $\{0\}$ und $K$ die einzigen beiden Ideale in $K$ sind.
+    \item
+      Für jeden Ringhomomorphismus $f \colon R \to S$ ist $\ker(f)$ ein Ideal in $R$.
+  \end{enumerate}
+\end{example}
+
+\noindent
+\begin{minipage}[t]{\textwidth}
+Ein \emph{Ideal} in $R$ ist das analog zu einem Normalteiler einer Gruppe:
+\begin{center}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{ccc}
+      Gruppe $G$
+    & $\leadsto$
+    & Ring $R$
+    \\
+      Untergruppe $H \subgroup G$
+    & $\leadsto$
+    & Unterring $S \subseteq R$
+    \\
+      Normalteiler $N \normalgroup G$
+    & $\leadsto$
+    & Ideal $I \ideal G$
+  \end{tabular}
+\end{center}
+Man beachte jedoch, dass $I \ideal R$ für $I \neq R$ kein Unterring ist, da dann $1 \notin I$ gilt.
+\end{minipage}
+
+So wie sich Quotientegruppen $G/N$ konstruieren lassen, gibt es nun auch Quotientenringe $R/I$:
+Es sei $I \ideal R$ ein Ideal.
+Dann ist auf der Quotientengruppe $R/I$ durch
+\[
+    \class{x} \cdot \class{y}
+  = \class{xy}
+  \quad
+  \text{für alle $x, y \in R$}
+\]
+eine Ringstruktur definiert.
+Dies ist die eindeutige Ringstruktur auf $R/I$, welche die kanonische Projektion $p \colon R \to R/I$, $r \mapsto \class{r}$ zu einem Ringhomomorphismus macht, und es gilt $\ker(p) = I$.
+
+\begin{theorem}[Homomorphiesatz für Ringe]
+  Ist $f \colon R \to S$ ein Ringhomomorphismus mit $I \subseteq \ker f$, so induziert $f$ einen eindeutigen Ringhomomorphismus $\induced{f} \colon R/I \to S$ mit $f = \induced{f} \circ p$, d.h.\ so dass das folgende Diagramm kommutiert:
+  \[
+    \begin{tikzcd}
+        R
+        \arrow{rr}[above]{f}
+        \arrow{dr}[below left]{p}
+      & {}
+      & S
+      \\
+        {}
+      & R/I
+        \arrow[dashed]{ru}[below right]{\induced{f}}
+      & {}
+    \end{tikzcd}
+  \]
+  In anderen Worten:
+  Es ergibt sich eine Bijektion
+  \begin{align*}
+                            \{ \text{Ringhomo.\ $\induced{f} \colon R/I \to S$} \}
+    &\xlongrightarrow{\sim} \{ \text{Ringomo.\ $f \colon R \to S$ mit $I \subseteq \ker(f)$} \} \,,  \\
+                            \induced{f}
+    &\mapsto                \induced{f} \circ p \,.
+  \end{align*}
+\end{theorem}
+
+\begin{corollary}[1.\ Isomorphiesatz]
+  Jeder Ringhomomorphismus $f \colon R \to S$ induziert einen Ringisomorphismus
+  \[
+            \induced{f}
+    \colon  R/{\ker(f)}
+    \to     \im(f) \,,
+    \quad   \class{r}
+    \mapsto f(r) \,.
+  \]
+\end{corollary}
+
+\begin{corollary}[2.\ Isomorphiesatz]
+  Sind $I, J \ideal R$ Ideale mit $J \subseteq I$, so ist $I/J$ ein Ideal in $R/J$ und es gibt einen wohldefinierten Ringisomorphismus
+  \[
+                            (R/J)/(I/J)
+    \xlongrightarrow{\sim}  R/I \,,
+    \quad                   \class{\class{r}}
+    \mapsto                 \class{r} \,.
+  \]
+
+\end{corollary}
+
+\begin{corollary}[3.\ Isomorphiesatz]
+  Es sei $S \subseteq R$ ein Unterring und $I \ideal R$ ein Ideal.
+  Dann ist $S + I$ ein Unterring von $R$, $I$ ein Ideal in $S + I$, $S \cap I$ ein Ideal in $S$, und es gibt einen wohldefinierten Ringisomorphismus
+  \[
+                            R/(R \cap I)
+    \xlongrightarrow{\sim}  (R + I)/I \,,
+    \quad                   \class{r}
+    \mapsto                 \class{r} \,.
+  \]
+\end{corollary}
+
+\begin{lemma}
+  \label{lemma: correspondence between ideals}
+  Es sei $I \ideal R$ ein Ideal und $p \colon R \to R/I$ die kanonische Projektion.
+  \begin{enumerate}
+    \item
+      Es gibt es eine 1:1-Korrespondenz
+      \begin{align*}
+        \{ \text{Unterringe $S \ideal R$ mit $I \subseteq S$} \}
+        &\xleftrightarrow{1:1}
+        \{ \text{Ideale $S' \ideal R/I$} \} \,,
+        \\
+        S
+        &\longmapsto
+        p(S)
+        =
+        S/I \,,
+        \\
+        p^{-1}(S')
+        &\longmapsfrom
+        S' \,.
+      \end{align*}
+    \item
+      Es gibt es eine 1:1-Korrespondenz
+      \begin{align*}
+        \{ \text{Ideale $J \ideal R$ mit $I \subseteq J$} \}
+        &\xleftrightarrow{1:1}
+        \{ \text{Ideale $J' \ideal R/I$} \} \,,
+        \\
+        J
+        &\longmapsto
+        p(J)
+        =
+        J/I \,,
+        \\
+        p^{-1}(J')
+        &\longmapsfrom
+        J' \,.
+      \end{align*}
+    \item
+      Für jedes Ideal $J \ideal R$ mit $I \subseteq J$ gilt dabei für das zugehörige Ideal $J' = p(J) = J/I$ nach dem 2.\ Isomorphiesatz, dass
+      \[
+              (R/I)/J'
+        \cong (R/I)/(J/I)
+        \cong  R/J \,.
+      \]
+      Auf beiden Seiten der obigen 1:1-Korrespondenz erhält man also \textup(bis auf Isomorphie\textup) die gleichen Quotientenringe.
+  \end{enumerate}
+
+  
+\end{lemma}
+
+Es sei $X \subseteq R$ eine Teilmenge.
+Für jedes Ideal $I \subseteq R$ sind dann die folgenden Bedingungen äquivalent:
+
+\begin{enumerate}
+  \item
+    Es ist $I$ das kleinste Ideal, das $X$ enthält, d.h.\ es gilt $X \subseteq I$, und für jedes Ideal $J \ideal R$ mit $X \subseteq J$ gilt $I \subseteq J$.
+  \item
+    Es gilt $I = \bigcap_{J \ideal R, X \subseteq J} J$.
+  \item
+    Es gilt
+    $
+        I
+      = \{
+          r_1 x_1 r'_1 + \dotsb + r_n x_n r'_n
+        \suchthat
+          n \in \Natural,
+          r_i, r'_i \in R,
+          x_i \in X
+        \}
+    $
+\end{enumerate}
+
+\begin{definition}
+  Das Ideal $I \ideal R$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist das von $X$ \emph{erzeugte} Ideal, und wird mit $\genideal{X}$ notiert.
+  Es ist $X$ ist ein Erzeugendensystem von $I$.
+\end{definition}
+
+\begin{definition}
+  Gibt es für $I \ideal R$ ein $x \in R$ mit $I = \genideal{x}$, so ist $I$ ein \emph{Hauptideal}.
 \end{definition}
 
 
@@ -435,7 +463,7 @@ Es sei $R$ ein kommutativer Ring.
 \begin{definition}
   \begin{enumerate}
     \item
-      Ein Ideal $P \ideal R$ ist ein \emph{Primideal}, wenn $P \neq R$ gilt, und für alle $x,y \in R$ mit $xy \in R$ bereits $x \in R$ oder $y \in R$ gilt.
+      Ein Ideal $P \ideal R$ ist ein \emph{Primideal}, wenn $P \neq R$ gilt, und für alle $x,y \in P$ mit $xy \in P$ bereits $x \in P$ oder $y \in P$ gilt.
     \item
       Ein Ideal $M \ideal R$ ist ein \emph{maximales Ideal}, wenn $M \neq R$ gilt, und für jedes Ideal $I \ideal R$ mit $M \subsetneq I$ bereits $I = R$ gilt;
       es gibt also bzgl.\ $\subseteq$ kein größeres echtes Ideal.
@@ -452,7 +480,7 @@ Es sei $R$ ein kommutativer Ring.
 \end{lemma}
 
 \begin{corollary}
-  Ist $M \ideal R$ maximal, so ist $M$ auch prim.
+  Maximale Ideale sind prim.
 \end{corollary}
 
 
@@ -497,23 +525,17 @@ Es sei $R$ ein kommutativer Ring.
 
 
 
-
-
-
-
-
 \pagebreak
 
 
 
 
 
-
-
-
-
-
 \section{Lokalisierung}
+
+
+
+\subsection{Für allgemeinen kommutative Ringe}
 
 Es sei $R$ ein kommutativer Ring.
 
@@ -606,12 +628,16 @@ Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorph
   Es ist $i$ genau dann injektiv, wenn $S$ keinen Nullteiler enthält.
 \end{warning}
 
+
+
+\subsection{Für Integritätsbereiche}
+
 Es sei $R$ ein Integritätsbereich.
 Gilt $0 \in S$, so ist $S^{-1} R = 0$ der Nullring.
 Gilt allerdings $0 \notin S$, so enthält $S$ keinen Nullteiler, weshalb der kanonische Ringhomomorphismus $i \colon R \to S^{-1} R$ dann injektiv ist.
 Außerdem lässt sich die rechte Seite von \eqref{equation: formula for localization} dann zu $rs' = r's$ vereinfachen.
 
-Da $S$ ein Integritätsbereich ist, lääst sich außerdem $S = R \smallsetminus \{0\}$ wählen.
+Da $S$ ein Integritätsbereich ist, läst sich außerdem $S = R \smallsetminus \{0\}$ wählen.
 Die Lokalisierung $S^{-1} R$ ist dann bereits ein Körper, denn für jedes $r/s \in S^{-1} R$ mit $r/s \neq 0$ gilt $r \neq 0$, weshalb $s/r \in S^{-1} R$ ein wohldefinierter Bruch ist, für den
 \[
         \frac{r}{s}
@@ -721,10 +747,6 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
     =     N(g) \,.
   \]
 \end{example}
-
-\begin{remark}
-  Es lässt sich analog zeigen, dass $\Integer[\sqrt{-2}] \defined \Integer[i\sqrt{2}]$ euklidisch ist.
-\end{remark}
 
 
 

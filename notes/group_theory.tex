@@ -733,9 +733,42 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
       Es ist $\Integer/p$ bis auf Isomorphie die einzige Gruppe der Ordnung $p$.
     \item
       Jede Gruppe der Ordnung $p^2$ ist abelsch, und entweder isomorph zu $\Integer/p^2$ oder zu $\Integer/p \times \Integer/p$.
+    \item
+      Die Heisenberg-Gruppe
+      \[
+                  H
+        \defined  \left\{
+                    \begin{pmatrix}
+                      1 & a & b \\
+                        & 1 & c \\
+                        &   & 1
+                    \end{pmatrix}
+                  \suchthat*
+                    a, b, c \in \Finite_p
+                  \right\}
+      \]
+      ist eine nicht abelsche Gruppe der Ordnung $p^3$.
   \end{enumerate}
 \end{example}
 
+\begin{lemma}
+  Ist $G \neq 1$ eine nicht-triviale $p$-Gruppe, so gilt auch $\groupcenter{G} \neq 1$.
+\end{lemma}
+
+\begin{corollary}
+  Ist $G$ eine $p$-Gruppe, so besitzt besitzt $G$ eine Normalenreihe
+  \[
+                  G_0
+    =             \{ 1 \}
+    \normalgroup  G_1
+    \normalgroup  G_2
+    \normalgroup  G_3
+    \normalgroup  \dotsb
+    \normalgroup  G_n
+    =             G
+  \]
+  mit Quotienten $G_i / G_{i-1} \cong \Integer/p$ für alle $i = 1, \dotsc, n$, d.h.\ es gilt $\card{G_r} = p^r$ für alle $r$.
+\end{corollary}
 
 \begin{definition}
   Eine \emph{$p$-Sylow\-unter\-gruppe} von $G$ eine $p$-Untergruppe $S \subgroup G$ mit $\ord{S} = p^r$ und $p \notdivides \groupindex{G}{S}$, d.h.\ es gilt $\ord{G} = p^r m$ mit $p \notdivides m$.
@@ -758,17 +791,28 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
         \quad\text{und}\quad
         n_p \divides m \,.
       \]
-
   \end{enumerate}
 \end{theorem}
+
+\begin{corollary}
+  Eine $p$-Sylowuntergruppe $S \subgroup G$ ist genau dann normal, wenn $n_p = 1$.
+\end{corollary}
+
+\begin{corollary}
+  Ist $G$ abelsch, so besitzt $G$ eine eindeutige $p$-Sylowuntergruppe.
+\end{corollary}
+
+
 
 
 
 \section{Klassifikation endlicher abelscher Gruppen}
 
+Es sei $G$ eine endliche abelsche Gruppe.
+
 \begin{theorem}
-  Ist $G$ abelsch, so gibt es genau eine $p$-Sylowuntergruppe $S_p \subgroup G$.
-  Ist die Primfaktorzerlegung von $\ord{G}$ durch $\ord{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gegeben, so ist die Abbildung
+  Für jede Primzahl $p$ sei $S_p$ die eindeutige $p$-Sylowuntergruppe von $G$.
+  Sind $p_1, \dotsc, p_n$ die Primfaktoren von $\card{G}$, so ist die Abbildung
   \[
                             S_{p_1} \times \dotsb \times S_{p_r}
     \xlongrightarrow{\sim}  G \,,
@@ -796,6 +840,8 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
   \]
   mit $p_1, \dotsc, p_r$ prim und $n_1, \dotsc, n_r \geq 1$.
 \end{corollary}
+
+Man bemerke, dass dabei $\card{G} = p_1^{n_1} \dotsm p_r^{n_r}$ gilt.
 
 \begin{remark}
   Tatsächlich ist diese Zerlegung bereits eindeutig bis auf Permutation der Faktoren, d.h.\ die Paare $(p_1, n_1), \dotsc, (p_r, n_r)$ sind eindeutig bis auf Permuation.
@@ -1026,7 +1072,7 @@ Indem man die Eckpunkte mit $1, \dotsc, n$ durchnummeriert, lässt sich also $D_
         \hline
     \end{tabular}
   \end{center}
-  Fasst man auf diese Weise $D_4$ als Untergruppe on $S_4$ auf, so folgt aus $\card{D_4} = 8 = 2^3$, dass $D_4$ eine $2$-Sylowuntergruppe von $S_4$ ist.
+%   Fasst man auf diese Weise $D_4$ als Untergruppe on $S_4$ auf, so folgt aus $\card{D_4} = 8 = 2^3$, dass $D_4$ eine $2$-Sylowuntergruppe von $S_4$ ist.
 \end{example}
 
 Für $n = 3$ gilt $\card{D_3} = 2 \cdot 3 = 6 = 3! = \card{S_3}$, weshalb die Einbettung $D_3 \hookrightarrow S_3$ bereits ein Isomorphismus ist.
@@ -1039,7 +1085,25 @@ Für $n = 3$ gilt $\card{D_3} = 2 \cdot 3 = 6 = 3! = \card{S_3}$, weshalb die Ei
   Es seien $n, m \geq 3$.
   \begin{enumerate}
     \item
-      Gilt $n \divides m$, so gibt es eine Einbettung $D_n \hookrightarrow D_m$.
+      Gilt $n \divides m$, so gibt es eine Einbettung $D_n \hookrightarrow D_m$:
+      \[
+        \begin{tikzpicture}[scale=1.5]
+          % hexagon
+          \draw (0:1)
+          \foreach \x in {60, 120, ..., 360} {
+            -- (\x:1)
+          };
+          \foreach \x in {60, 120, ..., 360} {
+            \fill[black] (\x:1) circle (0.06);
+          }
+          % triangle
+          \draw[dashed] (0:1)
+          \foreach \x in {120, 240, 360} {
+            -- (\x:1)
+          };
+        \end{tikzpicture}
+      \]
+
     \item
       Gilt $n = 2m$ mit $m$ ungerade, so gilt $D_n \cong D_m \times (\Integer/2)$.
   \end{enumerate}
