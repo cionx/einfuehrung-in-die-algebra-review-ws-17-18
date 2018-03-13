@@ -558,7 +558,7 @@ Es sei $R$ ein kommutativer Ring.
 Es sei $R$ ein kommutativer Ring.
 
 \begin{definition}
-  Eine Teilmenge $S \subseteq R$ ist \emph{multiplikativ \textup(abgeschlossen\textup)}, wenn für alle $s, t \in S$ auch $st \in S$ gilt, und $1 \in S$ gilt.
+  Eine Teilmenge $S \subseteq R$ ist \emph{multiplikativ \textup(abgeschlossen\textup)}, wenn $1 \in S$ gilt, und für alle $s, t \in S$ auch $st \in S$.
 \end{definition}
 
 Ist $S \subseteq R$ eine multiplikative Teilmenge, so wird auf $R \times S$ durch
@@ -590,7 +590,7 @@ Auf $S^{-1} R$ wird durch
               \frac{r}{s}
             + \frac{r'}{s'}
   \defined  \frac{rs' + r's}{ss'}
-  \quad\text{und}\quad
+  \qquad\text{und}\qquad
                   \frac{r}{s}
             \cdot \frac{r'}{s'}
   \defined  \frac{rr'}{ss'}
@@ -599,7 +599,7 @@ die Struktur eines kommutativen Rings definiert.
 Das Nullelement ist durch $0/1$ gegeben, und das Einselement durch $1/1$.
 
 \begin{definition}
-  Der Ring $S^{-1} R$ wie oben ist die \emph{Lokalisierung} von $R$ an $S$.
+  Der Ring $S^{-1} R$ ist die \emph{Lokalisierung} von $R$ an $S$.
 \end{definition}
 
 
@@ -632,7 +632,7 @@ Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorph
     \end{tikzcd}
   \]
   In anderen Worten:
-  Es gibt eine Bijektion
+  Es ergibt sich eine Bijektion
   \begin{align*}
                             \{ \text{Ringhomo.\ $\induced{f} \colon S^{-1} R \to T$} \}
     &\xlongrightarrow{\sim} \{ \text{Ringhomo.\ $f \colon R \to T$ mit $f(S) \subseteq \unitgroup{T}$} \} \,,  \\
@@ -651,11 +651,12 @@ Dies spiegelt sich in der universellen Eigenschaft des kanonischen Ringhomomorph
 \subsection{Für Integritätsbereiche}
 
 Es sei $R$ ein Integritätsbereich.
+
 Gilt $0 \in S$, so ist $S^{-1} R = 0$ der Nullring.
-Gilt allerdings $0 \notin S$, so enthält $S$ keinen Nullteiler, weshalb der kanonische Ringhomomorphismus $i \colon R \to S^{-1} R$ dann injektiv ist.
+Gilt hingegen $0 \notin S$, so enthält $S$ keinen Nullteiler, weshalb der kanonische Ringhomomorphismus $i \colon R \to S^{-1} R$ dann injektiv ist.
 Außerdem lässt sich die rechte Seite von \eqref{equation: formula for localization} dann zu $rs' = r's$ vereinfachen.
 
-Da $S$ ein Integritätsbereich ist, läst sich außerdem $S = R \smallsetminus \{0\}$ wählen.
+Da $S$ ein Integritätsbereich ist, lässt sich $S = R \smallsetminus \{0\}$ wählen.
 Die Lokalisierung $S^{-1} R$ ist dann bereits ein Körper, denn für jedes $r/s \in S^{-1} R$ mit $r/s \neq 0$ gilt $r \neq 0$, weshalb $s/r \in S^{-1} R$ ein wohldefinierter Bruch ist, für den
 \[
         \frac{r}{s}
@@ -718,7 +719,7 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
   Ein \emph{euklidischer Ring} ist ein kommutativer Ring $R$ zusammen mit einer \emph{Gradabbildung} $\deg \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
   \[
     f = qg + r \,,
-    \quad
+    \qquad
     \text{wobei $r = 0$ oder $\deg(r) < \deg(g)$} \,.
   \]
 \end{definition}
@@ -779,14 +780,13 @@ Es sei $R$ ein kommutativer Ring.
 \end{definition}
 
 \begin{lemma}
-  Assoziiertheit ist eine Äuquivalenzrelation
+  Assoziiertheit ist eine Äuquivalenzrelation auf $R$.
 \end{lemma}
 
-\begin{lemma}
+\begin{remark}
   Ist $R$ ein Integritätsbereich, so sind zwei Elemente $a, b \in R$ genau dann assoziiert, wenn $\genideal{a} = \genideal{b}$ gilt, wenn also $a \divides b$ und $b \divides a$ gelten.
-\end{lemma}
-
-Wenn wir im Folgenden von \enquote{Eindeutigkeit bis auf Assoziiertheit} sprechen, so geht es also eigentlich um eindeutige Hauptideale.
+  Wenn wir im Folgenden von \enquote{Eindeutigkeit bis auf Assoziiertheit} von Elementen sprechen, so geht es also eigentlich um eindeutige Hauptideale.
+\end{remark}
 
 
 
@@ -800,9 +800,10 @@ Es sei $R$ ein Integritätsbereich.
     \item
       $p$ ist \emph{irreduzibel}, wenn für jede Zerlegung $p = xy$ bereits $x \in \unitgroup{R}$ oder $y \in \unitgroup{R}$ gilt.
     \item
-       $p$ ist prim, wenn für alle $x, y \in R$ mit $p \divides xy$ bereits $p \divides x$ oder $p \divides y$ gilt.
+       $p$ ist prim, wenn für alle $x, y \in R$ mit $p \divides (xy)$ bereits $p \divides x$ oder $p \divides y$ gilt, d.h.\ wenn das Ideal $\genideal{p}$ prim ist.
   \end{enumerate}
 \end{definition}
+
 
 \begin{definition}
 \label{definition: ufd}
@@ -814,11 +815,13 @@ Es sei $R$ ein Integritätsbereich.
   besitzt, wobei
   \begin{itemize}
     \item
-      $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und $p_1, \dotsc, p_n$ irreduzibel sind, und
+      $\varepsilon \in \unitgroup{R}$ eine Einheit ist,
+    \item
+      $p_1, \dotsc, p_n$ irreduzibel sind, und
     \item
       diese Zerlegung eindeutig \enquote{bis auf Assoziiertheit und Permutation} ist:
       
-      Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weiter solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\gamma_1, \dotsc, \gamma_n \in \unitgroup{R}$ und eine Permutation $\pi \in S_n$ mit $p'_i = \gamma_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
+      Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weitere solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\gamma_1, \dotsc, \gamma_n \in \unitgroup{R}$ und eine Permutation $\pi \in S_n$ mit $p'_i = \gamma_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
   \end{itemize}
 \end{definition}
 
@@ -830,11 +833,11 @@ In faktoriellen Ringen muss also nicht zwischen Prim- und irreduziblen Elementen
 Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation: decomposition into irreducibles} als \emph{Primfaktorzerlegung}.
 
 \begin{remark}
-  Es sei $R$ faktoriell $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Ässoziiertheitsklassen, so lässt sich jedes Element $r \in R$, $r \neq 0$ als
+  Ist $R$ faktoriell und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Ässoziiertheitsklassen der Primelemente, so lässt sich jedes Element $r \in R$, $r \neq 0$ als
   \[
     r = \varepsilon \prod_{p \in \mathcal{P}} p^{\nu_p}
   \]
-  schreiben, wobei $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und für die Exponenten $\nu_p \in \Natural$ gilt $\nu_p = 0$ für fast alle $p \in \mathcal{P}$.
+  schreiben, wobei $\varepsilon \in \unitgroup{R}$ eine Einheit ist, und $\nu_p = 0$ für fast alle $p \in \mathcal{P}$ gilt.
   Diese Zerlegung ist dann eindeutig (bis auf Permutation der $p^{\nu_p}$).
 \end{remark}
 
@@ -847,15 +850,17 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
   \begin{enumerate}
     \item
       Der Ring der ganzen Zahlen $\Integer$ ist faktoriell.
+      Für $\mathcal{P}$ lässt sich die Menge der üblichen Primzahlen wählen.
     \item
       Ist $K$ ein Körper, so ist der Polynomring $K[t]$ faktoriell.
+      Für $\mathcal{P}$ lässt sich die Menge der normierten irreduziblen Polynome wählen.
     \item
       Der Ring der gaußschen Zahlen $\Integer[i]$ ist faktoriell.
   \end{enumerate}
 \end{example}
 
 \begin{example}
-  Es ist $\Integer[\sqrt{-5}] \defined \Integer[i\sqrt{5}] = \{a + bi\sqrt{5}\}$ ein Unterring von $\Complex$, der \emph{nicht} faktoriell ist:
+  Es ist $\Integer[\sqrt{-5}] \defined \Integer[i\sqrt{5}] = \{a + ib\sqrt{5}\}$ ein Unterring von $\Complex$, der \emph{nicht} faktoriell ist:
   Es sei $R \defined \Integer[\sqrt{-5}]$ und für jedes $z \in R$ sei $N(z) \defined \abs{z}^2$ die \emph{Norm} von $z$.
   Dann gilt
   \begin{itemize}
@@ -869,9 +874,16 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
   Aus $zw = 1$ in $R$ folgt $N(z)N(w) = 1$, also $N(z) = N(w) = 1$ und somit $z, w = \pm 1$.
   Somit gilt $\unitgroup{R} = \{1, -1\} = \{z \in R \suchthat N(z) = 1\}$.
   
-  Hieraus ergibt sich, dass die Elemente $2, 3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ irreduzibel in $R$ sind.
+  Hieraus ergibt sich, dass die Elemente $2, 3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ irreduzibel in $R$ sind:
   Gilt etwa $2 = zw$ für $z,w \in R$, so gilt $4 = N(2) = N(z)N(w)$.
-  Es gilt somit $N(z) = 1$, $N(w) = 4$, oder $N(z) = 2$, $N(w) = 2$, oder $N(z) = 4$, $N(w) = 1$.
+  Es gilt somit
+  \[
+    N(z) = 1, N(w) = 4 \,,
+    \quad\text{oder}\quad
+    N(z) = 2, N(w) = 2 \,,
+    \quad\text{oder}\quad
+    N(z) = 4, N(w) = 1 \,.
+  \]
   Da es aber kein $z' \in R$ mit $N(z') = 2$ gibt, muss $N(z) = 1$ oder $N(w) = 1$ gelten.
   Somit ist $z$ oder $w$ eine Einheit.
   Die Irreduziblität von $3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ ergibt sich analog.
@@ -886,7 +898,7 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
 
 \subsection{Prim- und irreduzible Elemente im Allgemeinen}
 
-Es sei $p \in R$.
+Es sei $R$ ein Integritätsbereich, und $p \in R$.
 
 \begin{lemma}
   Ist $p$ prim, so ist $p$ auch irreduzibel.
@@ -896,11 +908,14 @@ Es sei $p \in R$.
   Ist $R$ ein Hauptidealring, so sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
+      Das Ideal $\genideal{p}$ ist maximal.
+    \item
+      Das Ideal $\genideal{p}$ ist prim.
+    \item
       Das Element $p$ ist prim.
     \item
       Das Element $p$ ist irreduzibel.
-    \item
-      Das Ideal $\genideal{p}$ ist maximal.
+
   \end{enumerate}
 \end{lemma}
 
@@ -947,7 +962,7 @@ Es sei $R$ ein kommutativer Ring
 \begin{definition}
   Es sei $R$ ein faktorieller Ring und es seien $a_1, \dotsc, a_n \in R$.
   Die Elemente $a_1, \dotsc, a_n$ sind \emph{\textup(insgesamt\textup) teilerfremd}, wenn $\ggT(a_1, \dotsc, a_n) = 1$ gilt.
-  Mit anderen Worten:
+  In anderen Worten:
   Jedes Element $a \in R$ mit $a \divides a_i$ für alle $i$ ist bereits eine Einheit.
 \end{definition}
 
@@ -969,7 +984,7 @@ Es sei $R$ ein kommutativer Ring
 \end{lemma}
 
 \begin{corollary}
-  Ist $R$ ein Hauptidealring, so sind je zwei Elemente $a, b \in R$ genau dann teilerfremd, wenn $\genideal{a} + \genideal{b} = R$ gilt.
+  Ist $R$ ein Hauptidealring, so sind $a, b \in R$ genau dann teilerfremd, wenn $\genideal{a} + \genideal{b} = R$ gilt.
 \end{corollary}
 
 Ist $R$ ein euklidischer Ring mit Graddabbildung $\deg$, so lässt sich der größte gemeinsame Teiler von $f, g \in R$ mithilfe des \emph{euklidischen Algortihmus} berechnen:
@@ -1020,7 +1035,7 @@ Es lassen sich dann auch Koeffizienten $c, d \in R$ mit $\ggT(a,b) = ca + db$ be
 Es sei $R$ ein faktorieller Ring.
 
 \begin{definition}
-  Ein Polynom $f = \sum_{k=0}^n a_k t^k \in R[t]$ ist \emph{primitiv}, wenn die Koeffizienten $a_0, \dotsc, a_n$ insgesamt teilerfremd sind, d.h.\ für $r \in R$ mit $r \divides a_k$ für alle $k = 0, \dotsc, n$ gilt bereits $r \in \unitgroup{R}$.
+  Ein Polynom $f = \sum_{i=0}^n a_i t^i \in R[t]$ ist \emph{primitiv}, wenn die Koeffizienten $a_0, \dotsc, a_n$ insgesamt teilerfremd sind.
 \end{definition}
 
 \begin{theorem}[Satz von Gauß]
@@ -1070,11 +1085,11 @@ Es sei $R$ ein faktorieller Ring.
 
 
 \begin{proposition}[Eisenstein]
-  Es sei $f = \sum_{k=0}^n a_k t^k \in R[t]$ primitiv, und es gebe $p \in R$ prim mit
+  Es sei $f = \sum_{i=0}^n a_i t^i \in R[t]$ primitiv, und es gebe $p \in R$ prim mit
   \[
     p \notdivides a_n \,,
     \qquad
-    \text{$p \divides a_k$ für alle $k < n$} \,,
+    \text{$p \divides a_i$ für alle $i < n$} \,,
     \qquad
     p^2 \notdivides a_0 \,.
   \]
@@ -1082,11 +1097,11 @@ Es sei $R$ ein faktorieller Ring.
 \end{proposition}
 
 \begin{proposition}[Reduktionskriterium]
-  Es sei $f = \sum_{k=0}^n a_k t^k \in R[t]$ primitiv.
-  Es sei $p \in R$ prim, und für jedes Polynom $g = \sum_{k=0}^m b_k t^k \in R[t]$ sei
+  Es sei $f = \sum_{i=0}^n a_i t^i \in R[t]$ primitiv.
+  Es sei $p \in R$ prim, und für jedes Polynom $g = \sum_{j=0}^m b_j t^j \in R[t]$ sei
   \[
               \class{g}
-    \defined  \sum_{k=0}^m \class{b_k} t^k
+    \defined  \sum_{j=0}^m \class{b_j} t^j
     \in       (R/\genideal{p})[t]
   \]
   das Polynom, dass durch Reduzieren der Koeffizienten modulo $p$ entsteht.
@@ -1143,9 +1158,25 @@ Gilt dabei $I_j + I_k = R$ für alle $j \neq k$, so ist $p$ auch surjektiv:
   \]
 \end{corollary}
 
-
-
-% TODO: Calculations for Z
+\begin{corollary}
+  Sind $n_1, \dotsc, n_k \in \Integer$ und $b_1, \dotsc, b_k \in \Integer$, und ist $x_0 \in \Integer$ eine Lösung des Systems simultaner Kongruenzen
+  \[
+    \left\{
+      \begin{array}{ccll}
+        x &\equiv& b_1  & \pmod{n_1}  \,, \\
+        x &\equiv& b_2  & \pmod{n_2}  \,, \\
+          &\vdots&      &                 \\
+        x &\equiv& b_k  & \pmod{n_k}  \,, \\
+      \end{array}
+    \right
+  \]
+  so ist die Lösungsmenge dieses Systems von Kongruenzen durch
+  \[
+      x_0
+    + \genideal{ \kgV(n_1, \dotsc, n_k) }
+  \]
+  gegeben.
+\end{corollary}
 
 
 
