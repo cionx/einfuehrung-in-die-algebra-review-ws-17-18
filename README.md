@@ -1,4 +1,4 @@
-# _Einführung in die Algebra_ Review, WS 17/18[![Build Status](https://travis-ci.org/cionx/einfuehrung-in-die-algebra-review-ws-17-18.svg?branch=master)][-1]
+# _Einführung in die Algebra_ Review, WS 17/18 [![Build Status](https://travis-ci.org/cionx/einfuehrung-in-die-algebra-review-ws-17-18.svg?branch=master)][-1]
 
 These are materials for a review course for the lecture _Einführung in die Algebra_, which was held at the University of Bonn during the winter semester of 2017/18.
 Compiled versions of the notes and exercise sheets are available via the following links:
