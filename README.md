@@ -5,8 +5,8 @@ Compiled versions of the notes and exercise sheets are available via the followi
 
 -  [notes][0]
 -  [sheet 1][1]
--  sheet 2
--  sheet 3
+-  [sheet 2][2]
+-  [sheet 3][3]
 -  sheet 4
 -  sheet 5
 
@@ -18,3 +18,5 @@ All materials are in German
 
 [0]: https://github.com/cionx/einfuehrung-in-die-algebra-review-ws-17-18/raw/gh-pages/notes/notes.pdf
 [1]: https://github.com/cionx/einfuehrung-in-die-algebra-review-ws-17-18/raw/gh-pages/exercises/sheet_1.pdf
+[2]: https://github.com/cionx/einfuehrung-in-die-algebra-review-ws-17-18/raw/gh-pages/exercises/sheet_2.pdf
+[3]: https://github.com/cionx/einfuehrung-in-die-algebra-review-ws-17-18/raw/gh-pages/exercises/sheet_3.pdf
