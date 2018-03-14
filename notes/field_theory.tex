@@ -6,6 +6,20 @@
   Dann ist $L$ eine \emph{Körpererweiterung} von $K$, notiert als $L/K$.
 \end{definition}
 
+\begin{lemma}
+  Ist $L$ ein Körper, so ist eine Teilmenge $K \subseteq L$ genau dann ein Unterkörper, wenn für alle $x, y, z \in K$, $z \neq 0$ auch
+  \[
+    1 \in K \,,
+    \qquad
+    x + y \in K \,,
+    \qquad
+    xy \in K \,,
+    \qquad
+    z^{-1} \in K \,.
+  \]
+
+\end{lemma}
+
 \begin{definition}
   Ein Ringhomomorphismus $K \to L$ zwischen Körpern $K$, $L$ ist ein \emph{Körperhomomorphismus}.
 \end{definition}
@@ -14,7 +28,7 @@
   Jeder Körperhomomorphismus ist injektiv.
 \end{lemma}
 
-Ist $\varphi \colon K \to L$ ein Körperhomomorphismus, so induziert $\varphi$ also einen Isomorphismus von Körpern $\induced{\varphi} \colon  K \to \im(\varphi)$.
+Ist $\varphi \colon K \to L$ ein Körperhomomorphismus, so induziert $\varphi$ also einen Körperisomorphismus $\induced{\varphi} \colon  K \to \im(\varphi)$.
 Indem man $K$ mit dem Unterkörper $\im(\varphi)$ von $L$ identifiziert, lässt sich $K$ als ein Unterkörper von $L$ auffassen.
 
 \begin{definition}
@@ -22,6 +36,8 @@ Indem man $K$ mit dem Unterkörper $\im(\varphi)$ von $L$ identifiziert, lässt 
   \[
               \generated{S}_{\text{Körper}}
     \defined  \bigcap_{\substack{\text{Unterkörper} \\ K' \subseteq K \\S \subseteq K'}} K'
+    =         K(1)
+    =         K(\emptyset)
   \]
   der \emph{von $S$ erzeugte Unterkörper}.
   Für jeden Unterkörper $K' \subseteq K$ mit $S \subseteq K'$ gilt also $\generated{S}_{\text{Körper}} \subseteq K'$.
@@ -33,7 +49,7 @@ Indem man $K$ mit dem Unterkörper $\im(\varphi)$ von $L$ identifiziert, lässt 
     =         \bigcap_{\substack{\text{Zwischenkörper} \\ K \subseteq L' \subseteq L \\ S \subseteq L'}} L'
   \]
   die \emph{von $S$ erzeugt} Zwischenerweiterung.
-  Für jeden Unterkörper $L' \subseteq L$ mit $S \subseteq L'$ gilt also $K(S) \subseteq L$.
+  Für jeden Zwischenkörper $K \subseteq L' \subseteq L$ mit $S \subseteq L'$ gilt also $K(S) \subseteq L$
 \end{definition}
 
 
@@ -47,7 +63,7 @@ Dann ist $P \defined \bigcap_{\text{Unterkörper $K' \subseteq K$}} K'$ ein Unte
 Es handelt sich um den kleinsten Unterkörper, der in $K$ enthalten ist, d.h.\ für jeden anderen Unterkörper $K' \subseteq L$ gilt $P \subseteq K'$.
 
 \begin{definition}
-  Der Körper $K$ wie oben ist der \emph{Primkörper} von $K$.
+  Der Körper $P$ wie oben ist der \emph{Primkörper} von $K$.
 \end{definition}
 
 Zur Bestimmung des Primkörpers betrachtet man den Ringhomomorphismus
@@ -75,7 +91,7 @@ Gilt $\ringchar{K} = 0$, so induziert $\varphi$ hingegen einen Körperhomomorphi
   \quad   \frac{n}{m}
   \mapsto \frac{n \cdot 1_K}{m \cdot 1_K} \,.
 \]
-In beiden Fällen ist $\im(\induced{\varphi})$ der von $1_K$ erzeugte Unterkörper von $K$, also der Primkörper $K$.
+In beiden Fällen ist $\im(\induced{\varphi})$ der von $1_K$ erzeugte Unterkörper von $K$, also der Primkörper $P$.
 Es gilt also
 \[
           P
@@ -84,7 +100,8 @@ Es gilt also
           \Rational & \text{falls $\ringchar{K} = 0$} \,.
         \end{cases}
 \]
-Mithilfe des obigen Isomorphismus $\induced{\varphi}$ wird dann $P$ mit $\Finite_p$, bzw.\ $\Rational$ identifiziert.
+Mithilfe des obigen Isomorphismus $\induced{\varphi}$ wird $P$ im Folgenden mit $\Finite_p$, bzw.\ $\Rational$ identifiziert.
+Ist dabei $K' \subseteq K$ ein Unterkörper, so haben $K$ und $K'$ den gleichen Primkörper.
 
 \begin{corollary}
   Sind $K$ und $L$ zwei Körper mit $\ringchar{K} \neq \ringchar{L}$, so gibt es keinen Körperhomomorphismus $K \to L$.
@@ -108,7 +125,7 @@ Es seien $M/L/K$ Körpererweiterungen.
 \end{lemma}
 
 \begin{example}
-  Für jeden $\Complex$-Vektorraum $V$ gilt $\dim_\Real(V) = 2 \dim_\Complex(V)$ mit $2 = \dim_\Real(\Complex)$.
+  Für jeden $\Complex$-Vektorraum $V$ gilt $\dim_\Real(V) = 2 \dim_\Complex(V)$.
 \end{example}
 
 \begin{corollary}[Multiplikativität des Grades]
@@ -153,7 +170,7 @@ Es seien $M/L/K$ eine Körpererweiterung.
 \end{example}
 
 \begin{lemma}
-  Ist die Erweiterung $L/K$ endlich, so ist sie algebraisch.
+  Ist die Erweiterung $L/K$ endlich, so ist $L/K$ auch algebraisch.
 \end{lemma}
 
 \begin{corollary}
@@ -166,7 +183,7 @@ Es seien $M/L/K$ eine Körpererweiterung.
 \end{corollary}
 
 \begin{corollary}
-  Für die Erweiterung $L/K$ sind die folgenden Bedigungen äquivalent:
+  Für die Erweiterung $L/K$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       $L/K$ ist endlich.
@@ -230,7 +247,7 @@ Das Ideal $\genideal{m_a}$ ist also maximal, und das Polynom $m_a$ somit irreduz
 Ist $p \in K[t]$ ein weiteres irreduzibles normiertes Polynom mit $p(a) = 0$, so gilt $m_a \divides p$ und somit $p = m_a$.
 
 \begin{corollary}
-  Ist $a \in L$ algebraisch über $K$, so ist $m_a \in K[t]$ das eindeutige normierte irreduzible Polynom, dass $a$ als Nullstelle hat.
+  Ist $a \in L$ algebraisch über $K$, so ist $m_a \in K[t]$ das eindeutige normierte irreduzible Polynom, das $a$ als Nullstelle hat.
 \end{corollary}
 
 \begin{example}
@@ -272,24 +289,84 @@ Also gilt dann $K(a) \cong K(t)$.
 
 Es sei $L/K$ eine Körpererweiterung, und es seien $L_1, L_2$ zwei Zwischenkörper dieser Erweiterung, d.h.\ es seien $L_1, L_2 \subseteq L$ Unterkörper mit $K \subseteq L_1, L_2$.
 
+
 \begin{definition}
   Das \emph{Kompositum} der Zwischenkörper $L_1, L_2$ ist der Zwischenkörper
   \[
               L_1 L_2
     \defined  K(L_1 \cup L_2)
     =         L_1(L_2)
-    =         L_2(L_1) \,.
+    =         L_2(L_1) \,,
   \]
+  alse der kleinste Zwischenkörper der Erweiterung $L/K$, der $L_1$ und $L_2$ enthält.
 \end{definition}
 
-\begin{lemma}
+Dies lässt sich wie folgt darstellen:
+\[
+  \begin{tikzcd}
+      {}
+    & L_1 L_2
+    & {}
+    \\
+      L_1
+      \arrow[-]{ru}
+    & {}
+    & L_2
+      \arrow[-]{lu}
+    \\
+      {}
+    & K
+      \arrow[-]{lu}
+      \arrow[-]{ru}
+    & {}
+  \end{tikzcd}
+\]
+Dabei lässt sich auch noch die Zwischenerweiterung $L_1 \cap L_2$ einzeichnen:
+\[
+  \begin{tikzcd}
+      {}
+    & L_1 L_2
+    & {}
+    \\
+      L_1
+      \arrow[-]{ru}
+    & {}
+    & L_2
+      \arrow[-]{lu}
+    \\
+      {}
+    & L_1 \cap L_2
+      \arrow[-]{lu}
+      \arrow[-]{ru}
+    & {}
+    \\
+      {}
+    & K
+      \arrow[-]{u}
+    & {}
+  \end{tikzcd}
+\]
+
+\begin{proposition}
+  Es seien $L_1/K$, $L_2/K$ algebraisch.
   \begin{enumerate}
     \item
       Es gelten $\fieldindex{L_1}{K}, \fieldindex{L_2}{K} \divides \fieldindex{L_1 L_2}{K}$.
     \item
+      Sind $L_1/K$, $L_2/K$ algebraisch mit $K$-Basen $(a_i)_{i \in I}$ und $(b_j)_{j \in J}$, so ist $(a_i b_j)_{i \in I, j \in J}$ ein $K$-Erzeugendensystem von $L_1 L_2$.
+    \item
       Es gilt $\fieldindex{L_1 L_2}{K} \leq \fieldindex{L_1}{K} \fieldindex{L_2}{K}$.
   \end{enumerate}
-\end{lemma}
+\end{proposition}
+
+\begin{corollary}
+  Sind $L_1/K$, $L_2/K$ endlich und $\fieldindex{L_1}{K}$, $\fieldindex{L_2}{K}$ teilerfremd, so gilt
+  \[
+      \fieldindex{L_1 L_2}{K}
+    = \fieldindex{L_1}{K} \fieldindex{L_2}{K} \,.
+  \]
+\end{corollary}
+
 
 
 
@@ -297,22 +374,54 @@ Es sei $L/K$ eine Körpererweiterung, und es seien $L_1, L_2$ zwei Zwischenkörp
 
 \section{\texorpdfstring{$K$}{K}-Homomorphismen}
 
-Es seien $L/K$ und $L'/K$ zwei Körpererweiterungen.
+Es seien $L/K$ und $L'/K$ zwei Körpererweiterungen eines Körpers $K$.
 
 \begin{definition}
-  Ein \emph{$K$-Homomorphismus} $\varphi \colon L_1 \to L_2$ ist ein $K$-linearer Körperhomomorphismus .
+  Ein $K$-linearer Körperhomomorphismus $\varphi \colon L_1 \to L_2$ ist ein \emph{$K$-Homomorphismus}.
+  Ist $\varphi$ zudem ein Isomorphismus, bzw.\ Automorphismus, so ist $\varphi$ ein \emph{$K$-Isomorphismus}, bzw.\ \emph{$K$-Automorphismus}.
 \end{definition}
 
+
 \begin{remark}
-  Die $K$-Linearität von $\varphi$ ist äquivalent dazu, dass $\restrict{\varphi}{K} = \id_K$ gilt.
+  Die $K$-Linearität von $\varphi$ ist äquivalent dazu, dass $\restrict{\varphi}{K} = \id_K$ gilt, sowie äquivalent zur Kommutativität des folgenden Diagramms:
+  \[
+    \begin{tikzcd}
+        L
+        \arrow{rr}[above]{\varphi}
+      & {}
+      & L'
+      \\
+        {}
+      & K
+        \arrow[right hook->]{ru}
+        \arrow[left hook->]{lu}
+      & {}
+    \end{tikzcd}
+  \]
 \end{remark}
 
 \begin{example}
-  Ist $P$ der Primkörper von $K$, so ist jeder Körperhomomorphismus $L_1 \to L_2$ bereits $P$-linear, also ein $P$-Homomorphismus.
+  Fasst man zwei Körper $L_1, L_2$ gleicher Charakteristik als Körpererweiterungen $L_1/P$, $L_2/P$ des gemeinsamen Primkörpers $P$ auf, so ist jeder Körperhomomorphismus $\varphi \colon L_1 \to L_2$ bereits $P$-linear, und somit ein $P$-Homomorphismus:
+  Es gibt nämlich nur genau einen Körperhomomorphismus $P \to L_2$, weshalb das Diagramm
+  \[
+    \begin{tikzcd}
+        L_1
+        \arrow{rr}[above]{\varphi}
+      & {}
+      & L_2
+      \\
+        {}
+      & P
+        \arrow[right hook->]{ru}
+        \arrow[left hook->]{lu}
+      & {}
+    \end{tikzcd}
+  \]
+  notwendigerweise kommutiert.
 \end{example}
 
 \begin{definition}
-  Es ist $\Aut{L/K} \defined \{\text{$K$-Automorphismen $L \to L$}\}$ die \emph{Automorphismengruppe} der Erweiterung $L/K$.
+  Es ist $\Aut{L/K} \defined \{\text{$K$-Automorphismen $L \to L$}\}$ die \emph{Automorphismengruppe} der Erweiterung $L/K$j
 \end{definition}
 
 Wie der Name vermuten lässt, bildet $\Aut{L/K}$ zusammen mit der Komposition von Abbildungen eine Gruppe.
@@ -347,10 +456,10 @@ Wie der Name vermuten lässt, bildet $\Aut{L/K}$ zusammen mit der Komposition vo
       & L'
       \\
         K
-        \arrow[hook]{u}
+        \arrow[left hook ->]{u}
         \arrow{r}[above]{\psi}
       & K'
-        \arrow[hook]{u}
+        \arrow[right hook ->]{u}
     \end{tikzcd}
   \]
   Dann ist $a \in L$ genau dann eine Nullstelle von $f \in K[t]$, wenn $\varphi(a)$ eine Nullstelle von $\psi_*(f) \in L'[t]$ ist, wobei $\psi_*$ der von $\psi$ induzierte Ringhomomorphismus
@@ -358,23 +467,46 @@ Wie der Name vermuten lässt, bildet $\Aut{L/K}$ zusammen mit der Komposition vo
             \psi_*
     \colon  K[t]
     \to     K'[t] \,,
-    \quad   \sum_i a_i t^i
-    \mapsto \sum_i \psi(a_i) t^i
+    \quad   \sum_{i=0}^n a_i t^i
+    \mapsto \sum_{i=0}^n \psi(a_i) t^i
   \]
   ist.
 \end{remark}
 
-\begin{proposition}
+\begin{theorem}
+  \label{theorem: zeroes to zeroes}
   Es sei $a \in L$.
-  Für jede Nullstelle $a' \in L'$ des Minimalpolynoms $m_a \in K[t]$ gibt es dann einen eindeutigen $K$-Homomorphismus $\varphi \colon a' \to L'$ mit $\varphi(a) = a'$.
+  Für jede Nullstelle $a' \in L'$ des Minimalpolynoms $m_a \in K[t]$ gibt es dann einen eindeutigen $K$-Homomorphismus $\varphi \colon K(a') \to L'$ mit $\varphi(a) = a'$.
   Es ergibt sich somit eine Bijektion
   \begin{align*}
                             \{ \text{$K$-Homomorphismen $K(a) \to L'$} \}
     &\xlongrightarrow{\sim} \{ \text{Nullstellen von $m_a$ in $L'$} \} \,,  \\
                             \varphi
-    &\mapsto                \varphi(a) \,.
+    &\longmapsto            \varphi(a) \,.
   \end{align*}
-\end{proposition}
+\end{theorem}
+
+\begin{example}
+  Die Erweiterung $\Complex/\Real$ ist endlich mit $\Complex = \Real(i)$, wobei $t^2 + 1 \in \Real[t]$ das Minimalpolynom von $i$ ist.
+  Es gilt somit
+  \[
+  \arraycolsep=1pt
+  \begin{array}{rcl}
+      \Aut{\Complex/\Real}
+    & \xlongequal[\ref{lemma: homomorphisms are automorphisms for finite extensions}]{}
+    & \{ \text{$\Real$-Homomorphismen $\Real(i) \to \Complex$} \}
+    \\
+      {}
+    & \xleftrightarrow[\ref{theorem: zeroes to zeroes}]{}
+    & \{ \text{Nullstellen von $t^2 + 1 \in \Complex$}
+    \\
+      {}
+    & \xlongequal[\phantom{\ref{lemma: homomorphisms are automorphisms for finite extensions}}]{}
+    & \{i, -i\} \,.
+  \end{array}
+  \]
+\end{example}
+
 
 
 
@@ -404,6 +536,8 @@ Es lässt sich also eine Körperweiterung $L/K$ konstruieren, in der $f$ eine Nu
     \item
       Jedes Polynom $p \in K[t]$ zerfällt in Linearfaktoren.
     \item
+      Die normierten irreduziblen Polynome in $K[t]$ sind genau die Linearfaktoren.
+    \item
       Für jede algebraische Körpererweiterung $L/K$ gilt bereits $L = K$.
   \end{enumerate}
 \end{lemma}
@@ -429,7 +563,7 @@ Es lässt sich also eine Körperweiterung $L/K$ konstruieren, in der $f$ eine Nu
 \begin{example}
   \begin{enumerate}
     \item
-      Es ist $\Complex$ ein algebraischer Abschluss von $\Real$.
+      Nach dem Fundamentalsatz der Algebra ist $\Complex$ ein algebraischer Abschluss von $\Real$.
     \item
       Es ist $\Complex$ kein algebraischer Abschluss von $\Rational$, da $\Complex/\Rational$ nicht algebraisch ist.
   \end{enumerate}
@@ -470,7 +604,7 @@ Also ist $L$ ein algebraischer Abschluss von $K$.
   \leavevmode
   \begin{enumerate}
     \item
-      Ist $L/K$ eine algebraische Körpererweiterung und $L'$ ein algebraisch abgeschlossener Körper, so setzt sich jeder Körperhomomorphismus $\varphi \colon K \to L'$ zu einem Körperhomomorphismus $\psi \colon L \to L'$ fort, d.h.\ es gilt $\restrict{\psi}{K} = \varphi$.
+      Ist $L/K$ eine algebraische Körpererweiterung und $L'$ ein algebraisch abgeschlossener Körper, so setzt sich jeder Körperhomomorphismus $\varphi \colon K \to L'$, also Einbettung $K \hookrightarrow L'$ zu einem Körperhomomorphismus $\psi \colon L \to L'$, also einer Einbettung $L \hookrightarrow{L'}$, fort d.h.\ es gilt $\restrict{\psi}{K} = \varphi$.
       \[
         \begin{tikzcd}
             L
@@ -478,7 +612,7 @@ Also ist $L$ ein algebraischer Abschluss von $K$.
           & L'
           \\
             K
-            \arrow[hook]{u}
+            \arrow[left hook ->]{u}
             \arrow{ru}[below right]{\varphi}
           & {}
         \end{tikzcd}
@@ -488,19 +622,18 @@ Also ist $L$ ein algebraischer Abschluss von $K$.
       \[
         \begin{tikzcd}
             L
-            \arrow[dashed]{r}[above]{\psi}
+            \arrow[dashed]{r}[below]{\psi}[above]{\sim}
           & L'
           \\
             K
-            \arrow[hook]{u}
-            \arrow{r}[above]{\varphi}
+            \arrow[left hook ->]{u}
+            \arrow{r}[below]{\varphi}[above]{\sim}
           & K'
             \arrow[hook]{u}
         \end{tikzcd}
       \]
   \end{enumerate}
 \end{lemma}
-
 
 \begin{corollary}
   Je zwei algebraische Abschlüsse $\closure{K}, \closure{K}'$ von $K$ sind $K$-isomorph.
@@ -521,53 +654,62 @@ Es sei $L/K$ eine Körpererweiterung.
   Für jeden Zwischenkörper $L/L'/K$, so dass alle $f_i$ über $L'$ in Linearfaktoren zerfallen, gilt also bereits $L' = L$.
 \end{definition}
 
-\begin{lemma}
+Ist $L/K$ ein Zerfällungskörper, so wird die Erweiterung $L/K$ von algebraischen Elementen (nämlich den Nullstellen der $f_i$) erzeugt, und ist somit algebraisch.
+
+\begin{lemma}[Existenz von Zerfällungskörpern]
   Für jede Familie $(f_i)_{i \in I}$ nicht-konstanter Polynome $f_i \in K[t]$ existiert ein Zerfällungskörper.
 \end{lemma}
 
 \begin{lemma}
   Es sei $(f_i)_{i \in I}$ eine Familie von Polynomen $f_i \in K[t]$.
-  Es sei $\varphi \colon K \to K'$ ein Körperisomorphismus und $\varphi_* \colon K[t] \to K'[t]$, $\sum_i a_i t^i \mapsto \sum_i \varphi(a_i) t^i$ der induzierte Ringhomomorphismus.
+  Es sei $\varphi \colon K \to K'$ ein Körperisomorphismus und $\varphi_* \colon K[t] \to K'[t]$, $\sum_{i=0}^n a_i t^i \mapsto \sum_{i=0}^n \varphi(a_i) t^i$ der induzierte Ringhomomorphismus.
   Ist $L$ ein Zerfällungkörper der Familie $(f_i)_{i \in I}$ und $L'$ ein Zerfällungskörper der Familie $(\varphi_*(f_i))_{i \in I}$, so setzt sich $\varphi$ zu einem Körperisomorphismus $\psi \colon L \to L'$ fort, d.h.\ es gilt $\restrict{\psi}{K} = \varphi$.
   \[
     \begin{tikzcd}
       L
-        \arrow{r}[above]{\psi}
+        \arrow[dashed]{r}[above]{\psi}
       & L'
       \\
         K
-        \arrow[hook]{u}
+        \arrow[left hook ->,]{u}
         \arrow{r}[above]{\varphi}
       & K'
-        \arrow[hook]{u}
+        \arrow[right hook ->]{u}
     \end{tikzcd}
   \]
 \end{lemma}
 
-\begin{corollary}
+\begin{corollary}[Eindeutigkeit von Zerfällungskörpern]
   Je zwei Zerfällungskörper $L, L'$ einer Familie $(f_i)_{i \in I}$ von Polynomen $f_i \in K[t]$ sind $K$-isomorph.
 \end{corollary}
 
 Ist $L$ ein Zerfällungskörper einer Familie von Polynom $(f_i)_{i \in I}$, so wird die Erweiterung $L/K$ von den Nullstellen der $f_i$ erzeugt.
 Ist $L'/K$ eine weitere Körpererweiterung und $\varphi \colon L \to L'$ ein $K$-Homomorphismus, so ist für jede Nullstelle $a \in L$ von $f_i$, auch $\varphi(a) \in L'$ eine Nullstelle von $f_i$.
 Für die Menge $N = \{ a_1, \dotsc, a_n \}$ aller Nullstellen von $f_i$ in $L$ ist deshalb das Bild $\varphi(N)$ die Menge aller Nullstellen von $f_i$ in $L'$.
-Deshalb ist $\varphi(N)$ unabhängig von $\varphi$.
-Da $L$ von den Nullstellen der $f_i$ erzeugt wird, ist somit $\varphi(L)$ unabhängig von der Wahl von $f_i$.
-Dies führt zu folgendem Ergebnis:
+Deshalb ist $\varphi(N)$ unabhängig von der Wahl von $\varphi$, d.h.\ für jeden weiteren $K$-Homomorphismus $\psi \colon L \to L'$ gilt $\varphi(N) = \psi(N)$.
+Da $L$ von den Nullstellen der $f_i$ erzeugt wird, ist somit das gesamte Bild $\varphi(L)$ unabhängig von der Wahl von $f_i$.
+
+\begin{example}
+  Für jeden $\Real$-Homomorphismus $\varphi \colon \Complex \to \Complex$ git $\varphi(\{i, -i\}) = \{i, -i\}$.
+\end{example}
 
 \begin{proposition}
-  Die folgenden Bedingungen sind äquivalent:
+  Ist $L/K$ algebraisch, so sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Es ist $L$ der Zerfällungskörper einer Familie $(f_i)_{i \in I}$ von Polynomen $f_i \in K[t]$.
     \item
-      Für jede Körpererweiterung $L'/K$ haben alle Körperhomomorphismen $L \to L'$ das gleiche Bild.
+      Für jede Körpererweiterung $L'/K$ haben alle $K$-Homomorphismen $L \to L'$ das gleiche Bild.
     \item
-      Für jede algebraische Körpererweiterung $L'/K$ haben alle Körperhomomorphismen $L \to L'$ das gleiche Bild.
+      Für jede algebraische Körpererweiterung $L'/K$ haben alle $K$-Homomorphismen $L \to L'$ das gleiche Bild.
     \item
       Ist $\closure{K}$ ein algebraischer Abschluss von $K$, so haben alle $K$-Homomorphismen $L \to \closure{K}$ das gleiche Bild.
     \item
-      Ist $\closure{K}$ ein algebraischer Abschluss von $K$, so schränkt sich jeder $K$-Homomorphismus $L \to \closure{K}$ zu einem $K$-Automorphismus $L \to L$ ein.
+      Ist $\closure{K}$ ein algebraischer Abschluss von $K$ mit $L \subseteq \closure{K}$, so hat jeder $K$-Homo\-mor\-phis\-mus $L \to \closure{K}$ das Bild $\varphi(L) = L$.
+    \item
+      Ist $\closure{K}$ ein algebraischer Abschluss von $K$ mit $L \subseteq \closure{K}$, so schränkt sich jeder $K$-Homomorphismus $L \to \closure{K}$ zu einem $K$-Automorphismus $L \to L$ ein.
+    \item
+      Jedes irreduzible Polynom $f \in K[t]$, dass in $L$ eine Nullstelle hat, zerfällt in $L$ bereits in Linearfaktoren.
   \end{enumerate}
 \end{proposition}
 
@@ -577,7 +719,6 @@ Dies führt zu folgendem Ergebnis:
 
 \begin{example}
   Körpererweiterungen $L/K$ vom Grad $\fieldindex{L}{K} = 2$ sind immer normal.
-% TODO: Add actual examples.
 \end{example}
 
 \begin{lemma}
