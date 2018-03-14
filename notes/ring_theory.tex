@@ -558,7 +558,7 @@ Es sei $R$ ein kommutativer Ring.
 Es sei $R$ ein kommutativer Ring.
 
 \begin{definition}
-  Eine Teilmenge $S \subseteq R$ ist \emph{multiplikativ \textup(abgeschlossen\textup)}, wenn $1 \in S$ gilt, und für alle $s, t \in S$ auch $st \in S$.
+  Eine Teilmenge $S \subseteq R$ ist \emph{multiplikativ \textup(abgeschlossen\textup)}, wenn $1 \in S$ gilt, und für alle $s, t \in S$ auch $st \in S$ gilt.
 \end{definition}
 
 Ist $S \subseteq R$ eine multiplikative Teilmenge, so wird auf $R \times S$ durch
@@ -716,11 +716,11 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
 \end{definition}
 
 \begin{definition}
-  Ein \emph{euklidischer Ring} ist ein kommutativer Ring $R$ zusammen mit einer \emph{Gradabbildung} $\deg \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
+  Ein \emph{euklidischer Ring} ist ein kommutativer Ring $R$ zusammen mit einer \emph{Gradabbildung} $\delta \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
   \[
     f = qg + r \,,
     \qquad
-    \text{wobei $r = 0$ oder $\deg(r) < \deg(g)$} \,.
+    \text{wobei $r = 0$ oder $\delta(r) < \delta(g)$} \,.
   \]
 \end{definition}
 
@@ -732,24 +732,24 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
 \begin{example}
   \begin{enumerate}
     \item
-      Der Ring $\Integer$ ist ein euklidischer Ring bezüglich der Gradabbildung $\deg(n) \defined \abs{x}$.
-      Die Folgerung, dass $\Integer$ ein Hauptidealring ist, sowie die obige explizite Beschreibung eines Erzeugers eines Ideal $I \ideal R$ entspricht genau Lemma~\ref{lemma: subgroups of Z}.
+      Der Ring $\Integer$ ist ein euklidischer Ring bezüglich der Gradabbildung $\delta(n) \defined \abs{x}$.
+      Die Folgerung, dass $\Integer$ ein Hauptidealring ist, sowie die obige explizite Beschreibung eines Erzeugers eines Ideal $I \ideal R$, entspricht genau Lemma~\ref{lemma: subgroups of Z}.
     \item
-      Ist $K$ ein Körper, so ist der Polynomring $K[t]$ ein euklidischer Ring bezüglich der üblichen Gradabbildung $\deg$.
+      Ist $K$ ein Körper, so ist der Polynomring $K[t]$ ein euklidischer Ring bezüglich der üblichen Gradabbildung $\delta \defined \deg$.
       Insbesondere ist $K[t]$ ein Hauptidealring.
   \end{enumerate}
 \end{example}
 
 \begin{remark}
-  Ist $R$ ein kommutativer Ring, so ist für jedes $a \in R$ ist das Ideal $\genideal{t, a} \ideal R[t]$ genau dann ein Hauptideal, wenn $a$ eine Einheit in $R$ ist.
+  Ist $R$ ein Integritätsbereich Ring, so ist für jedes $a \in R$ ist das Ideal $\genideal{t, a} \ideal R[t]$ genau dann ein Hauptideal, wenn $a$ eine Einheit in $R$ ist.
   Deshalb ist $R[t]$ genau dann ein Hauptidealring, wenn $R$ ein Körper ist.
   
-  So sind etwa $\Integer[t]$ und $K[t,u] \cong K[t][u]$ für einen Körper $K$ keine Hauptidealringe, denn $\genideal{t, 2} \ideal \Integer[t]$ und $\genideal{t, u} \in K[t][u]$ sind keine Hauptideale.
+  So sind etwa $\Integer[t]$ und $K[t,u] \cong K[t][u]$ für einen Körper $K$ keine Hauptidealringe, denn $\genideal{t, 2} \ideal \Integer[t]$ und $\genideal{t,u} \ideal K[t][u]$ sind keine Hauptideale.
 \end{remark}
 
 \begin{example}
   Es ist $\Integer[\sqrt{-1}] \defined \Integer[i] = \{a + bi \suchthat a, b \in \Integer\}$ ein Unterring von $\Complex$, der Ring der \emph{Gaußschen Zahlen}.
-  Für jedes $z \in \Integer[i]$ ist $N(z) \defined \abs{z}^2 \in \Natural$ die \emph{Norm} von $z$.
+  Für jedes $z = a+ib \in \Integer[i]$ ist $N(z) \defined \abs{z}^2 = a^2 + b^2 \in \Natural$ die \emph{Norm} von $z$.
   Dann ist $\Integer[i]$ zusammen mit der Norm $N$ ein euklidischer Ring:
   
   Für jedes $z \in \Complex$ gibt es ein Element $w \in \Integer[i]$ mit $\abs{z-w} \leq \sqrt{2}/2 = 1/\sqrt{2}$.
@@ -833,7 +833,7 @@ In faktoriellen Ringen muss also nicht zwischen Prim- und irreduziblen Elementen
 Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation: decomposition into irreducibles} als \emph{Primfaktorzerlegung}.
 
 \begin{remark}
-  Ist $R$ faktoriell und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Ässoziiertheitsklassen der Primelemente, so lässt sich jedes Element $r \in R$, $r \neq 0$ als
+  Ist $R$ faktoriell und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Assoziiertheitsklassen der Primelemente, so lässt sich jedes Element $r \in R$, $r \neq 0$ als
   \[
     r = \varepsilon \prod_{p \in \mathcal{P}} p^{\nu_p}
   \]
@@ -860,8 +860,8 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
 \end{example}
 
 \begin{example}
-  Es ist $\Integer[\sqrt{-5}] \defined \Integer[i\sqrt{5}] = \{a + ib\sqrt{5}\}$ ein Unterring von $\Complex$, der \emph{nicht} faktoriell ist:
-  Es sei $R \defined \Integer[\sqrt{-5}]$ und für jedes $z \in R$ sei $N(z) \defined \abs{z}^2$ die \emph{Norm} von $z$.
+  Es ist $\Integer[\sqrt{-5}] \defined \Integer[i\sqrt{5}] = \{a + ib\sqrt{5} \suchthat a, b \in \Integer \}$ ein Unterring von $\Complex$, der \emph{nicht} faktoriell ist:
+  Es sei $R \defined \Integer[\sqrt{-5}]$ und für jedes $z = a +ib\sqrt{5} \in R$ sei $N(z) \defined \abs{z}^2 = a^2 + 5 b^2$ die \emph{Norm} von $z$.
   Dann gilt
   \begin{itemize}
     \item
@@ -871,7 +871,7 @@ Deshalb bezeichnet man für $r \in R$, $r \neq 0$ die Zerlegung \eqref{equation:
   \end{itemize}
   
   Mithilfe der Norm $N$ lassen sich die Einheiten von $R$ bestimmen:
-  Aus $zw = 1$ in $R$ folgt $N(z)N(w) = 1$, also $N(z) = N(w) = 1$ und somit $z, w = \pm 1$.
+  Aus $zw = 1$ in $R$ folgt $N(z)N(w) = 1$ in $\Natural$, also $N(z) = N(w) = 1$ in $\Natural$ und somit $z, w = \pm 1$.
   Somit gilt $\unitgroup{R} = \{1, -1\} = \{z \in R \suchthat N(z) = 1\}$.
   
   Hieraus ergibt sich, dass die Elemente $2, 3, 1 + \sqrt{-5}, 1 - \sqrt{-5}$ irreduzibel in $R$ sind:
@@ -915,11 +915,10 @@ Es sei $R$ ein Integritätsbereich, und $p \in R$.
       Das Element $p$ ist prim.
     \item
       Das Element $p$ ist irreduzibel.
-
   \end{enumerate}
+  Inbesondere ist jedes Primideal in $R$ schon maximal.
 \end{lemma}
 
-% TODO: Counterexample Z[sqrt(-5)]
 
 
 \subsection{\texorpdfstring{$\ggT$}{ggT} und \texorpdfstring{$\kgV$}{kgV}}
@@ -944,18 +943,18 @@ Es sei $R$ ein kommutativer Ring
 
 \begin{lemma}[Berechnung von $\ggT$ und $\kgV$ in faktoriellen Ringen]
   Es sei $R$ ein faktorieller Ring und $\mathcal{P} \subseteq R$ ein Repräsentantensystem der Assoziiertheitsklassen der Primelement von $R$.
-  Es seien $a_1, \dotsc, a_n \in R$ mit Primfaktorzerlegungen
+  Es seien $a_1, \dotsc, a_n \in R$, $a_i \neq 0$ mit Primfaktorzerlegungen
   \[
       a_i
     = \varepsilon_i \prod_{p \in \mathcal{P}} p^{\nu_{p,i}} \,.
   \]
   Dann existieren $\ggT(a_1, \dotsc, a_n)$ und $\kgV(a_1, \dotsc, a_n)$, und es gilt
   \begin{align*}
-        \kgV(a_1, \dotsc, a_n)
-    &=  \prod_{p \in \mathcal{P}} p^{\max \{ \nu_{p,1}, \dotsc, \nu_{p,n} \}}
-  \shortintertext{und}
         \ggT(a_1, \dotsc, a_n)
     &=  \prod_{p \in \mathcal{P}} p^{\min \{ \nu_{p,1}, \dotsc, \nu_{p,n} \}}
+  \shortintertext{und}
+        \kgV(a_1, \dotsc, a_n)
+    &=  \prod_{p \in \mathcal{P}} p^{\max \{ \nu_{p,1}, \dotsc, \nu_{p,n} \}} \,.
   \end{align*}
 \end{lemma}
 
@@ -987,8 +986,8 @@ Es sei $R$ ein kommutativer Ring
   Ist $R$ ein Hauptidealring, so sind $a, b \in R$ genau dann teilerfremd, wenn $\genideal{a} + \genideal{b} = R$ gilt.
 \end{corollary}
 
-Ist $R$ ein euklidischer Ring mit Graddabbildung $\deg$, so lässt sich der größte gemeinsame Teiler von $f, g \in R$ mithilfe des \emph{euklidischen Algortihmus} berechnen:
-Es gibt $q, r \in R$ mit $a = qb + r$, wobei $r = 0$ oder $\deg(r) < \deg(b)$ gilt.
+Ist $R$ ein euklidischer Ring mit Gradabbildung $\delta$, so lässt sich der größte gemeinsame Teiler von $f, g \in R$, $g \neq 0$ mithilfe des \emph{euklidischen Algorithmus} berechnen:
+Es gibt $q, r \in R$ mit $a = qb + r$, wobei $r = 0$ oder $\delta(r) < \delta(b)$ gilt.
 Es gilt dann
 \[
     \ggT(a,b)
@@ -996,11 +995,11 @@ Es gilt dann
   = \ggT(r,b)
   = \ggT(b,r) \,.
 \]
-Iterierart man dieses Vorgehen, so ergibt sich aus $\deg(r) < \deg(b)$, dass nach endlich vielen Schritten der Fall $r = 0$ eintritt.
+Iteriert man dieses Vorgehen, so ergibt sich aus $\delta(r) < \delta(b)$, dass nach endlich vielen Schritten der Fall $r = 0$ eintritt.
 Dann lässt sich nutzen, dass
 \[
     \ggT(a,0)
-  = b
+  = a
 \]
 gilt.
 Es lassen sich dann auch Koeffizienten $c, d \in R$ mit $\ggT(a,b) = ca + db$ bestimmen.
@@ -1008,7 +1007,7 @@ Es lassen sich dann auch Koeffizienten $c, d \in R$ mit $\ggT(a,b) = ca + db$ be
 \begin{example}
   Es gilt
   \begin{align*}
-     &\,  \ggT(84,30)
+     &\,  \ggT(84, 30)
     =     \ggT(2 \cdot 30 + 24, 30) \\
     =&\,  \ggT(30, 24)
     =     \ggT(24 + 6, 24)  \\
@@ -1019,7 +1018,8 @@ Es lassen sich dann auch Koeffizienten $c, d \in R$ mit $\ggT(a,b) = ca + db$ be
   \end{align*}
   Wir erhalten außerdem, dass
   \[
-      6
+      \ggT(84, 30)
+    = 6
     = 30 - 24
     = 30 - (84 - 2 \cdot 30)
     = 3 \cdot 30 - 84 \,.
@@ -1047,7 +1047,7 @@ Es sei $R$ ein faktorieller Ring.
     \item
       Das Polynom $p$ ist primitiv und irreduzibel in $\Quot{R}[t]$.
   \end{itemize}
-  Insbesondere ist ein primitives Polynom $p \in R[t]$ genau dann irreduzibel in $R[t]$, wenn $p$ irreduzibel in $\Quot{R}[t]$ ist.
+  Ein primitives Polynom $p \in R[t]$ ist genau dann irreduzibel in $R[t]$, wenn $p$ irreduzibel in $\Quot{R}[t]$ ist.
 \end{theorem}
 
 \begin{corollary}
@@ -1083,6 +1083,10 @@ Es sei $R$ ein faktorieller Ring.
   \end{enumerate}
 \end{lemma}
 
+\begin{example}
+  Jedes Polynom $f \in \Real[t]$ ungeraden Grades besitzt nach dem Zwischenwertsatz eine Nullstelle;
+  für $\deg(f) \neq 1$ ist $f$ somit reduzibel.
+\end{example}
 
 \begin{proposition}[Eisenstein]
   Es sei $f = \sum_{i=0}^n a_i t^i \in R[t]$ primitiv, und es gebe $p \in R$ prim mit
@@ -1097,15 +1101,15 @@ Es sei $R$ ein faktorieller Ring.
 \end{proposition}
 
 \begin{proposition}[Reduktionskriterium]
-  Es sei $f = \sum_{i=0}^n a_i t^i \in R[t]$ primitiv.
-  Es sei $p \in R$ prim, und für jedes Polynom $g = \sum_{j=0}^m b_j t^j \in R[t]$ sei
+  Es sei $f \in R[t]$ primitiv und $p \in R$ prim, so dass der Leitkoeffizient von $f$ nicht von $p$ geteilt wird.
+  Für jedes Polynom $g = \sum_{j=0}^m b_j t^j \in R[t]$ sei
   \[
               \class{g}
     \defined  \sum_{j=0}^m \class{b_j} t^j
     \in       (R/\genideal{p})[t]
   \]
   das Polynom, dass durch Reduzieren der Koeffizienten modulo $p$ entsteht.
-  Ist $\class{f}$ irreduzibel in $(R/\genideal{p})[t]$, so ist $f$ in $R[t]$ irreduzibel, und somit auch in $\Quot{R}[t]$.
+  Ist $\class{f}$ irreduzibel in $(R/\genideal{p})[t]$, so ist $f$ irreduzibel in $R[t]$, und somit auch in $\Quot{R}[t]$.
 \end{proposition}
 
 
@@ -1141,7 +1145,7 @@ Gilt dabei $I_j + I_k = R$ für alle $j \neq k$, so ist $p$ auch surjektiv:
 
 \begin{corollary}
   Es sei $R$ ein Hauptidealring, und es seien $a_1, \dotsc, a_n \in R$ paarweise teilerfremd.
-  Dann gibt es einen wohldefinierten Ringhomomorphismus
+  Dann gibt es einen wohldefinierten Ringisomorphismus
   \[
                             R/\genideal{\kgV(a_1, \dotsc, a_n)}
     \xlongrightarrow{\sim}  R/\genideal{a_1} \times \dotsb \times R/\genideal{a_n} \,,
@@ -1166,17 +1170,150 @@ Gilt dabei $I_j + I_k = R$ für alle $j \neq k$, so ist $p$ auch surjektiv:
         x &\equiv& b_1  & \pmod{n_1}  \,, \\
         x &\equiv& b_2  & \pmod{n_2}  \,, \\
           &\vdots&      &                 \\
-        x &\equiv& b_k  & \pmod{n_k}  \,, \\
+        x &\equiv& b_k  & \pmod{n_k}  \,,
       \end{array}
-    \right
+    \right.
   \]
   so ist die Lösungsmenge dieses Systems von Kongruenzen durch
   \[
       x_0
-    + \genideal{ \kgV(n_1, \dotsc, n_k) }
+    + \kgV(n_1, \dotsc, n_k) \Integer
   \]
   gegeben.
+  Sind $n_1, \dotsc, n_k$ paarweise teilerfremd, so existert eine solche Lösung $x_0$.
 \end{corollary}
+
+\begin{example}
+  Wir betrachten das folgende System simultaner Kongruenzen:
+  \[
+    \left\{
+      \begin{array}{ccll}
+        x &\equiv& 6  & \pmod{11} \,, \\
+        x &\equiv& 7  & \pmod{13} \,,
+      \end{array}
+    \right.
+  \]
+  Da $11$ und $13$ teilerfremd sind, besitzt gibt es eine Lösung $x_0$.
+  Die Lösungsmenge ist dann $x_0 + 143\Integer$.
+  Die Lösungen der ersten Kongruenz sind
+  \[
+    6,
+    17,
+    28,
+    39,
+    50,
+    61,
+    72,
+    \dotsc
+  \]
+  Dabei gilt $11 \equiv -2 \pmod{13}$, weshalb die obigen Gleichungen modulo $13$ zu
+  \[
+    \class{6},
+    \class{4},
+    \class{2},
+    \class{0},
+    \class{-2} = \class{11},
+    \class{9},
+    \class{7},
+    \dotsc
+  \]
+  werden.
+  Es lässt sich somit $x_0 = 72$ wählen.
+\end{example}
+
+\begin{example}
+  Wir betrachten das folgende System simultaner Kongruenzen:
+  \[
+    \left\{
+      \begin{array}{ccll}
+        x &\equiv&  7 & \pmod{6}  \,, \\
+        x &\equiv&  5 & \pmod{15} \,,
+      \end{array}
+    \right.
+  \]
+  Mithilfe des chinesischen Restklassensatzen können wir die einzelnen Kongruenzen auftrennen:
+  \begin{align*}
+          \left\{
+            \begin{array}{ccll}
+              x &\equiv&  7 & \pmod{2}  \,, \\
+              x &\equiv&  7 & \pmod{3}  \,, \\
+              x &\equiv&  5 & \pmod{3}  \,, \\
+              x &\equiv&  5 & \pmod{5} \,,
+            \end{array}
+          \right.
+    \iff  \left\{
+            \begin{array}{ccll}
+              x &\equiv&  1 & \pmod{2}  \,, \\
+              x &\equiv&  1 & \pmod{3}  \,, \\
+              x &\equiv&  2 & \pmod{3}  \,, \\
+              x &\equiv&  0 & \pmod{5} \,.
+            \end{array}
+          \right.
+  \end{align*}
+  Die mittleren beiden Kongruenzen stehen im Widerspruch, weshalb es keine Lösungen gibt.
+\end{example}
+
+\begin{example}
+  Wir betrachten das abgeänderte System
+  \[
+    \left\{
+      \begin{array}{ccll}
+        x &\equiv&  8 & \pmod{6}  \,, \\
+        x &\equiv&  5 & \pmod{15} \,,
+      \end{array}
+    \right.
+  \]
+  Durch Aufteilen der einzelnen Kongruenzen erhalten wir nun
+  \begin{align*}
+          \left\{
+            \begin{array}{ccll}
+              x &\equiv&  8 & \pmod{2}  \,, \\
+              x &\equiv&  8 & \pmod{3}  \,, \\
+              x &\equiv&  5 & \pmod{3}  \,, \\
+              x &\equiv&  5 & \pmod{5}  \,,
+            \end{array}
+          \right.
+    \iff  \left\{
+            \begin{array}{ccll}
+              x &\equiv&  0 & \pmod{2}  \,, \\
+              x &\equiv&  2 & \pmod{3}  \,, \\
+              x &\equiv&  0 & \pmod{5}  \,.
+            \end{array}
+          \right.
+  \end{align*}
+  Die äußeren beiden Kongruenzen lassen sich zu $x \equiv 2 \pmod{10}$ zusammenfassen, und wir erhalten das kleinere System
+  \[
+    \left\{
+      \begin{array}{ccll}
+        x &\equiv&  2 & \pmod{3}  \,, \\
+        x &\equiv&  0 & \pmod{10} \,.
+      \end{array}
+    \right.
+  \]
+  Die Lösungen der unteren Kongruenz sind
+  \[
+    0, 10, 20, \dotsc,
+  \]
+  und modulo $3$ wir dies zu
+  \[
+    \class{0},
+    \class{1},
+    \class{2},
+    \dotsc.
+  \]
+  Eine Lösung ist also durch $x_0 = 20$ gegeben.
+  Die Lösungsmenge ist insgesamt
+  \[
+      x_0 + \kgV(6,15)\Integer
+    = 20 + 30\Integer \,.
+  \]
+\end{example}
+
+\begin{remark}
+  Simultane Kongruenzen lassen sich aus mithilfe des euklidischen Algorithmus lösen.
+  Ein entsprechende Erklärung, sowie das Ausrechnen der Beispiele von Übungsblatt~6, findet sich unter \url{goo.gl/J2ML2r}\footnote{https://github.com/cionx/einfuehrung-in-die-algebra-tutorial-ws-17-18/raw/master
+  /sheet\_06/sheet\_06.pdf}.
+\end{remark}
 
 
 

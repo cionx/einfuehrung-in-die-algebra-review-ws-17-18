@@ -13,7 +13,76 @@
   Zeigen Sie, dass die folgenden Polynome irreduzibel sind:
   \begin{enumerate}
     \item
-      $3t^6 + 4t^4 - 6t^2 - 10 \in \Integer[t]$.
+      % Eisenstein
+      $3t^6 + 4t^4 - 6t^2 - 10 \in \Integer[t]$
+    \item
+      % mod 2
+      $3t^3 + 39t^2 - 4t + 8 \in \Rational[t]$
+    \item
+      %  divide by 2, then mod 2
+      $2t^3 - 14t + 6 \in \Rational[t]$
+    \item
+      % t -> t+1
+      $t^4 + 1 \in \Rational[t]$
+    \item
+      % Eisenstein
+      $t^5 - u \in \Rational(u)[t]$
+    \item
+      % Eisenstein
+      $t^2 u + tu^2 - t - u + 1 \in \Rational[t,u]$
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Bestimmen Sie jeweils alle Lösungen $x \in \Integer$ der folgenden Systeme simultaner Kongruenzen:
+  \begin{enumerate}
+    \item
+      $
+        \left\{
+          \begin{array}{ccrl}
+            x &\equiv& 3 & \pmod{5}  \\
+            x &\equiv& 2 & \pmod{7}
+          \end{array}
+        \right.
+      $
+    \item
+      $
+        \left\{
+          \begin{array}{ccrl}
+            5x &\equiv& 6 & \pmod{12}  \\
+            3x &\equiv& 7 & \pmod{11}
+          \end{array}
+        \right.
+      $
+    \item
+      $
+        \left\{
+          \begin{array}{ccrl}
+            x &\equiv& 10 & \pmod{6}  \\
+            x &\equiv& -6 & \pmod{14}
+          \end{array}
+        \right.
+      $
+    \item
+      $
+        \left\{
+          \begin{array}{ccrl}
+            x &\equiv&  2 & \pmod{6}  \\
+            x &\equiv& -2 & \pmod{10} \\
+            x &\equiv&  1 & \pmod{7}
+          \end{array}
+        \right.
+      $
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Bestimmen Sie mithilfe des euklidischen Algorithmus jeweils den größten gemeinsamen Teiler der folgenden Zahlen, und drücken Sie diesen als $\Integer$-Linearkombination dieser Zahlen aus.
+  \begin{enumerate}
+    \item
+      $270$, $192$
+    \item
+      $30$, $42$, $70$
   \end{enumerate}
 \end{question}
 
@@ -29,6 +98,10 @@
 \end{question}
 
 \begin{question}
+  Zeigen Sie, dass der Ring $\Integer[\sqrt{-2}] = \Integer[i\sqrt{2}]$ euklidisch ist.
+\end{question}
+
+\begin{question}
   Es seien $n, m \geq 1$.
   Zeigen Sie, dass
   \[
@@ -38,12 +111,10 @@
 \end{question}
 
 \begin{question}
-  Zeigen Sie, dass der Ring $\Integer[\sqrt{-2}] = \Integer[i\sqrt{2}]$ euklidisch ist.
-\end{question}
-
-\begin{question}
-  Für alle $n \geq 1$ sei $\varphi(n) \defined \card{\unitgroup{(\Integer/n)}}$.,
+  Für alle $n \geq 1$ sei $\varphi(n) = \card{\{1 \leq k \leq n \suchthat \text{$k$ und $n$ sind teilerfremd}\}}$.
   \begin{enumerate}
+    \item
+      Begründen Sie, dass $\varphi(n) = \card{\unitgroup{(\Integer/n)}}$ gilt.
     \item
       Zeigen Sie, dass $\varphi(nm) = \varphi(n)\varphi(m)$ gilt, wenn $n, m \geq 1$ teilerfremd sind.
     \item
