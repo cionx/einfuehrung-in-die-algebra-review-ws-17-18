@@ -44,7 +44,7 @@ Ist $X \subseteq R$ eine Teilmenge, so sind für jeden Unterring $S \subseteq R$
   \item
     Es gilt $S = \bigcap_{\text{Unterring $S' \subseteq S$, $X \subseteq S'$}} S'$.
   \item
-    Es gilt $S = \{ \sum_{i=1}^n x_{i,1} \dotsm x_{i,m_i} \suchthat n, m_i \in \Natural, x_{i,j} \in X \}$.
+    Es gilt $S = \{ \sum_{i=1}^n \varepsilon_i x_{i,1} \dotsm x_{i,m_i} \suchthat n, m_i \in \Natural, \varepsilon_i = \pm 1, x_{i,j} \in X \}$.
 \end{enumerate}
 
 \begin{definition}
@@ -224,7 +224,7 @@ Ist $R$ ein Ring, so lässt sich der Polynomring $R[t_1, \dotsc, t_n]$ in endlic
   dabei gilt
   \[
       \hat{\varphi}\left( \sum_{\alpha \in \Natural^n} a_\alpha t_1^{\alpha_1} \dotsm t_n^{\alpha_n} \right)
-    = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm ts_n^{\alpha_n} \,.
+    = \sum_{\alpha \in \Natural^n} a_\alpha s_1^{\alpha_1} \dotsm s_n^{\alpha_n} \,.
   \]
   In anderen Worten:
   Es ergibt sich eine Bijektion
@@ -716,7 +716,7 @@ Ist $K$ ein Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so
 \end{definition}
 
 \begin{definition}
-  Ein \emph{euklidischer Ring} ist ein kommutativer Ring $R$ zusammen mit einer \emph{Gradabbildung} $\delta \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
+  Ein \emph{euklidischer Ring} ist ein Integritätsbereich $R$ zusammen mit einer \emph{Gradabbildung} $\delta \colon R \smallsetminus \{0\} \to \Natural$, so dass es für alle $f, g \in R$ mit $g \neq 0$ Elemente $q, r \in R$ gibt, so dass
   \[
     f = qg + r \,,
     \qquad
@@ -821,7 +821,7 @@ Es sei $R$ ein Integritätsbereich.
     \item
       diese Zerlegung eindeutig \enquote{bis auf Assoziiertheit und Permutation} ist:
       
-      Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weitere solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\gamma_1, \dotsc, \gamma_n \in \unitgroup{R}$ und eine Permutation $\pi \in S_n$ mit $p'_i = \gamma_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
+      Falls $r = \varepsilon' p'_1 \dotsm p'_m$ eine weitere solche Zerlegung ist, so gilt $n = m$, und es gibt Einheiten $\delta_1, \dotsc, \delta_n \in \unitgroup{R}$ uond eine Permutation $\pi \in S_n$ mit $p'_i = \delta_i p_{\pi(i)}$ für alle $i = 1, \dotsc, n$.
   \end{itemize}
 \end{definition}
 

@@ -329,7 +329,12 @@ Dabei lässt sich auch noch die Zwischenerweiterung $L_1 \cap L_2$ einzeichnen:
 \[
   \begin{tikzcd}
       {}
+    & L
+    & {}
+  \\
+      {}
     & L_1 L_2
+      \arrow[-]{u}
     & {}
     \\
       L_1
@@ -479,7 +484,7 @@ Wie der Name vermuten lässt, bildet $\Aut{L/K}$ zusammen mit der Komposition vo
 
 \begin{theorem}
   \label{theorem: zeroes to zeroes}
-  Es sei $a \in L$.
+  Es sei $a \in L$ algebraisch.
   Für jede Nullstelle $a' \in L'$ des Minimalpolynoms $m_a \in K[t]$ gibt es dann einen eindeutigen $K$-Homomorphismus $\varphi \colon K(a) \to L'$ mit $\varphi(a) = a'$.
   In anderen Worten:
   Es ergibt sich eine Bijektion

@@ -421,7 +421,7 @@ Es gilt auch die Umkehrung der obigen Beispiele, d.h.\ jede zyklische Gruppe ist
 
 \begin{lemma}
 \label{lemma: subgroups of Z}
-  Jede Untergruppe $H \subgroup G$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \geq 0$.
+  Jede Untergruppe $H \subgroup \Integer$ ist von der Form $H = \generated{n} = n\Integer$ für ein eindeutiges $n \geq 0$.
   Für $H = \{0\}$ gilt $n = 0$, und sonst gilt $n = \min \{k > 0 \suchthat k \in H\}$.
 \end{lemma}
 
@@ -475,7 +475,7 @@ Ansonsten gilt $n > 1$ und somit $G \cong \Integer/n$ mit $\ord{G} = n$.
       Ist $G$ eine endliche Gruppe, so gilt $\ord{g} \divides \ord{G}$.
       Insbesondere gilt $g^{\ord{G}} = 1$.
     \item
-      Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n \geq 1 \suchthat g^n = 1 \}$.
+      Hat $g$ endliche Ordnung, so gilt $\ord{g} = \min \{ n \geq 1 \suchthat g^n = 1 \}$, sowie genau dann $g^m = 1$, wenn $\ord{g} \divides m$.
   \end{enumerate}
 \end{lemma}
 
@@ -782,7 +782,7 @@ Es sei $G$ eine endliche Gruppe und $p$ prim.
       Jede $p$-Untergruppe $H \subgroup G$ ist in einer $p$-Sylowuntergruppe von $G$ enthalten.
       Inbesondere ergibt sich für $H = \{1\}$, dass $G$ eine $p$-Sylowuntergruppe besitzt.
     \item
-      Je zwei $p$-Sylowuntergruppen $S, S' \subseteq G$ sind konjugiert zueinander, d.h.\ es gibt ein $g \in G$ mit $g S g^{-1} = S'$.
+      Je zwei $p$-Sylowuntergruppen $S, S' \subgroup G$ sind konjugiert zueinander, d.h.\ es gibt ein $g \in G$ mit $g S g^{-1} = S'$.
     \item
       Bezeichnet $n_p$ die Anzahl der $p$-Sylowuntergruppen von $G$, so gilt
       \[
