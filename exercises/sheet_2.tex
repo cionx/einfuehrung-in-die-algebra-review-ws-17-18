@@ -14,7 +14,7 @@
     \item
       Bestimmen Sie für jede Primzahl $p$ eine $p$-Sylowuntergruppe von $S_4$.
     \item
-      Es sei $p$ prim
+      Es sei $p$ prim.
       Geben Sie eine $p$-Sylowuntergruppe von $\upper{n}{\Finite_p}$, der Gruppe der invertierbaren oberen $(n \times n)$-Matrizen mit Einträgen in $\Finite_p$, an.
   \end{enumerate}
 \end{question}
@@ -25,8 +25,8 @@
 
 \begin{question}
   Es sei $p$ prim, $G$ eine endliche Gruppe und $n_p$ die Anzahl der $p$-Sylowuntergruppen von $G$.
-  Es sei $\card{G} = p^r m$ mit $p \notdivides m$, wobei $r \geq 1$, $m \geq 2$ gelte, und die Gruppe $G$ sei zudem einfach, d.h.\ $G$ und $1$ seien die einzigen beiden Normalteiler von $G$.
-  Zeigen Sie, dass $n_p \geq p + 1$.
+  Es sei $\card{G} = p^r m$ mit $p \notdivides m$, wobei $r \geq 1$, $m \geq 2$ gelte, und die Gruppe $G$ sei zudem einfach, d.h.\ $G$ und $\{1\}$ seien die einzigen beiden Normalteiler von $G$.
+  Zeigen Sie, dass $n_p \geq p + 1$ gilt.
 \end{question}
 
 % \begin{question}
@@ -46,7 +46,7 @@
   Zeigen Sie, dass jeder endliche Integritätsbereich ein Körper ist.
   \newline
   (\emph{Hinweis}:
-  Betrachten Sie für $r \in R$ die Abbildung $R \to R$, $x \mapsto rx$.
+  Betrachten Sie für $r \in R$ die Abbildung $R \to R$, $x \mapsto rx$.)
 \end{question}
 
 \begin{question}
@@ -72,9 +72,44 @@
 \end{question}
 
 \begin{question}
-  Es sei $R$ ein kommutativer Ring, und es gebe ein $n > 1$, so dass $x^n = x$ für alle $x \in R$ gilt.
+  Es sei $R$ ein kommutativer Ring und es gebe ein $n > 1$, so dass $x^n = x$ für alle $x \in R$ gilt.
   Zeigen Sie, dass jedes Primideal $P \ideal R$ bereits maximal ist.
 \end{question}
+
+\begin{solution}
+  Der Quotientenring $R/P$ ist ein Integritätsbereich, da $P$ prim ist.
+  Die Maximalität von $M$ ist äquivalent dazu, dass $R/P$ bereits ein Körper ist.
+  Hierfür ist noch zu zeigen, dass jedes $x \in R/P$ mit $x \neq 0$ eine Einheit ist.
+  Dabei gibt es nach Annahme ein $n > 1$ mit $x^n = x$.
+  Da $x \neq 0$ gilt, und $R/P$ ein Integritätsbereich ist, lässt sich diese Gleichung durch $x$ kürzen;
+  es gilt nämlich
+  \[
+          x^n = x
+    \iff  x^n - x = 0
+    \iff  x(x^{n-1} - 1) = 0
+    \iff  x^{n-1} - 1 = 0
+    \iff  x^{n-1} = 1 \,.
+  \]
+  Da $n > 1$ gilt, lässt sich $x^{n-1} = 1$ zu $x \cdot x^{n-2} = 1$ umschreiben.
+  Es ist also $x$ eine Einheit mit $1/x = x^{n-2}$.
+\end{solution}
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+\section*{Lösungen}
+
+\printsolutions
+
+
+
 
 
 \end{document}
