@@ -13,7 +13,7 @@
   Es sei $K(a)/K$ eine einfache algebraische Körpererweiterung.
   \begin{enumerate}
     \item
-      Zeigen Sie, dass $\fieldindex{K(a)}{K} \leq \sepindex{K(a)}{K}$ gilt.
+      Zeigen Sie, dass $\sepindex{K(a)}{K} \leq \fieldindex{K(a)}{K}$ gilt.
     \item
       Zeigen Sie, dass genau dann Gleichheit gilt, wenn $a$ separabel ist.
   \end{enumerate}
@@ -24,7 +24,7 @@
 \end{question}
 
 \begin{question}
-  Zeigen Sie mithilfe der Galois-Korrespondenz, dass es genau dann eine Einbettung $\Finite_{p^n} \hookrightarrow \Finite_{p^m}$ gibt, wenn $n \divides m$ gilt.
+  Zeigen Sie mithilfe der Galoiskorrespondenz, dass es genau dann eine Einbettung $\Finite_{p^n} \hookrightarrow \Finite_{p^m}$ gibt, wenn $n \divides m$ gilt.
 \end{question}
 
 \begin{question}
@@ -43,7 +43,7 @@
 \end{question}
 
 \begin{question}
-  Es sei $p$ prim und $\zeta_p \defined e^{2 \pi i / p}$
+  Es sei $p$ prim und $\zeta_p \defined e^{2 \pi i / p}$.
   \begin{enumerate}
     \item
       Bestimmen Sie den Grad $\fieldindex{\Rational(\sqrt[p]{p}, \zeta_p)}{\Rational}$.
@@ -52,6 +52,38 @@
   \end{enumerate}
 \end{question}
 
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Es handelt sich bei $\Rational(\sqrt[p]{p}, \zeta_p)$ um das Kompositum von $\Rational(\sqrt[p]{p})$ und $\Rational(\zeta_p)$.
+      \begin{itemize}
+        \item
+          Das Minimalpolynom von $\sqrt[p]{p}$ über $\Rational$ ist $t^p - p \in \Rational[t]$, wobei sich die Irreduziblität aus dem Eisenstein-Kriterium ergibt.
+          Es gilt deshalb $\fieldindex{\Rational(\sqrt[p]{p})}{\Rational} = p$.
+        \item
+          Es ist $\zeta_p$ eine primitive $p$-te Einheitswurzel.
+          Das Minimalpolynom von $\zeta_p$ ist deshalb das $p$-te Kreisteilungspolynom $\Phi_p = t^{p-1} + \dotsb + t + 1 \in \Rational[t]$.
+          Es gilt deshalb $\fieldindex{\Rational(\zeta_p)}{\Rational} = p-1$.
+      \end{itemize}
+      Da $p$ und $p-1$ teilerfremd sind, gilt somit
+      \[
+          \fieldindex{\Rational(\sqrt[p]{p}, \zeta_p)}{\Rational}
+        = \fieldindex{\Rational(\sqrt[p]{p}) \Rational(\zeta_p)}{\Rational}
+        = \fieldindex{\Rational(\sqrt[p]{p})}{\Rational} \fieldindex{\Rational(\zeta_p)}{\Rational}
+        = p(p-1) \,.
+      \]
+    \item
+      Es gilt
+      \[
+          \Rational(\sqrt[p]{p}, \zeta_p)
+        = \Rational(\sqrt[p]{p}, \zeta_p \sqrt[p]{p}, \dotsc, \zeta_p^{p-1} \sqrt[p]{p}) \,,
+      \]
+      wobei $\sqrt[p]{p}, \zeta_p \sqrt[p]{p}, \dotsc, \zeta_p^{p-1} \sqrt[p]{p}$ genau die $p$-ten Einheitswurzeln sind.
+      Es ist deshalb $\Rational(\sqrt[p]{p}, \zeta_p)$ ein Zerfällungskörper des Poylnoms $t^p - p \in \Rational[t]$, und die Erweiterung $\Rational(\sqrt[p]{p}, \zeta_p)/\Rational$ ist somit normal.
+      Die Erweiterung ist separabel, da $\Rational$ perfekt ist, da $\ringchar{\Rational} = 0$ gilt.
+  \end{enumerate}
+\end{solution}
+
 \begin{question}
   Es sei $L \defined \Rational(\sqrt{2}, \sqrt{3}, \sqrt{5})$.
   \begin{enumerate}
@@ -59,7 +91,7 @@
       Zeigen Sie, dass die Erweiterung $\Rational(\sqrt{2}, \sqrt{3}, \sqrt{5})/\Rational$ galoissch ist.
   \end{enumerate}
   Sie dürfen im Folgenden ohne Beweis verwenden, dass $\sqrt{5} \notin \Rational(\sqrt{2}, \sqrt{3})$ liegt.
-  \begin{enumerate}
+  \begin{enumerate}[resume]
     \item
       Zeigen Sie, dass $\fieldindex{L}{\Rational} = 8$ gilt.
     \item
@@ -68,15 +100,30 @@
       Betrachten Sie die folgenden Unterkörper von $L$:
       \begin{enumerate}
         \item
-          $\Rational(\sqrt{2})$.
+          $\Rational(\sqrt{2})$
         \item
-          $\Rational(\sqrt{6})$.
+          $\Rational(\sqrt{6})$
         \item
-          $\Rational(\sqrt{3}, \sqrt{5})$.
+          $\Rational(\sqrt{3}, \sqrt{5})$
       \end{enumerate}
       Bestimmen Sie die Untergruppen von $\Gal{L/\Rational}$, denen diese Unterkörper unter der Galoiskorrespondenz entsprechen, sowie die Ordnungen dieser Untergruppen.
   \end{enumerate}
 \end{question}
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+\section*{Lösungen}
+
+\printsolutions
+
 
 
 
