@@ -70,6 +70,47 @@
   Konstruieren Sie für $n \defined \groupindex{G}{H}$ einen Gruppenhomomorphismus $G \to S_n$.)
 \end{question}
 
+\begin{solution}
+  Wir konstruieren den gewünschten Normalteiler $N$ als den Kern eines Gruppenhomomorphismus, den wir mithilfe einer Gruppenwirkung konstruieren:
+  Die Gruppe $G$ wirkt auf der Menge der Linksnebenklassen $G/H$ vermöge $g.(g'H) \defined  (gg')H$ für alle $g, g' \in G$.
+  Diese Wirkung entspricht einen Gruppenhomomorphismus $\varphi \colon G \to \symmetric{G/H}$.
+  Wir betrachten den Normalteiler $N \defined \ker(\varphi)$.
+  
+  Es gilt $N \subseteq H$, denn für jedes $g \in N$ gilt
+  \[
+      (gg')H
+    = g.(g'H)
+    = \varphi(g)(g'H)
+    = \id(g'H)
+    = g'H
+  \]
+  für jedes $g' \in G$, und für $g = 1$ somit insbesondere $gH = H$, also $g \in H$.
+  Es gilt
+  \[
+          \groupindex{G}{N}
+    =     \card{G/N}
+    =     \card{\im(\varphi)}
+    \leq  \card{\symmetric{G/H}}
+    =     \card{G/H}!
+    =     \groupindex{G}{H}! \,.
+  \]
+  Dabei gilt nach Annahme $\groupindex{G}{H} < \infty$, und somit auch $\groupindex{G}{N} < \infty$.
+\end{solution}
+
+
+
+
+\pagebreak
+
+
+
+
+
+\section{Lösungen}
+
+\printsolutions
+
+
 % \begin{question}
 %   Es sei $K$ ein Körper.
 %   Zeigen Sie, dass die Gruppen $(K,+)$ und $(K^\times, \cdot)$ nicht isomorph zueinander sind.
