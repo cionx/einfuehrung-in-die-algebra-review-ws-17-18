@@ -1,0 +1,69 @@
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\numberline {1}Gruppentheorie}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Nebenklassen und Satz von Lagrange}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Normalteiler und Quotientengruppen}{2}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Definition von Normalteilern}{2}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Konstruktion von Quotientengruppen}{3}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Universelle Eigenschaft der Quotientengruppe}{4}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Korrespondenz von (normalen) Untergruppen}{4}{subsection.1.2.4}
+\contentsline {section}{\numberline {1.3}Erzeugte Untergruppen}{5}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Definition erzeugter Untergruppen}{5}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Klassifikation zyklischer Gruppen}{5}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Gruppenwirkungen}{6}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Grundlegende Definitionen}{6}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Die Bahnenformel}{8}{subsection.1.4.2}
+\contentsline {section}{\numberline {1.5}$p$-Gruppen und Sylowsätze}{10}{section.1.5}
+\contentsline {section}{\numberline {1.6}Klassifikation endlicher abelscher Gruppen}{11}{section.1.6}
+\contentsline {section}{\numberline {1.7}Beispiel: Die Diedergruppe $D_n$}{11}{section.1.7}
+\contentsline {chapter}{\numberline {2}Ringtheorie}{14}{chapter.2}
+\contentsline {section}{\numberline {2.1}Einheiten und Nullteiler}{14}{section.2.1}
+\contentsline {section}{\numberline {2.2}Polynomringe}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Polynomring in einer Variables}{15}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Polynomringe in endlich vielen Variablen}{16}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Ideale und Quotientenringe}{17}{section.2.3}
+\contentsline {section}{\numberline {2.4}Prim- und maximale Ideale}{19}{section.2.4}
+\contentsline {section}{\numberline {2.5}Lokalisierung}{21}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Für allgemeinen kommutative Ringe}{21}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Für Integritätsbereiche}{22}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Hauptideal- und euklidische Ringe}{23}{section.2.6}
+\contentsline {section}{\numberline {2.7}Faktorielle Ringe}{23}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Definition faktorieller Ringe}{24}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Prim- und irreduzible Elemente im Allgemeinen}{25}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}$\operatorname {ggT}$ und $\operatorname {kgV}$}{25}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}Der Satz von Gauß}{27}{subsection.2.7.4}
+\contentsline {section}{\numberline {2.8}Irreduziblitätskriterien}{27}{section.2.8}
+\contentsline {section}{\numberline {2.9}Chinesischer Restsatz}{28}{section.2.9}
+\contentsline {chapter}{\numberline {3}Körpererweiterungen}{31}{chapter.3}
+\contentsline {section}{\numberline {3.1}Der Primkörper}{31}{section.3.1}
+\contentsline {section}{\numberline {3.2}Der Grad einer Körpererweiterung}{32}{section.3.2}
+\contentsline {section}{\numberline {3.3}Algebraizität}{33}{section.3.3}
+\contentsline {section}{\numberline {3.4}Einfache Körpererweiterungen}{33}{section.3.4}
+\contentsline {section}{\numberline {3.5}Das Kompositum}{34}{section.3.5}
+\contentsline {section}{\numberline {3.6}$K$-Homomorphismen}{35}{section.3.6}
+\contentsline {section}{\numberline {3.7}Der Algebraische Abschluss}{37}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Hinzuadjungieren von Nullstellen}{37}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Definition des algebraischen Abschluss}{37}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Existenz des Algebraischen Abschlusses}{38}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}Eindeutigkeit des Algebraischen Abschlusses}{38}{subsection.3.7.4}
+\contentsline {section}{\numberline {3.8}Zerfällungskörper}{39}{section.3.8}
+\contentsline {section}{\numberline {3.9}Separablität}{41}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Mehrfache Nullstellen}{41}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Separable Elemente und Erweiterungen}{42}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Der Separablitätsgrad}{42}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.4}Perfekte Körper}{43}{subsection.3.9.4}
+\contentsline {section}{\numberline {3.10}Klassifikation endlicher Körper}{44}{section.3.10}
+\contentsline {chapter}{\numberline {4}Galois-Theorie}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Galois-Erweiterungen}{45}{section.4.1}
+\contentsline {section}{\numberline {4.2}Beispiel: $\mathbb {C}/\mathbb {R}$}{46}{section.4.2}
+\contentsline {section}{\numberline {4.3}Beispiel: $\mathbb {F}_{p^n}/\mathbb {F}_p$}{46}{section.4.3}
+\contentsline {section}{\numberline {4.4}Beispiel: $\mathbb {Q}(\sqrt {2}, \sqrt {3})/\mathbb {Q}$}{47}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Die Erweiterung ist galoissch}{47}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Bestimmung des Grades}{47}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Bestimmung einer Basis}{47}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Bestimmung der Galoisgruppe}{48}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Bestimmung der Untergruppen der Galoisgruppe}{48}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Bestimmung der Fixkörper}{48}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Die Galoiskorrespondenz}{49}{subsection.4.4.7}
+\contentsline {section}{\numberline {4.5}Beispiel: Kreisteilungskörper $\mathbb {Q}(\zeta _n)/\mathbb {Q}$}{49}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Die Erweiterung ist galoissch}{50}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Bestimmung der Galoisgruppe}{50}{subsection.4.5.2}
