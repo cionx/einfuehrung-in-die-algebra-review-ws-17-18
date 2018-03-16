@@ -10,6 +10,16 @@
 \begin{document}
 
 \begin{question}
+  Es sei $K(a)/K$ eine einfache algebraische Körpererweiterung.
+  \begin{enumerate}
+    \item
+      Zeigen Sie, dass $\fieldindex{K(a)}{K} \leq \sepindex{K(a)}{K}$ gilt.
+    \item
+      Zeigen Sie, dass genau dann Gleichheit gilt, wenn $a$ separabel ist.
+  \end{enumerate}
+\end{question}
+
+\begin{question}
   Zeigen Sie, dass der Frobenius-Automorphismus $\sigma \colon \closure{\Finite_p} \to \closure{\Finite_p}$ unendliche Ordnung hat.
 \end{question}
 
@@ -18,8 +28,54 @@
 \end{question}
 
 \begin{question}
-  Es sei $L/K$ eine Körpererweiterung und $a \in L$
-  Zeigen Sie, dass $K(a)/K$ genau dann separabel ist, wenn $a$ separabel ist.
+  Es sei $\zeta_3 \defined e^{2 \pi i /3}$.
+  Auf dem gestrigen Aufgabenzettel wurde bereits gezeigt, dass $\fieldindex{\Rational(\sqrt[3]{2}, \zeta_3)}{\Rational} = 6$ gilt;
+  dies darf im Folgenden ohne erneuten Beweis genutzt werden.
+  \begin{enumerate}
+    \item
+      Zeigen Sie, dass die Erweiterung $\Rational(\sqrt[3]{2}, \zeta_3)/\Rational$ galoissch ist.
+    \item
+      Folgern Sie, dass $\Gal{\Rational(\sqrt[3]{2}, \zeta_3)/\Rational} \cong S_3$.
+      \\
+      (\emph{Hinweis}:
+       Konstruieren Sie zunächst eine Einbettung $\Gal{\Rational(\sqrt[3]{2}, \zeta_3)/\Rational} \hookrightarrow S_3$.)
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Es sei $p$ prim und $\zeta_p \defined e^{2 \pi i / p}$
+  \begin{enumerate}
+    \item
+      Bestimmen Sie den Grad $\fieldindex{\Rational(\sqrt[p]{p}, \zeta_p)}{\Rational}$.
+    \item
+      Zeigen Sie, dass die Erweiterung $\Rational(\sqrt[p]{p}, \zeta_p)/\Rational$ galoissch ist.
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Es sei $L \defined \Rational(\sqrt{2}, \sqrt{3}, \sqrt{5})$.
+  \begin{enumerate}
+    \item
+      Zeigen Sie, dass die Erweiterung $\Rational(\sqrt{2}, \sqrt{3}, \sqrt{5})/\Rational$ galoissch ist.
+  \end{enumerate}
+  Sie dürfen im Folgenden ohne Beweis verwenden, dass $\sqrt{5} \notin \Rational(\sqrt{2}, \sqrt{3})$ liegt.
+  \begin{enumerate}
+    \item
+      Zeigen Sie, dass $\fieldindex{L}{\Rational} = 8$ gilt.
+    \item
+      Konstruieren Sie einen Gruppenisomorphismus $\Gal{L/\Rational} \to (\Integer/2)^3$.
+    \item
+      Betrachten Sie die folgenden Unterkörper von $L$:
+      \begin{enumerate}
+        \item
+          $\Rational(\sqrt{2})$.
+        \item
+          $\Rational(\sqrt{6})$.
+        \item
+          $\Rational(\sqrt{3}, \sqrt{5})$.
+      \end{enumerate}
+      Bestimmen Sie die Untergruppen von $\Gal{L/\Rational}$, denen diese Unterkörper unter der Galoiskorrespondenz entsprechen, sowie die Ordnungen dieser Untergruppen.
+  \end{enumerate}
 \end{question}
 
 
