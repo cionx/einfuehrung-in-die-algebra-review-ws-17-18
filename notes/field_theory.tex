@@ -765,11 +765,11 @@ Da $L$ von den Nullstellen der $f_i$ erzeugt wird, ist somit das gesamte Bild $\
 Es sei $K$ ein Körper.
 
 \begin{definition}
-  Die \emph{\textup(formale\textup) Ableitung} eines Polynoms $f = \sum_{i \geq 0} a_i t^i \in K[t]$ ist das Polynom
+  Die \emph{\textup(formale\textup) Ableitung} eines Polynoms $f = \sum_{i=0}^n a_i t^i \in K[t]$ ist das Polynom
   \[
               f'
-    \defined  \sum_{i \geq 1} i a_i t^{i-1}
-    =         \sum_{i \geq 0} (i+1) a_{i+1} t^i \,.
+    \defined  \sum_{i=1}^n i a_i t^{i-1}
+    =         \sum_{i=0}^{n-1} (i+1) a_{i+1} t^i \,.
   \]
 \end{definition}
 
@@ -790,22 +790,22 @@ Es sei $K$ ein Körper.
 \subsection{Mehrfache Nullstellen}
 
 \begin{lemma}
-  Ein Element $a \in K$ ist genau dann mehrfache Nullstelle eines Polynoms $f \in K[t]$, wenn $a$ eine gemeinsame Nullstelle von $f$ und $f'$ ist.
+  Ein Element $a \in K$ ist genau dann eine mehrfache Nullstelle eines Polynoms $f \in K[t]$, wenn $a$ eine gemeinsame Nullstelle von $f$ und $f'$ ist.
 \end{lemma}
 
-Ist $K$ algebraisch abgeschlossen, so besitzen zwei Polynome $f, g \in K[t]$ genau dann eine gemeinsame Nullstelle, wenn sie einen gemeinsamen Linearfaktoren besitzten.
+Ist $K$ algebraisch abgeschlossen, so besitzen je zwei Polynome $f, g \in K[t]$ genau dann eine gemeinsame Nullstelle, wenn sie einen gemeinsamen Linearfaktoren besitzten.
 Da die Linearfaktoren ein Repräsentantensystem der irreduziblen Elemente von $K[t]$ bilden, ist dies äquivalent dazu, dass $f$ und $g$ nicht teilerfremd sind, dass also $\ggT(f,g) \neq 1$ gilt.
-Da sich der $\ggT$ zweier Polynome mithilfe des euklidischen Algorithmus und Polynomdivison berechen lässt, hängt der $\ggT$ dabei nicht von dem Körper $K$ ab:
+Da sich der $\ggT$ zweier Polynome mithilfe des euklidischen Algorithmus und Polynomdivison berechen lässt, hängt dieser $\ggT$ dabei nicht von dem Körper $K$ ab:
 
 \begin{lemma}
-  Ist $L/K$ eine Körperweiterung, so haben $f, g \in K[t]$ den gleichen größten gemeinsamen Teiler in $K[t]$ und $L[t]$, d.h.\ ein Polynom $h \in K[t]$ ist genau dann ein $\ggT$ von $f$ und $g$ in $K[t]$, wenn $h$ in $L[t]$ ein $\ggT$ von $f$ und $g$ ist.
+  Ist $L/K$ eine Körperweiterung, so haben $f, g \in K[t]$ den gleichen $\ggT$ in $K[t]$ und $L[t]$, d.h.\ ein Polynom $h \in K[t]$ ist genau dann ein $\ggT$ von $f$ und $g$ in $K[t]$, wenn $h$ in $L[t]$ ein $\ggT$ von $f$ und $g$ ist.
   Inbesondere sind $f$ und $g$ genau dann teilerfremd in $K[t]$, wenn sie es in $L[t]$ sind.
 \end{lemma}
 
 Dies führt zu der folgenden Charakterisierung gemeinsamer Nullstellen:
 
 \begin{corollary}
-  Für zwei Polynome $f, g \in K[t]$ sind die folgenden Bedingungen äquivalent:
+  Für $f, g \in K[t]$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Ist $\closure{K}$ ein algebraischer Abschluss von $K$, so haben $f$ und $g$ eine gemeinsame Nullstelle in $K$.
@@ -822,7 +822,9 @@ Dies führt zu der folgenden Charakterisierung gemeinsamer Nullstellen:
   Für ein Polynom $f \in K[t]$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
-      Das Polynom $f$ hat in einem algebraische Abschluss $\closure{K}$ keine mehrfache Nullstelle.
+      Für keine Körpererweiterung $L/K$ hat $f$ eine mehrfache Nullstelle in $L$.
+    \item
+      Das Polynom $f$ hat in einem algebraischen Abschluss $\closure{K}$ keine mehrfache Nullstelle.
     \item
       Das Polynom $f$ hat in einem Zerfällungkörper von $f$ keine mehrfache Nullstelle.
     \item
@@ -831,16 +833,26 @@ Dies führt zu der folgenden Charakterisierung gemeinsamer Nullstellen:
 \end{corollary}
 
 \begin{definition}
-  Ein Polynom $f \in K[t]$, dass eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist \emph{separabel}.
+  Ein Polynom $f \in K[t]$, das eine \textup(und damit alle\textup) der obigen Bedingungen erfüllt, ist \emph{separabel}.
 \end{definition}
 
 \begin{example}
-  Gilt $\ringchar{K} = 0$, so ist jedes irreduzible Polynom $f \in K[t]$ separabel:
-  Es gilt $\deg(f') = \deg(f)-1$, weshalb $f$ kein Teiler von $f'$ ist, und somit $f$ und $f'$ teilerfremd sind.
+  \begin{enumerate}
+    \item
+      Gilt $\ringchar{K} = 0$, so ist jedes irreduzible Polynom $f \in K[t]$ separabel:
+      Es gilt $\deg(f') = \deg(f)-1$, weshalb $f$ kein Teiler von $f'$ ist, und somit $f$ und $f'$ teilerfremd sind.
+    \item
+      Das Polynom $f \defined t^p - u \in \Finite_p(u)[t]$ ist nicht separabel, denn es gilt $f' = 0$, und somit $\ggT(f,f') = f \neq 1$.
+    \item
+      Gilt allgemeiner $\ringchar{K} = p > 0$ und ist $f \in K[t]$ irreduzibel, so gilt
+      \[
+              \text{$f$ ist nicht separabel}
+        \iff  f' = 0
+        \iff  \exists g \in K[t] : f(t) = g(t^p) \,.
+      \]
+
+  \end{enumerate}
 \end{example}
-
-
-
 
 
 
@@ -849,7 +861,7 @@ Dies führt zu der folgenden Charakterisierung gemeinsamer Nullstellen:
 Es sei $L/K$ ein Körpererweiterung.
 
 \begin{lemma}
-  Für jedes Element $a \in L$ die folgenden Bedingungen äquivalent:
+  Für jedes Element $a \in L$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Es gibt ein separables Polynom $f \in K[t]$ mit $f(a) = 0$.
@@ -867,18 +879,39 @@ Es sei $L/K$ ein Körpererweiterung.
 \end{definition}
 
 \begin{example}
-  Gilt $\ringchar{K} = 0$, so ist jedes algebraische Element $a \in L$ separabel.
+  Gilt $\ringchar{K} = 0$, so ist jedes algebraische Element $a \in L$ separabel, und somit jede algebraische Körpererweiterung $L/K$ separabel.
 \end{example}
 
+\begin{lemma}
+  Sind $M/L/K$ Erweiterungen, so dass $M/K$ separabel ist, so sind auch $M/L$ und $L/K$ separabel.
+\end{lemma}
+
+
+
+\subsection{Der Separablitätsgrad}
+
 \begin{definition}
-  Der \emph{Separablitätsgrad} der Erweiterung $L/K$ ist die Anzahl der $K$-Homomorphismen $L \to \closure{K}$, und wird mit $\sepindex{L}{K}$ notiert.
+  Der \emph{Separablitätsgrad} der algebraischen Erweiterung $L/K$ ist die Anzahl der $K$-Homomorphismen $L \to \closure{K}$, und wird mit $\sepindex{L}{K}$ notiert.
 \end{definition}
 
 \begin{lemma}[Multiplikativität des Separablitätsgrades]
-  Für alle Körpererweiterungen $M/L/K$ gilt $\sepindex{M}{K} = \sepindex{M}{L} \sepindex{L}{K}$.
+  Für alle algebraischen Körpererweiterungen $M/L/K$ gilt $\sepindex{M}{K} = \sepindex{M}{L} \sepindex{L}{K}$.
 \end{lemma}
 
-\begin{proposition}
+\noindent
+\begin{minipage}[t]{\textwidth}
+\begin{lemma}
+  Es sei $a \in L$ algebraisch.
+  \begin{enumerate}
+    \item
+      Es gilt $\sepindex{K(a)}{K} \leq \fieldindex{K(a)}{K}$.
+    \item
+      Es gilt genau dann Gleichheit, wenn $K(a)/K$ separabel ist.
+  \end{enumerate}
+\end{lemma}
+\end{minipage}
+
+\begin{corollary}
   Die Erweiterung $L/K$ sei endlich.
   \begin{enumerate}
     \item
@@ -886,15 +919,11 @@ Es sei $L/K$ ein Körpererweiterung.
     \item
       Es gilt genau dann Gleichheit, wenn $L/K$ separabel ist.
   \end{enumerate}
-\end{proposition}
-
-\begin{corollary}
-  Sind $M/L$ und $L/K$ endliche Körpererweiterungen, so ist $M/K$ genau dann separabel, wenn $M/L$ und $L/K$ separabel sind.
 \end{corollary}
 
-\begin{lemma}
-    Ist $a \in L$ separabel, so ist die Erweiterung $L/K$ separabel.
-\end{lemma}
+\begin{corollary}
+  Sind $M/L$ und $L/K$ endliche separable Körpererweiterungen, so ist auch $M/K$ separabel.
+\end{corollary}
 
 \begin{corollary}
   Sind $a, b \in L$ separabel, so sind auch $a + b$ und $a \cdot b$ separabel;
@@ -946,7 +975,7 @@ Ob ein Körper $K$ der Charakteristik $\ringchar{K} = p > 0$ perfekt ist, hängt
     \item
       Algebraisch abgeschlossene Körper sind perfekt.
     \item
-      Der Körper $\Finite_p(t)$ ist nicht perfekt, denn es gibt kein $x \in \Finite_p(t)$ mit $x^p = t$.
+      Der Körper $\Finite_p(u)$ ist nicht perfekt, denn es gibt kein $a \in \Finite_p(u)$ mit $a^p = u$.
   \end{enumerate}
 \end{example}
 
@@ -977,19 +1006,26 @@ Für alle $x \in K$ gilt somit $x^q = x$.
 \end{corollary}
 
 Es sei andererseits $n \geq 1$, $q \defined p^n$ und $K$ ein Zerfällungskörper des Polynoms $f \defined t^q - t \in \Finite_p[t]$.
-Dann ist die Menge der Nullstellen $K' \defined \{x \in K \suchthat x^q = x \}$ ein Unterkörper von $K$, und somit $K = K'$.
+Dann ist die Menge der Nullstellen $K' \defined \{x \in K \suchthat x^q = x \}$ ein Unterkörper von $K$, denn es ist $K' = \{x \in K \suchthat \sigma^n(x) = \id(x)\}$ die Übereinstimmungsmenge zweier Körperhomomorphismen.
+Es gilt somit $K = K'$.
 Es gilt $f' = -1$, weshalb $f$ und $f'$ teilerfremd sind.
 Es ist also $f$ separabel, und somit $\card{K} = \deg(f) = q = p^n$.
 
 \begin{theorem}[Klassifikation endlicher Körper]
   Es sei $p$ eine Primzahl.
-  Dann gibt es für alle $n \geq 0$ einen bis auf Isomorphismus eindeutigen Körper $\Finite_{p^n}$ mit $p^n$ Elementen, und jeder endliche Körper von Charakteristik $p$ ist von dieser Form.
-  Der Körper $\Finite_{p^n}$ besteht aus den Nullstellen des Polynoms $x^{p^n} - p \in \Finite_p[t]$.
+  Dann gibt es für alle $n \geq 0$ einen Körper $\Finite_{p^n}$ mit $p^n$ Elementen, dieser ist eindeutig bis auf Isomorphie, und jeder endliche Körper von Charakteristik $p$ ist von dieser Form.
+  Der Körper $\Finite_{p^n}$ besteht aus den Nullstellen des Polynoms $tü^{p^n} - t \in \Finite_p[t]$.
 \end{theorem}
 
 \begin{lemma}
   Für alle $n, m \geq 1$ gibt es genau dann eine Einbettung \textup(d.h.\ einen Körperhomomorphismus\textup) $\Finite_{p^n} \to \Finite_{p^m}$, wenn $n \divides m$ gilt.
 \end{lemma}
+
+\begin{example}
+  Für alle $n \leq m$ lässt sich $\Finite_{p^{n!}}$ als Unterkörper von $\Finite_{p^{m!}}$ auffassen.
+  Dann ist $\Finite_{p^\infty} \defined \bigcup_{n \geq 0} \Finite_{p^{n!}}$ ein algebraischer Abschluss von $\Finite_p$.
+\end{example}
+
 
 
 

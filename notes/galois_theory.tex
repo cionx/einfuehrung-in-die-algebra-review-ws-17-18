@@ -39,7 +39,7 @@ Es sei $L/K$ eine endliche Körpererweiterung.
     \item
       Die Erweiterung $L/K$ ist normal und separabel.
     \item
-      Für jedes $a \in L$ gilt $m_a \defined \prod_{\sigma \in \Aut{L/K}} (t - \sigma(a)) \in K[t]$.
+      Für jedes $a \in L$ zerfällt das Minimalpolynom $m_a$ über $L$ in die Linearfaktoren $t - \sigma(a)$ mit $\sigma \in \Gal{L/K}$, jeweils mit Vielfachheit $1$.
     \item
       Es gilt $K = L^{\Aut{L/K}}$.
   \end{enumerate}
@@ -51,25 +51,88 @@ Es sei $L/K$ eine endliche Körpererweiterung.
 \end{definition}
 
 \begin{theorem}[Hauptsatz der Galoistheorie]
-  Die Erweiterung $L/K$ sei galoissch.
+  Die Erweiterung $L/K$ sei galoissch mit Galoisgruppe $G \defined \Gal{L/K}$.
   \begin{enumerate}
     \item
       Es gibt es eine inklusionsumkehrende Bijektion
       \begin{align*}
                                 \{ \text{Zwischenkörper $K \subseteq M \subseteq L$} \}
-        &\xlongrightarrow{\sim} \{ \text{Untergruppen $H \subgroup \Gal{L/K}$} \} \,, \\
+        &\xlongrightarrow{\sim} \{ \text{Untergruppen $H \subgroup G$} \} \,, \\
                                 M
         &\longmapsto            \Aut{L/M} \,, \\
                                 L^H
         &\longmapsfrom          H \,.
       \end{align*}
+      Dies lässt sich wie folgt veranschaulichen:
+      \[
+        \begin{tikzcd}
+            L
+          \\
+            M
+            \arrow{u}
+          \\
+            K
+            \arrow{u}
+        \end{tikzcd}
+        \qquad
+        \leftrightsquigarrow
+        \qquad
+        \begin{tikzcd}
+            1
+            \arrow{d}
+          \\
+            H
+            \arrow{d}
+          \\
+            G
+        \end{tikzcd}
+      \]
     \item
-      Dabei gelten $\fieldindex{L}{M} = \card{\Aut{L/M}}$ und $\fieldindex{M}{K} = \groupindex{\Aut{L/M}}{\Gal{L/K}}$.
+      Es sei $K \subseteq M \subseteq L$ ein Zwischenkörper mit zugehöriger Untergruppe $H \subgroup G$.
+      \begin{enumerate}
+        \item
+          Es ist $L/M$ galoissch mit Galoisgrouppe $H$.
+          Insbesondere gilt $\fieldindex{L}{M} = \card{H}$.
+        \item
+          Es gilt $\fieldindex{M}{K} = \groupindex{G}{H}$.
+      \end{enumerate}
+      Dies lässt sich wie folgt veranschaulichen:
+      \[
+        \begin{tikzcd}[row sep = large]
+            L
+          \\
+            M
+            \arrow{u}[left]{\fieldindex{L}{M}}
+          \\
+            K
+            \arrow{u}[left]{\fieldindex{M}{K}}
+        \end{tikzcd}
+        \qquad
+        \leftrightsquigarrow
+        \qquad
+        \begin{tikzcd}[row sep = large]
+            1
+            \arrow{d}[right]{\card{H} = \groupindex{H}{1}}
+          \\
+            H
+            \arrow{d}[right]{\groupindex{G}{H}}
+          \\
+            G
+        \end{tikzcd}
+      \]
     \item
-      Die Erweiterung $M/K$ ist genau dann normal, wenn die zugehörige Untergruppe $\Aut{L/M} \subgroup \Gal{L/K}$ normal ist.
-      Dann ist auch $M/K$ galoissch, und es gilt $\Gal{M/K} \cong \Gal{L/K} / {\Aut{L/M}}$.
+      Die Erweiterung $M/K$ ist genau dann normal, wenn die zugehörige Untergruppe $N \subgroup G$ normal ist.
+      Dann ist $M/K$ ebenfalls galoissch, und es gilt
+      \[
+              \Gal{M/K}
+        \cong G/N \,.
+      \]
   \end{enumerate}
 \end{theorem}
+
+\begin{definition}
+  Die obige inklusionsumkehrende Korrespondenz zwischen Unterkörpern und Untergruppen ist die \emph{Galoiskorrespondenz}.
+\end{definition}
 
 
 
@@ -84,10 +147,6 @@ Somit ist die Erweiterung $\Complex/\Real$ galoissch.
 Aus $\card{\Gal{\Complex/\Real}} = \fieldindex{\Complex}{\Real} = 2$ ergibt sich bereits, dass $\Gal{\Complex/\Real} \cong \Integer/2$ gilt.
 Ein nicht-trivialer $\Real$-Automorphismus $\Complex \to \Complex$ ist durch die Konjugationsabbildung $c \colon \Complex \to \Complex$, $z \mapsto \conjugate{z}$ gegeben.
 Somit gilt $\Gal{\Complex/\Real} = \{\id, c\}$.
-
-Ersetzt man $\Real$ durch $\Rational$, und $\Complex$ durch $\Rational(i)$, so ergibt sich, dass $\Rational(i)/\Rational$ ebenfalls galoissch ist, und dass die Galoisgruppe $\Gal{\Rational(i)/\Rational}$ ebenfalls $\id$ und der Konjugationsabbildung besteht.
-Zur Bestimmung des Grades $\fieldindex{\Rational(i)}{\Rational} = 2$ bemerke man dabei, dass $f \in \Rational[t]$ bereits das Minimalpolynom von $i \in \Rational(i)$ ist:
-Das Polynom $f$ ist normiert mit $f(i) = 0$, und es ist irreduzibel in $\Rational[t]$, da es vom Grad $\leq 3$ ist und keine Nullstelle in $\Rational$ besitzt.
 
 \[
   \begin{tikzcd}
@@ -113,23 +172,30 @@ Das Polynom $f$ ist normiert mit $f(i) = 0$, und es ist irreduzibel in $\Rationa
 
 \section{Beispiel: \texorpdfstring{$\Finite_{p^n}/\Finite_p$}{F\_(pn)/F\_p}}
 
-Die Erweiterung $\Finite_{p^n}/\Finite_p$ ist normal, da $\Finite_{p^n}/\Finite_p$ ein Zerfällungskörper des Polynoms $f \defined t^{p^n} - t \in \Finite_p[t]$ ist.
-Da der endliche Körper $\Finite_p$ perfekt ist, ist die Erweiterung auch seperabel.
-Somit ist $\Finite_{p^n}/\Finite_p$ galoissch.
+Die Erweiterung $\Finite_{p^n}/\Finite_p$ ist normal, denn nach der Klassifikation endlicher Körper ist $\Finite_{p^n}$ ein Zerfällungskörper des Polynoms $f \defined t^{p^n} - t \in \Finite_p[t]$.
+Die Erweiterung ist separabel, da $\Finite_p$ endlich, und somit perfekt ist.
+Also ist $\Finite_{p^n}/\Finite_p$ galoissch.
 
-Der Frobenius-Homomorphismus $\sigma \colon \Finite_{p^n} \to \Finite_{p^n}$, $x \mapsto x^p$ ist ein Körperautomorphismus von $\Finite_{p^n}$, und $\Finite_p$-linear, da $\Finite_p$ der Primkörper von $\Finite_{p^n}$ ist.
-Somit gilt $\sigma \in \Finite_{p^n}$.
+Der Frobenius-Homomorphismus $\sigma \colon \Finite_{p^n} \to \Finite_{p^n}$, $x \mapsto x^p$ ist ein Körperautomorphismus von $\Finite_{p^n}$;
+er ist $\Finite_p$-linear, da $\Finite_p$ der Primkörper von $\Finite_{p^n}$ ist.
+Somit gilt $\sigma \in \Gal{\Finite_{p^n}/\Finite_p}$.
 
-Gilt dabei $\sigma^m = \id$ für $m \geq 1$, so gilt $x^{p^m} - x = 0$ für alle $x \in \Finite{p^n}$, d.h.\ $\Finite{p^n}$ besteht aus Nullstellen des Polynoms $g \defined t^{p^m} - t \in \Finite_p[t]$.
-Dann gilt allerdings $p^n = \card{\Finite_{p^n}} \leq \deg(g) = p^m$, und somit $n \geq m$.
+Gilt dabei $\sigma^m = \id$ für ein $m \geq 1$, so gilt $x^{p^m} - x = 0$ für alle $x \in \Finite_{p^n}$, d.h.\ alle Elemente von $\Finite_{p^n}$ sind Nullstellen des Polynoms $g \defined t^{p^m} - t \in \Finite_p[t]$.
+Dann gilt allerdings $p^n = \card{\Finite_{p^n}} \leq \deg(g) = p^m$, und somit $m \geq n$.
 Es gilt also $\ord{\sigma} \geq n$.
-
-Andererseits gilt $\ord{\sigma} \divides \ord{ \Gal{\Finite_{p^n}/\Finite_p} } = \fieldindex{\Finite_{p^n}}{\Finite_p} = n$.
+Andererseits gilt
+\[
+            \ord{\sigma}
+  \divides  \ord{ \Gal{\Finite_{p^n}/\Finite_p} }
+  =         \fieldindex{\Finite_{p^n}}{\Finite_p}
+  =         n \,.
+\]
 
 Ingesamt gilt also $\ord{\sigma} = n = \ord{ \Gal{\Finite_{p^n}/\Finite_p} }$.
 Somit ist die Galoisgruppe $\Gal{\Finite_{p^n}/\Finite_p}$ zyklisch, und wird vom Frobenius-Homomorphismus $\sigma$ erzeugt.
+Es gilt insbesondere $\Gal{\Finite_{p^n}/\Finite_p} \cong \Integer/n$.
 
-Für $n = 6$ ergibt sich etwa das folgende Bild:
+Für $n = 6$ ergibt sich die folgende Galoiskorrespondenz:
 
 \[
   \begin{tikzcd}[column sep = tiny]
@@ -150,7 +216,7 @@ Für $n = 6$ ergibt sich etwa das folgende Bild:
     & {}
   \end{tikzcd}
   \qquad\leftrightsquigarrow\qquad
-    \begin{tikzcd}[column sep = tiny]
+  \begin{tikzcd}[column sep = tiny]
       {}
     & \Finite_p
       \arrow{dl}[above left]{2}
@@ -173,13 +239,15 @@ Für $n = 6$ ergibt sich etwa das folgende Bild:
 
 
 
-
 \section{Beispiel: \texorpdfstring{$\Rational(\sqrt{2}, \sqrt{3})/\Rational$}{Q(sqrt(2),sqrt(3))/Q}}
+
+\subsection{Die Erweiterung ist galoissch}
 
 Es sei $L \defined \Rational(\sqrt{2}, \sqrt{3})$.
 Dann ist $L = \Rational(\sqrt{2}, -\sqrt{2}, \sqrt{3}, -\sqrt{3})$ ein Zerfällungskörper des Polynoms $f \defined (t^2 - 2)(t^2 - 3) \in \Rational[t]$, und die Erweiterung $L/\Rational$ somit normal.
 Diese Erweiterung ist auch separabel, da $\Rational$ perfekt ist, da $\ringchar{\Rational} = 0$ gilt.
-Die Erweiterung $L/\Rational$ ist also galoissch.
+
+\subsection{Bestimmung des Grades}
 
 Es gilt $\fieldindex{L}{\Rational} = \fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} \fieldindex{\Rational(\sqrt{2})}{\Rational}$.
 Dabei gilt $\fieldindex{\Rational(\sqrt{2})}{\Rational} = 2$, denn das Minimalpolynom von $\sqrt{2}$ ist $t^2 - 2 \in \Rational[t]$ (siehe Beispiel~\ref{example: minimal polynomials}).
@@ -191,8 +259,11 @@ Im Fall $\fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} = 1$ w�
 \end{lemma}
 
 Es gilt also $\fieldindex{\Rational(\sqrt{2})(\sqrt{3})}{\Rational(\sqrt{2})} = 2$.
-Insgesamt gilt somit $\fieldindex{L}{\Rational} = 2$.
-Dabei ist $1, \sqrt{2}$ eine $\Rational$-Basis von $\Rational(\sqrt{2})$, und $1, \sqrt{3}$ eine $\Rational(\sqrt{2})$-Basis von $\Rational(\sqrt{2})(\sqrt{3}) = L$.
+Insgesamt gilt somit $\fieldindex{L}{\Rational} = 4$.
+
+\subsection{Bestimmung einer Basis}
+
+Es ist $1, \sqrt{2}$ eine $\Rational$-Basis von $\Rational(\sqrt{2})$, und $1, \sqrt{3}$ eine $\Rational(\sqrt{2})$-Basis von $\Rational(\sqrt{2})(\sqrt{3}) = L$.
 Eine $\Rational$-Basis von $L$ ist deshalb durch
 \[
   1         \cdot 1         = 1 \,,
@@ -205,18 +276,278 @@ Eine $\Rational$-Basis von $L$ ist deshalb durch
 \]
 gegeben.
 
+\subsection{Bestimmung der Galoisgruppe}
 
+Jeder $\Rational$-Automorphismus $\varphi \colon L \to L$ muss die Nullstellen der beiden rationalen Polynome $t^2 - 2, t^2 - 3 \in \Rational[t]$ jeweils permutieren;
+es muss also $\varphi(\sqrt{2}) = \pm \sqrt{2}$ und $\varphi(\sqrt{3}) = \pm \sqrt{3}$ gelten.
+Dabei ist $\varphi$ durch die Werte $\varphi(\sqrt{2})$ und $\varphi(\sqrt{3})$ bereits eindeutig bestimmt.
+Es gibt also höchstens $4$ $\Rational$-Automorphismen $L \to L$, und diese sind durch die folgenden Zuordnungen festgelegt:
+\[
+  \arraycolsep = 2em
+  \renewcommand*{\arraystretch}{3}
+  \begin{array}{cc}
+  \id
+  \colon
+  \left\{
+    \begin{aligned}
+      \sqrt{2}  &\mapsto  \phantom{-}\sqrt{2}  \\
+      \sqrt{3}  &\mapsto  \phantom{-}\sqrt{3}
+    \end{aligned}
+  \right.
+  &
+  \tau_1
+  \colon
+  \left\{
+    \begin{aligned}
+      \sqrt{2}  &\mapsto            -\sqrt{2}  \\
+      \sqrt{3}  &\mapsto  \phantom{-}\sqrt{3}
+    \end{aligned}
+  \right.
+  \\
+  \tau_2
+  \colon
+  \left\{
+    \begin{aligned}
+      \sqrt{2}  &\mapsto  \phantom{-}\sqrt{2} \\
+      \sqrt{3}  &\mapsto            -\sqrt{3}
+    \end{aligned}
+  \right.
+  &
+  \tau_1 \tau_2
+  \colon
+  \left\{
+    \begin{aligned}
+      \sqrt{2}  &\mapsto  -\sqrt{2} \\
+      \sqrt{3}  &\mapsto  -\sqrt{3}
+    \end{aligned}
+  \right.
+  \end{array}
+\]
+Da die Erweiterung $L/\Rational$ galoissch ist, gilt dabei $\card{\Gal{L/K}} = \fieldindex{L}{\Rational} = 4$.
+Somit muss jede der obigen $4$ Zuordnungen tätsächlich schon einen $\Rational$-Automorphismus definieren.
 
+Insbesondere gilt $\Gal{L/\Rational} \cong \Integer/2 \times \Integer/2$;
+dabei entspricht etwa $\tau_1$ dem Element $(1,0)$, und $\tau_2$ dem Element $(0,1)$.
 
+\subsection{Bestimmung der Untergruppen der Galoisgruppe}
 
+Die Untergruppen von $\Integer/2 \times \Integer/2$ sind
+\begin{itemize}
+  \item
+    die triviale Gruppe $0$,
+  \item
+    die zyklischen Untergruppen $\generated{(1,0)}$, $\generated{(1,1)}$, $\generated{(0,1)}$,
+  \item
+    die gesamte Gruppe $\Integer/2 \times \Integer/2$.
+\end{itemize}
+Die Untergruppen von $G \defined \Gal{L/\Rational}$ sind also
+\begin{itemize}
+  \item
+    die triviale Gruppe $1$,
+  \item
+    die zyklischen Untergruppen $\generated{\tau_1}$, $\generated{\tau_2}$, $\generated{\tau_1 \tau_2}$,
+  \item
+    die gesamte Gruppe $G$.
+\end{itemize}
 
+\subsection{Bestimmung der Fixkörper}
 
+Für $x \in L$,
+\[
+  x = a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6}
+\]
+mit $a, b, c, d \in \Rational$ gilt etwa
+\[
+  \tau_1(x) = a - b\sqrt{2} + c \sqrt{2} - d\sqrt{6} \,,
+\]
+und deshalb genau dann $\tau_1(x) = x$, wenn $b = d = 0$.
+Also gilt
+\[
+    L^{\generated{\tau_1}}
+  = \{
+      a + c\sqrt{3}
+    \suchthat
+      a,c \in \Rational
+    \}
+  = \Rational(\sqrt{3}) \,.
+\]
+Analog ergibt sich, dass
+\[
+    L^{\generated{\tau_2}}
+  = \Rational(\sqrt{2}) \,,
+  \qquad
+    L^{\generated{\tau_1 \tau_2}}
+  = \Rational(\sqrt{6}) \,.
+\]
 
+\subsection{Die Galoiskorrespondenz}
 
+Die gesamte Galoiskorrespondenz sieht somit wie folgt aus:
+
+\[
+  \begin{tikzcd}[column sep = small]
+      {}
+    & G
+    & {}
+    \\
+      \generated{\tau_1}
+      \arrow{ru}[above left]{2}
+    & \generated{\tau_1 \tau_2}
+      \arrow{u}{2}
+    & \generated{\tau_2}
+      \arrow{lu}[above right]{2}
+    \\
+      {}
+    & 1
+      \arrow{lu}[below left]{2}
+      \arrow{u}{2}
+      \arrow{ru}[below right]{2}
+    & {}
+  \end{tikzcd}
+  \qquad\leftrightsquigarrow\qquad
+  \begin{tikzcd}[column sep = small]
+      {}
+    & \Rational
+      \arrow{dl}[above left]{2}
+      \arrow{d}[left]{2}
+      \arrow{dr}[above right]{2}
+    & {}
+    \\
+      \Rational(\sqrt{3})
+      \arrow{dr}[below left]{2}
+    & \Rational(\sqrt{6})
+      \arrow{d}[left]{2}
+    & \Rational(\sqrt{2})
+      \arrow{dl}[below right]{2}
+    \\
+      {}
+    & \Rational(\sqrt{2},\sqrt{3})
+    & {}
+  \end{tikzcd}
+\]
 
 
 
 
 
 \section{Beispiel: Kreisteilungskörper \texorpdfstring{$\Rational(\zeta_n)/\Rational$}{Q(zeta\_n)/Q}}
+
+\begin{definition}
+  Für alle $n \geq 1$ ist $W_n \defined \{z \in \Complex \suchthat z^n = 1\}$ die Gruppen der $n$-ten Einheitswurzeln.
+  Eine $n$-te Einheitswurzel $\zeta \in W_n$ ist \emph{primitiv}, wenn $W_n = \generated{\zeta}$ gilt.
+\end{definition}
+
+Ist $\zeta$ eine primitive $n$-te Einheitswurzeln, so ist die Abbildung
+\[
+          \Integer/n
+  \to     W_n \,,
+  \quad   \class{k}
+  \mapsto \zeta^k
+\]
+ein Gruppenisomorphismus.
+Dabei gilt
+\begin{align*}
+      &\, \text{$\zeta_k$ ist primitiv} \\
+  \iff&\, \text{$\class{k} \in \Integer/n$ ist ein zyklischer Erzeuger} \\
+  \iff&\, \text{$k$ und $n$ sind teilerfremd} \\
+  \iff&\, \text{$\class{k}$ ist eine Einheit in $\Integer/n$} \,.
+\end{align*}
+
+Also ist $\zeta^k$ genau dann primitiv, wenn $\class{k}$ ein Erzeuger von $\Integer/n$ ist, wenn also $k$ und $n$ teilerfremd sind, wenn also $\class{k}$ eine Einheit in $\Integer/n$ ist.
+
+\begin{definition}
+  Für alle $n \geq 1$ ist $\Phi_n \defined \prod_{\text{$\zeta$ primitive $n$-te Einheitswurzel}} (t - \zeta)$ das \emph{$n$-te Kreisteilungspolynom}.
+\end{definition}
+
+\begin{theorem}
+  Es sei $n \geq 1$.
+  \begin{enumerate}
+    \item
+      Das Polynom $\Phi_n$ ist normiert.
+    \item
+      Es gilt $t^n - 1 = \prod_{d \divides n} \Phi_d$.
+    \item
+      Für $p$ prim gilt $\Phi_p = t^{p-1} + \dotsb + t + 1 = (t^p-1)/(t-1)$.
+    \item
+      Es gilt $\Phi_n \in \Integer[t]$.
+    \item
+      Das Polynom $\Phi_n$ ist irreduzibel.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  $\Phi_n$ ist das Minimalpolynom jeder primitiven $n$-ten Einheitswurzel
+\end{corollary}
+
+\begin{remark}
+  Für $p$ prim lässt sich die Irreduziblität von $\Phi_p$ dadurch zeigen, dass man auf
+  \[
+      \Phi_p(t+1)
+    = \frac{(t+1)^p - 1}{t}
+    = \sum_{k=1}^p \binom{p}{k} t^{k-1}
+    = \sum_{k=0}^{p-1} \binom{p}{k+1} t^k
+  \]
+  das Eisenstein-Kriterium bezüglich der Primzahl $p$ anwendet.
+\end{remark}
+
+Es sei im Folgenden $\zeta_n$ eine primitive $n$-te Einheitswurzel.
+
+\subsection{Die Erweiterung ist galoissch}
+
+Es ist $\Rational(\zeta_n) = \Rational(\zeta_n^k \suchthat k \in \Integer)$ ein Zerfällungskörper von $t^n - 1$, und $\Rational(\zeta_n)/\Rational$ somit normal.
+Die Erweiterung ist separabel, da $\Rational$ perfekt ist, da $\ringchar{\Rational} = 0$ gilt.
+
+\subsection{Bestimmung der Galoisgruppe}
+
+Es gilt
+  \[
+  \arraycolsep=1pt
+  \begin{array}{rcl}
+      \Gal{\Rational(\zeta_n)/\Rational}
+    & =
+    & \{ \text{$\Rational$-Automorphismen $\Rational(\zeta_n) \to \Rational(\zeta_n)$} \}
+    \\
+      {}
+    & =
+    & \{ \text{$\Rational$-Homomorphismen $\Rational(\zeta_n) \to \Rational(\zeta_n)$} \}
+    \\
+      {}
+    & \leftrightarrow
+    & \{ \text{Nullstellen von $\Phi_n$ in $\Rational(\zeta_n)$} \}
+    \\
+      {}
+    & =
+    & \{\text{primitive $n$-te Einheitswurzeln}\}
+    \\
+      {}
+    & \leftrightarrow
+    & \unitgroup{(\Integer/n)} \,,
+    \\
+  \end{array}
+\]
+wobei für jedes $\class{k} \in \unitgroup{(\Integer/n)}$ das zugehörige Gruppenelement $\psi_{\,\class{k}} \in \Gal{\Rational(\zeta_n)/\Rational}$ durch
+\[
+    \psi_{\,\class{k}}(\zeta_n)
+  = \zeta_n^k
+\]
+eindeutig bestimmt ist.
+Dabei gilt
+\[
+    \psi_{\,\class{k}} \psi_{\,\class{\ell}}
+  = \psi_{\,\class{k} \cdot \class{\ell}}
+\]
+weshalb es sich bereits um einen Gruppenisomorphismus handelt.
+Es gilt also
+\[
+        \Gal{\Rational(\zeta_n)/\Rational}
+  \cong \unitgroup{(\Integer/n)} \,.
+\]
+
+
+
+
+
+
+
+
 
