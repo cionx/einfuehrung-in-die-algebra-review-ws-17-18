@@ -17,7 +17,7 @@
       $3t^6 + 4t^4 - 6t^2 - 10 \in \Integer[t]$
     \item
       % mod 2
-      $3t^3 + 39t^2 - 4t + 8 \in \Rational[t]$
+      $t^3 + 39t^2 - 4t + 8 \in \Rational[t]$
     \item
       %  divide by 2, then mod 2
       $2t^3 - 14t + 6 \in \Rational[t]$
@@ -86,6 +86,94 @@
   \end{enumerate}
 \end{question}
 
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Es gilt
+      \begin{align*}
+         &\,  \ggT(270, 192)
+        =     \ggT(192 + 78, 192)
+        \\
+        =&\,  \ggT(192, 78)
+        =     \ggT(2 \cdot 78 + 36, 78)
+        \\
+        =&\,  \ggT(78, 36)
+        =     \ggT(2 \cdot 36 + 6, 36)
+        \\
+        =&\,  \ggT(36, 6)
+        =     6 \,.
+      \end{align*}
+      Dabei gilt
+      \begin{align*}
+            6
+        &=  78 - 2 \cdot 36
+        =  78 - 2 \cdot (192 - 2 \cdot 78)
+        \\
+        &=  5 \cdot 78 - 2 \cdot 192
+        =  5 \cdot (270 - 192) - 2 \cdot 192
+        \\
+        &=  5 \cdot 270 - 7 \cdot 192 \,.
+      \end{align*}
+      
+    \item
+      Es gilt $\ggT(30,42,70) = \ggT(\ggT(30, 42), 70)$, weshalb wir wiederholt den euklidischen Algorithmus anwenden können.
+      \begin{enumerate}
+        \item
+          Es gilt
+          \begin{align*}
+             &\,  \ggT(42, 30)
+            =     \ggT(30 + 12, 30)
+          \\
+            =&\,  \ggT(30, 12)
+            =     \ggT(2 \cdot 12 + 6, 12)
+          \\
+            =&\,  \ggT(12,6)
+            =     6 \,.
+          \end{align*}
+          Dabei gilt
+          \begin{equation}
+            \label{equation: first gcd}
+              6
+            = 30 - 2 \cdot 12
+            = 30 - 2 \cdot (42 - 30)
+            = 3 \cdot 30 - 2 \cdot 42 \,.
+          \end{equation}
+      \end{enumerate}
+    \item
+      Es gilt nun
+      \begin{enumerate}
+        \item
+          Es gilt
+          \begin{align*}
+             &\,  \ggT(70, 6)
+            =     \ggT(11 \cdot 6 + 4, 6)
+          \\
+            =&\,  \ggT(6, 4)
+            =     \ggT(4 + 2, 4)
+          \\
+            =&\,  \ggT(4, 2)
+            =     2 \,.
+          \end{align*}
+          Dabei gilt
+          \[
+              2
+            = 4 - 2
+            = 4 - (6 - 4)
+            = 2 \cdot 4 - 6
+            = 2 \cdot (70 - 11 \cdot 6) - 6
+            = 2 \cdot 70 -  23 \cdot 6 \,.
+          \]
+          Durch Einsetzen von Gleichung~\eqref{equation: first gcd} ergibt sich damit, dass
+          \[
+              2
+            = 2 \cdot 70 - 23 \cdot (3 \cdot 30 - 2 \cdot 42)
+            = 2 \cdot 70 + 46 \cdot 42 - 69 \cdot 30 \,.
+          \]
+
+      \end{enumerate}
+  \end{enumerate}
+\end{solution}
+
 \begin{question}
   Es sei $R$ ein kommutativer Ring und $P \ideal R$ ein Primideal.
   Zeigen Sie, dass
@@ -97,9 +185,59 @@
   ein multiplikative Teilmenge von $R$ ist.
 \end{question}
 
+\begin{solution}
+  Es gilt
+  \[
+          1 \in S
+    \iff  1 \notin P
+    \iff  P \neq R \,,
+  \]
+  wobei $P \neq R$ gilt, da $P$ prim ist.
+  Es gilt außerdem, dass
+  \[
+    \forall x, y \in R:
+    (xy \in P \implies x \in P \vee y \in P) \,,
+  \]
+  was äquivalent zu
+  \[
+    \forall x, y \in R:
+    ( x \notin P \wedge y \notin P \implies xy \notin P)
+  \]
+  ist, was sich wiederum zu
+  \[
+    \forall x, y \in R:
+    ( x \in S \wedge y \in S \implies xy \in S )
+  \]
+  umschreiben lässt.
+  Für alle $s, t \in S$ gilt also auch $st \in S$.
+\end{solution}
+
 \begin{question}
   Zeigen Sie, dass der Ring $\Integer[\sqrt{-2}] = \Integer[i\sqrt{2}]$ euklidisch ist.
 \end{question}
+
+\begin{solution}
+  Für jedes $z = a + i b \sqrt{-2} \in \Integer[\sqrt{-2}]$ mit $a, b \in \Integer$ definieren wir die \emph{Norm} von $z$ als $N(z) \defined \abs{z}^2 = a^2 + 2 b^2 \in \Natural$.
+  Dann ist $\Integer[\sqrt{-2}]$ zusammen mit $N$ ein euklidischer Ring:
+  
+  Man bemerke, dass $\Integer[\sqrt{-2}]$ in der komplexen Zahlenebene $\Complex$ ein \enquote{Gitter} von Breite $1$ und Höhe $\sqrt{2}$ bildet, weshalb es für jedes Element $z \in \Complex$ ein $w \in \Integer[\sqrt{-2}]$ mit
+  \[
+          \abs{z - w}
+    \leq  \frac{\sqrt{1^2 + \sqrt{2}^2}}{2}
+    =     \frac{\sqrt{3}}{2} < 1
+  \]
+  gibt.
+  Für $f, g \in \Integer[\sqrt{-2}]$ mit $g \neq 0$ lässt sich in $\Complex$ der Quotient $f/g$ bilden, und es gibt ein $q \in \Integer[\sqrt{-2}]$ mit $\abs{f/g - w} < 1$ gibt.
+  Für $r \defined f - qg$ gilt dann $f = qg + r$, wobei
+  \[
+      N(r)
+    = \abs{r}^2
+    = \abs{f - qg}^2
+    = \underbrace{\abs{f/g - q}^2}_{<1} \abs{g}^2
+    < \abs{g}^2
+    = N(g) \,.
+  \]
+\end{solution}
 
 \begin{question}
   Es seien $n, m \geq 1$.
@@ -110,6 +248,49 @@
   \]
 \end{question}
 
+\begin{solution}
+  Es sei $\mathcal{P} \subseteq \Natural$ die übliche Menge der Primzahlen.
+  Aus den Primfaktorzerlegungen
+  \begin{align*}
+      n
+    = \prod_{p \in \mathcal{P}} p^{\nu_p}
+    \qquad&\text{und}\qquad
+      m
+    = \prod_{p \in \mathcal{P}} p^{\mu_p} \,.
+  \intertext{ergeben sich die Primfaktorzerlegungen}
+      \ggT(n,m)
+    = \prod_{p \in \mathcal{P}} p^{\min(\nu_p,\mu_p)}
+    \qquad&\text{und}\qquad
+      \kgV(n,m)
+    = \prod_{p \in \mathcal{P}} p^{\max(\nu_p,\mu_p)} \,.
+  \end{align*}
+  Nach dem chinesischen Restklassensatze gelten deshalb
+  \begin{align*}
+            \Integer/n
+    &\cong  \prod_{p \in \mathcal{P}} \Integer/p^{\nu_p} \,,  \\
+            \Integer/m
+    &\cong  \prod_{p \in \mathcal{P}} \Integer/p^{\mu_p} \,,  \\
+            \Integer/\ggT(n,m)
+    &\cong  \prod_{p \in \mathcal{P}} \Integer/p^{\min(\nu_p,\mu_p)} \,,  \\
+            \Integer/\kgV(n,m)
+    &\cong  \prod_{p \in \mathcal{P}} \Integer/p^{\max(\nu_p,\mu_p)} \,,
+  \shortintertext{und somit}
+            \Integer/n \times \Integer/m
+    &\cong  \prod_{p \in \mathcal{P}} ( \Integer/p^{\nu_p} \times \Integer/p^{\mu_p}) \,, \\
+            \Integer/\ggT(n,m) \times \Integer/\kgV(n,m)
+    &\cong  \prod_{p \in \mathcal{P}} \left(
+                                                \Integer/p^{\min(\nu_p,\mu_p)}
+                                        \times  \Integer/p^{\max(\nu_p,\mu_p)}
+                                      \right) \,.
+  \intertext{Dabei gilt für jedes $p \in \mathcal{P}$, dass}
+            \Integer/p^{\nu_p} \times \Integer/p^{\mu_p}
+    &\cong  \Integer/p^{\min(\nu_p,\mu_p)} \times  \Integer/p^{\max(\nu_p,\mu_p)} \,,
+  \intertext{denn es gilt}
+            \{\nu_p, \mu_p\}
+    &=      \{ \min(\nu_p, \mu_p), \max(\nu_p, \mu_p) \} \,.
+  \end{align*}
+\end{solution}
+
 \begin{question}
   Für alle $n \geq 1$ sei $\varphi(n) = \card{\{1 \leq k \leq n \suchthat \text{$k$ und $n$ sind teilerfremd}\}}$.
   \begin{enumerate}
@@ -118,14 +299,89 @@
     \item
       Zeigen Sie, dass $\varphi(nm) = \varphi(n)\varphi(m)$ gilt, wenn $n, m \geq 1$ teilerfremd sind.
     \item
-      Zeige Sie für $p$ prim und $\ell \geq 1$, dass $\varphi(p) = p^{\ell-1} (p-1) $ gilt.
+      Zeige Sie für $p$ prim und $\ell \geq 1$, dass $\varphi(p^\ell) = p^{\ell-1} (p-1) $ gilt.
     \item
       Bestimmen Sie $\varphi(42)$, $\varphi(57)$ und $\varphi(144)$.
   \end{enumerate}
 \end{question}
 
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Es ist $\class{k} \in \Integer/n$ genau dann eine Einheit, wenn $k$ und $n$ teilerfremd sind.
+      Dies ergibt sich etwa dadurch, dass
+      \begin{align*}
+            &\, \class{k} \in \unitgroup{(\Integer/n)}  \\
+        \iff&\, \exists \class{a} \in \Integer/n : \class{a} \cdot \class{k} = \class{1}  \\
+        \iff&\, \exists \class{a} \in \Integer/n : \class{ak} = \class{1}  \\
+        \iff&\, \exists a, b \in \Integer : ak + bn = 1 \\
+        \iff&\, 1 \in \genideal{k,n} = \genideal{\ggT(k,n)} \\
+        \iff&\, \text{$\ggT(k,n)$ ist eine Einheit} \,.
+      \end{align*}
+      Es gilt somit
+      \begin{align*}
+            \card{\unitgroup{(\Integer/n)}}
+        &=  \card{\{1 \leq k \leq n \suchthat \text{$\class{k}$ ist eine Einheit in $\Integer/n$}\}}  \\
+        &=  \card{\{1 \leq k \leq n \suchthat \text{$k$ und $n$ sind teilerfremd}\}}
+         =  \varphi(n) \,.
+      \end{align*}
+    \item
+      Nach dem chinesischen Restklassensatz gilt $\Integer/(nm) = \Integer/n \times \Integer/m$, und somit
+      \begin{align*}
+            \varphi(nm)
+        &=  \card*{\unitgroup{(\Integer/(nm))}}
+         =  \card*{\unitgroup{(\Integer/n \times \Integer/m)}} \\
+        &=  \card*{\unitgroup{(\Integer/n)} \times \unitgroup{(\Integer/m)}}
+         =  \card*{\unitgroup{(\Integer/n)}} \card*{\unitgroup{(\Integer/m)}}
+         =  \varphi(n) \varphi(m) \,.
+      \end{align*}
+    \item
+      Es ist $1 \leq k \leq p^\ell$ genau dann teilerfremd zu $p^\ell$, wenn $k$ den Primfaktor $p$ nicht enthält.
+      Da jede $p$-te Zahl durch $p$ teilbar ist, gilt somit
+      \[
+          \varphi(p^\ell)
+        = p^\ell - \frac{p^\ell}{p}
+        = p^\ell - p^{\ell-1}
+        = p^{\ell-1}(p-1) \,.
+      \]
+    \item
+      Es gelten
+      \begin{align*}
+            \varphi(42)
+        &=  \varphi(2 \cdot 3 \cdot 7)
+         =  \varphi(2) \varphi(3) \varphi(7)
+         =  1 \cdot 2 \cdot 6
+         =  12 \,,
+        \\
+            \varphi(57)
+        &=  \varphi(3 \cdot 19)
+         =  \varphi(3) \varphi(19)
+         =  2 \cdot 18
+         =  36 \,,
+        \\
+            \varphi(144)
+        &=  \varphi(2^4 \cdot 3^2)
+        =   \varphi(2^4) \varphi(3^2)
+        =   2^3 \cdot 1 \cdot 3^1 \cdot 2
+        =   48 \,.
+      \end{align*}
+
+  \end{enumerate}
+\end{solution}
 
 
+
+
+
+\pagebreak
+
+
+
+
+
+\section*{Lösungen}
+
+\printsolutions
 
 
 
