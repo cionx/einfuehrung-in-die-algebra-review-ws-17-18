@@ -21,7 +21,7 @@
       Zeigen Sie, dass $K(a) = K(a^2)$ gilt.
     \item
       Es sei $L/K$ eine Körpererweiterung vom Grad $\fieldindex{L}{K} = 2^n$ und $f \in K[t]$ ein kubisches Polynom, das eine Nullstelle in $L$ hat.
-      Zeigen Sie, dass $f$ bereits eine Nullstelle in $L$ hat.
+      Zeigen Sie, dass $f$ bereits eine Nullstelle in $K$ hat.
   \end{enumerate}
 
 
@@ -60,9 +60,19 @@
 % \end{question}
 
 \begin{question}
-  Es sei $L/K$ eine algebraische Körpererweiterung, so dass jedes Polynom $f \in K[t]$ eine Nullstelle in $L$ hat.
+  Es sei $L/K$ eine algebraische Körpererweiterung, so dass jedes Polynom $f \in K[t]$ über $L$ in Linearfaktoren zerfällt.
   Zeigen Sie, dass $L$ bereits ein algebraischer Abschluss von $K$ ist.
 \end{question}
+
+\begin{solution}
+  Da die Körpererweiterung $L/K$ nach Annahme algebraisch ist, genügt es zu zeigen, dass $L$ algebraisch abgeschlossen ist.
+  Hierfür zeigen wir, dass für jede algebraische Körpererweiterung $L'/L$ bereits $L' = L$ gilt:
+  
+  Es sei $a \in L'$.
+  Dann sind $L(a)/L$ und $L/K$ algebraisch, und somit ist auch $L(a)/K$ algebraisch.
+  Nach Annahme zerfällt das Minimalpolynom $m_a \in K[t]$ bereits über $L$ in Linearfaktoren;
+  insbesondere muss deshalb die Nullstelle $a$ von $m_a$ bereits in $L$ liegen.
+\end{solution}
 
 \begin{question}
   \begin{enumerate}
@@ -75,6 +85,71 @@
       Zeigen Sie, dass die Erweiterung $\Rational(\sqrt[4]{3})/\Rational$ allerdings nicht normal ist.
   \end{enumerate}
 \end{question}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Es sei $a \in L$ mit $a \notin K$.
+      Dann gilt
+      \[
+          2
+        = \fieldindex{L}{K}
+        = \fieldindex{L}{K(a)} \fieldindex{K(a)}{K}
+      \]
+      mit $\fieldindex{K(a)}{K} > 1$;
+      es gilt deshalb $\fieldindex{L}{K(a)} = 1$ und $\fieldindex{K(a)}{K} = 2$, und somit insbesondere $L = K(a)$.
+      (Wir haben hier den Beweis von Aufgabe 1, 2. wiederholt.)
+      Das Minimalpolynom $m_a \in K[t]$ ist quadratisch, da
+      \[
+          \deg(m_a)
+        = \fieldindex{K(a)}{K}
+        = \fieldindex{L}{K}
+        = 2
+      \]
+      gilt.
+      Da das quadratische Polynom $m_a$ eine Nullstelle in $L$ hat, zerfällt $m_a$ über $L$ bereits in Linearfaktoren.
+      Zusammen mit $L = K(a)$ folgt, dass $L$ ein Zerfällungskörper von $m_a$ ist.
+    \item
+      Für alle $n \geq 1$ ist $t^n - 3 \in \Rational[t]$ das Minimalpolynom von $\sqrt[n]{3}$ über $\Rational$, wobei sich die Irreduziblität aus dem Eisenstein-Kriteraum ergibt.
+      Es gilt also stets $\fieldindex{\Rational(\sqrt[n]{3})}{\Rational} = n$.
+      \begin{itemize}
+        \item
+          Es gilt somit $\fieldindex{\Rational(\sqrt{3})}{\Rational} = 2$.
+        \item
+          Es gilt $\fieldindex{\Rational(\sqrt[4]{3})}{\Rational} = 4$, und aus der Multiplikativität des Grades ergibt sich
+          \[
+              4
+            = \fieldindex{\Rational(\sqrt[4]{3})}{\Rational}
+            = \fieldindex{\Rational(\sqrt[4]{3})}{\Rational(\sqrt{3})}
+              \fieldindex{\Rational(\sqrt{3})}{\Rational}
+            = 2\fieldindex{\Rational(\sqrt[4]{3})}{\Rational(\sqrt{3})} \,,
+          \]
+          und somit $\fieldindex{\Rational(\sqrt[4]{3})}{\Rational(\sqrt{3})} = 2$.
+      \end{itemize}
+      Nach dem vorherigen Aufgabenteil sind $\fieldindex{\Rational(\sqrt[4]{3})}{\Rational(\sqrt{3})}$ und $\fieldindex{\Rational(\sqrt{3})}{\Rational}$ somit normal.
+    \item
+      Das irreduzible Polynom $f \defined t^4 - 3 \in \Rational[t]$ besitzt in $\Rational(\sqrt[4]{3})$ genau zwei Nullstellen, nämlich $\sqrt[4]{3}$ und $-\sqrt[4]{3}$.
+      Also besitzt $f$ zwar eine Nullstelle in $\Rational(\sqrt[4]{3})$, zerfällt dort aber noch nicht.
+      Deshalb ist $\Rational(\sqrt[4]{3})/\Rational$ nicht normal.
+  \end{enumerate}
+\end{solution}
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+\section*{Lösungen}
+
+\printsolutions
+
+
+
 
 
 \end{document}
